@@ -40,14 +40,14 @@ public class PivotCamera : MonoBehaviour
             targetAngle *= 45;
         }
 
-        if (targetAngle < 0)   // Ensures angle does not go below 0
+        if (targetAngle <  0)   // Ensures angle does not go below 0
         {
-            targetAngle += 360;
+            targetAngle += 359;
         }
         
-        if (targetAngle > 360)   // Ensures angle does not go above 360
+        if (targetAngle >= 360)   // Ensures angle does not go above 360
         {
-            targetAngle -= 360;
+            targetAngle = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
