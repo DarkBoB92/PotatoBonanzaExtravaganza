@@ -5386,12 +5386,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7677762800744826111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5416c98e09931df4fbd8866d9ed3c52b, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b1d8680a9d7504698ffffa0729fe0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  ps: {fileID: 0}
-  psObject: {fileID: 0}
+  rb: {fileID: 2868475766259345143}
+  ps: {fileID: 6022873124190787704}
+  psObject: {fileID: 3659905474499992306}
   speed: 5
   turnSpeed: 360
 --- !u!136 &3910142606668322330

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{23C73826-1511-4406-5C88-17CDFD730FFC}</ProjectGuid>
+    <ProjectGuid>{6C85E9EB-7BF8-497B-5F14-9FC94780C782}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\Shader Materials\Toon Shader.shader" />
+    <None Include="Assets\Assets\Toon Shader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
