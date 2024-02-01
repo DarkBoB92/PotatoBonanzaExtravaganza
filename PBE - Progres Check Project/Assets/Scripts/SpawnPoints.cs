@@ -8,6 +8,8 @@ public class SpawnPoints : MonoBehaviour
 {
     // Pre-Requisite Variables --------------------------------------------------------------------
 
+    
+    // Wave Variables -----------------------------------------------------------------------------
     public List<Enemies> enemies = new List<Enemies>();
     public List<GameObject> spawnEnemies = new List<GameObject>();
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // GameObject list is used as spawnedEnemies will be of type GameObject therefore tracking it by its type.
@@ -16,10 +18,23 @@ public class SpawnPoints : MonoBehaviour
     public int waveValue;
     public int difficultyMultiplier;
 
+    // Spawn Variables -----------------------------------------------------------------------------
     public int waveDuration; // How long the wave should last before moving on to next.
     private float waveCountdown; // Countdown timer, how long is left.
     private float spawnRate; // Enemy spawn rate.
     private float spawnDelay; // Enemy spawn delay.
+
+    [SerializeField] private GameObject enemiesParent;
+
+    [System.Serializable]
+    public class Enemies
+    {
+        public GameObject enemyP; // EnemyPrefab
+        public int enemyValue; // "Cost" of enemy. Think of it as a shop.
+
+    }
+
+
 
     // Main Loops ---------------------------------------------------------------------------------
 
@@ -42,16 +57,6 @@ public class SpawnPoints : MonoBehaviour
             waveCountdown -= Time.fixedDeltaTime;
         }
     }
-
-
-    [System.Serializable]
-    public class Enemies
-    {
-        public GameObject enemyP; // EnemyPrefab
-        public int enemyValue; // "Cost" of enemy. Think of it as a shop.
-
-    }
-
     // Functions ----------------------------------------------------------------------------------
 
     public void CreatingWave()
@@ -110,6 +115,8 @@ public class SpawnPoints : MonoBehaviour
                 Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Create a new spawnPosition and assign it to the spawnPositions position based on the indexed spawnPoint.
 
                 GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab.
+
+                enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
 
                 spawnEnemies.RemoveAt(0); // Remove it from the list. Does not remove from scene.
                 spawnDelay = spawnRate;
