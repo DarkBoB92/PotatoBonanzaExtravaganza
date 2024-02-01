@@ -47,7 +47,10 @@ MonoBehaviour:
   enemies: []
   spawnEnemies: []
   spawnedEnemies: []
-  spawnPoint: []
+  spawnPoint:
+  - {fileID: 3555692655369120875, guid: 07ea4a3c61d90b841ab846705fb963bf, type: 3}
+  - {fileID: 2135736946828642864, guid: 32a8f79b67af01844a8f528d63993c3f, type: 3}
+  - {fileID: 5665239417573170170, guid: 82af4f47857e8944c8e601c7cd6fcd06, type: 3}
   currentWave: 1
   waveValue: 0
   difficultyMultiplier: 10
