@@ -35,7 +35,6 @@ public class SpawnPoints : MonoBehaviour
     }
 
 
-
     // Main Loops ---------------------------------------------------------------------------------
 
     void Start()
@@ -59,6 +58,7 @@ public class SpawnPoints : MonoBehaviour
     }
     // Functions ----------------------------------------------------------------------------------
 
+
     public void CreatingWave()
     {
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
@@ -76,18 +76,6 @@ public class SpawnPoints : MonoBehaviour
             int randomEnemyValue = enemies[randomEnemy].enemyValue; // Extracting the value of the enemy based on the enemy spawned.
             int remainingWaveValue = waveValue - randomEnemyValue;
 
-            //switch (remainingWaveValue)
-            //{
-            //    case int when remainingWaveValue >= 0: // When remainingWaveValue >=0 and only if it is of type 'int'.
-            //        spawnedEnemies.Add(enemies[randomEnemy].enemyP); // Instantiation of the enemies based on the Prefab of the 'ID' selected.
-            //        waveValue -= randomEnemyValue; // Assign the new value to be randomEnemy Value - waveValue.
-            //        break;
-            //}
-
-            //if (waveValue <= 0) // Simplistic line of code, if there's no enemies left - end the wave.
-            //{
-            //    break;
-            //}
 
             if (remainingWaveValue >= 0)
             {
