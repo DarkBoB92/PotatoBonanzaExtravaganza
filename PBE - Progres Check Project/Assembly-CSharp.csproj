@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PivotCamera.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\Scripts\OutOfBounds.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\NonHostileController.cs" />
     <Compile Include="Assets\Scripts\SpawnPoints.cs" />
