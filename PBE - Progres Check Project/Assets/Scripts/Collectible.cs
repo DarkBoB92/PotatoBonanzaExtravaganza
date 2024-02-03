@@ -24,6 +24,4 @@ public class Collectible : MonoBehaviour
                 break;
         }
     }
-
-
 }

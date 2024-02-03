@@ -5,20 +5,30 @@ using UnityEngine;
 public class Weapon : Collectible
 {
     [SerializeField] float minPower, maxPower; 
-    [SerializeField] int potatoPower;
+    [SerializeField] int potatoPower, acutalPower;
+    [SerializeField] GameObject player;
+    [SerializeField] PlayerInventory inventory;
+
+    private void Start()
+    {
+        acutalPower = (int)Random.RandomRange(minPower, maxPower);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
+        player = other.gameObject;
+        inventory = player.GetComponent<PlayerInventory>();
         if (other.tag == "Player")
         {
             Collected();
-            Destroy(gameObject);
+            inventory.AddItem(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     void Collected()
-    {
-        potatoPower += (int)Random.RandomRange(minPower, maxPower);
+    {        
+        potatoPower += acutalPower;
         Debug.Log($"potatoPower is {potatoPower}");
     }
 }
