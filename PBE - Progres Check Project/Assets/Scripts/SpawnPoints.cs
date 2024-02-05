@@ -17,7 +17,6 @@ public class SpawnPoints : MonoBehaviour
     public int currentWave;
     public int waveValue;
     public int difficultyMultiplier;
-    private bool countdownPrinted = false;
 
     // Spawn Variables -----------------------------------------------------------------------------
     public int waveDuration; // How long the wave should last before moving on to next.
@@ -27,7 +26,7 @@ public class SpawnPoints : MonoBehaviour
 
     [SerializeField] private GameObject enemiesParent;
 
-    [HideInInspector] public KillEnemy collision;
+    public KillEnemy collision;
 
     [System.Serializable]
     public class Enemies
@@ -39,11 +38,6 @@ public class SpawnPoints : MonoBehaviour
 
 
     // Main Loops ---------------------------------------------------------------------------------
-
-    private void Awake()
-    {
-        ResetLists();
-    }
 
     void Start()
     {
@@ -61,29 +55,19 @@ public class SpawnPoints : MonoBehaviour
         else
         {
             spawnDelay -= Time.fixedDeltaTime;
-        }
-    
-        
-        waveCountdown -= Time.fixedDeltaTime;
-        waveCountdown = Mathf.Max(0, waveCountdown);
-
-        float roundedCountdown = Mathf.Round(waveCountdown);
-
-        if (roundedCountdown >= 0 || !countdownPrinted)
-        {
-            Debug.Log(roundedCountdown);
-            countdownPrinted = true;
+            waveCountdown -= Time.fixedDeltaTime;
+            Debug.Log(waveCountdown);
         }
 
-        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0)
+        if(waveCountdown <= 0 && spawnedEnemies.Count <= 0)
         {
             currentWave++;
             CreatingWave();
-            roundedCountdown = 0;
-            countdownPrinted = false;
         }
     }
     // Functions ----------------------------------------------------------------------------------
+
+
 
     public void CreatingWave()
     {
@@ -92,41 +76,23 @@ public class SpawnPoints : MonoBehaviour
 
         spawnRate = waveDuration / spawnEnemies.Count;
         waveCountdown = waveDuration;
-
-        spawnedEnemies.Clear();
     }
 
     private void AttachCollision()
     {
-        List<GameObject> enemiesToAddCollision = new List<GameObject>();
-        
         foreach (GameObject enemy in spawnedEnemies)
         {
             if (enemy.GetComponent<KillEnemy>() == null)
             {
                 KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
-                enemiesToAddCollision.Add(enemy);
             }
-        }
-
-        foreach (GameObject enemy in enemiesToAddCollision)
-        {
-            
-        }
-    }
-
-    public void RemoveEnemyFromList(GameObject enemy)
-    {
-        if (spawnedEnemies.Contains(enemy))
-        {
-            spawnedEnemies.Remove(enemy);
-            Destroy(enemy);
         }
     }
 
     public void SpawningEnemies()
     {
         spawnEnemies.Clear();
+        spawnedEnemies.Clear();
 
         while (waveValue > 0 && enemies.Count > 0)
         {
@@ -173,12 +139,5 @@ public class SpawnPoints : MonoBehaviour
                 waveCountdown = 0;
             }
         }
-    }
-
-    void ResetLists()
-    {
-        spawnEnemies.Clear();
-        spawnedEnemies.Clear();
-        currentWave = 1;
     }
 }
