@@ -149,7 +149,7 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling: 1372ms
 	BeginReloadAssembly (186ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (18ms)
@@ -260,7 +260,7 @@ Received Import Request.
   artifactKey: Guid(f2dd06ba92ee8e5479980e6ce5720564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/SpawnPoints.cs using Guid(f2dd06ba92ee8e5479980e6ce5720564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e954ce5760f75b3124643fbcf9f402f') in 0.001134 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 11
 ========================================================================
 Received Import Request.
   Time since last request: 0.444263 seconds.
@@ -268,4 +268,4 @@ Received Import Request.
   artifactKey: Guid(f683cc77ec22baa48a4be89fcb05f4ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/EnemyFollow.cs using Guid(f683cc77ec22baa48a4be89fcb05f4ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29edf654006efeb7d91bc8e21abe6610') in 0.000543 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
+Number of asset objects unloaded after import = 14

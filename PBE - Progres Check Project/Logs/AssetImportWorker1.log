@@ -229,3 +229,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 19044.398251 seconds.
+  path: Assets/Prefabs/Spawner/spawnPoint-1.prefab
+  artifactKey: Guid(07ea4a3c61d90b841ab846705fb963bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Spawner/spawnPoint-1.prefab using Guid(07ea4a3c61d90b841ab846705fb963bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cbea3cab296a36a73fc214d31b41b17') in 0.025400 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
