@@ -26,6 +26,8 @@ public class SpawnPoints : MonoBehaviour
 
     [SerializeField] private GameObject enemiesParent;
 
+    public KillEnemy collision;
+
     [System.Serializable]
     public class Enemies
     {
@@ -54,6 +56,7 @@ public class SpawnPoints : MonoBehaviour
         {
             spawnDelay -= Time.fixedDeltaTime;
             waveCountdown -= Time.fixedDeltaTime;
+            Debug.Log(waveCountdown);
         }
 
         if(waveCountdown <= 0 && spawnedEnemies.Count <= 0)
@@ -75,8 +78,22 @@ public class SpawnPoints : MonoBehaviour
         waveCountdown = waveDuration;
     }
 
+    private void AttachCollision()
+    {
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy.GetComponent<KillEnemy>() == null)
+            {
+                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
+            }
+        }
+    }
+
     public void SpawningEnemies()
     {
+        spawnEnemies.Clear();
+        spawnedEnemies.Clear();
+
         while (waveValue > 0 && enemies.Count > 0)
         {
             int randomEnemy = Random.Range(0, enemies.Count); // Random generation from 0 to the length of the List.
@@ -86,7 +103,7 @@ public class SpawnPoints : MonoBehaviour
 
             if (remainingWaveValue >= 0)
             {
-                spawnedEnemies.Add(enemies[randomEnemy].enemyP);
+                spawnEnemies.Add(enemies[randomEnemy].enemyP);
                 waveValue -= randomEnemyValue;
             }
 
@@ -95,8 +112,6 @@ public class SpawnPoints : MonoBehaviour
                 break;
             }
         }
-        spawnEnemies.Clear(); // Enemies dead.
-        spawnEnemies = spawnedEnemies;
     }
 
     void SpawnEnemy()
@@ -109,13 +124,15 @@ public class SpawnPoints : MonoBehaviour
             {
                 Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Create a new spawnPosition and assign it to the spawnPositions position based on the indexed spawnPoint.
 
-                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab.
-
+                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
                 enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
+                
+                AttachCollision();
 
                 spawnEnemies.RemoveAt(0); // Remove it from the list. Does not remove from scene.
                 spawnDelay = spawnRate;
 
+                spawnedEnemies.Add(enemy);
             }
             else
             {

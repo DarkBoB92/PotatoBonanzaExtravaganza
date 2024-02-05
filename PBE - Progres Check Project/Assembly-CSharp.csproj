@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PivotCamera.cs" />
+    <Compile Include="Assets\Scripts\KillEnemy.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\OutOfBounds.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
