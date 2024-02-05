@@ -55,8 +55,15 @@ public class SpawnPoints : MonoBehaviour
             spawnDelay -= Time.fixedDeltaTime;
             waveCountdown -= Time.fixedDeltaTime;
         }
+
+        if(waveCountdown <= 0 && spawnedEnemies.Count <= 0)
+        {
+            currentWave++;
+            CreatingWave();
+        }
     }
     // Functions ----------------------------------------------------------------------------------
+
 
 
     public void CreatingWave()
