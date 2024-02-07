@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7005566446680549193}
-  player: {fileID: 0}
+  player: {fileID: 7045657566338801221, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
