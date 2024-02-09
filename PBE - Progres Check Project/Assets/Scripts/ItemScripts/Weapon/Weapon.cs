@@ -12,7 +12,7 @@ public class Weapon : Collectible
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //acutalPower = (int)Random.RandomRange(minPower, maxPower);
+        acutalPower = (int)Random.RandomRange(minPower, maxPower);
     }
         
     private void OnTriggerEnter(Collider other)

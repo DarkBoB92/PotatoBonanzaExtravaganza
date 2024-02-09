@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    [SerializeField] GameObject player, enemy, item;
+    [SerializeField] GameObject player, item;
+    [SerializeField] Transform throwStartPosition;
     [SerializeField] PlayerInventory inventory;
-    [SerializeField] Rigidbody itemRb;
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
         inventory = player.GetComponent<PlayerInventory>();
     }
 
@@ -35,7 +34,8 @@ public class Throwable : MonoBehaviour
     {        
         inventory.weaponList.RemoveAt(0);
         item.SetActive(true);
-        item.transform.position = new Vector3(player.transform.position.x + 2f, player.transform.position.y + 2f, player.transform.position.z + 2);
-        itemRb.AddForce(enemy.transform.position);
+        item.transform.position= throwStartPosition.position;
+        item.transform.rotation = throwStartPosition.rotation;
+        item.transform.Translate(Vector3.forward * 500 * Time.deltaTime); //?? need to fix translate function
     }
 }
