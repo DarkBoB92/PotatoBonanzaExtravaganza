@@ -12,32 +12,24 @@ public class Weapon : Collectible
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        acutalPower = (int)Random.RandomRange(minPower, maxPower);
+        //acutalPower = (int)Random.RandomRange(minPower, maxPower);
     }
-
-    private void Update()
-    {
-        if (!gameObject.active)
-        {
-            transform.position = player.transform.position;
-        }
-    }
-
+        
     private void OnTriggerEnter(Collider other)
     {
         player = other.gameObject;
         inventory = player.GetComponent<PlayerInventory>();
         if (other.tag == "Player")
         {
-            Collected();
+            //Collected();
             inventory.AddItem(gameObject);            
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);            
         }
     }
 
-    void Collected()
-    {        
-        potatoPower += acutalPower;
-        Debug.Log($"potatoPower is {potatoPower}");
-    }
+    //void Collected()
+    //{        
+    //    potatoPower += acutalPower;
+    //    Debug.Log($"potatoPower is {potatoPower}");
+    //}
 }
