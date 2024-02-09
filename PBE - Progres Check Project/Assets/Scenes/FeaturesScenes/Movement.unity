@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13516216574438466, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: sprintSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 233158686052419545, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -581,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314363918705561068, guid: dbfe211271f4bdb4b895811b21f58b91, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
