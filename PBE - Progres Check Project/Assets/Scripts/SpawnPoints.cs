@@ -88,12 +88,15 @@ public class SpawnPoints : MonoBehaviour
     public void CreatingWave()
     {
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
-        SpawningEnemies();
 
-        spawnRate = waveDuration / spawnEnemies.Count;
-        waveCountdown = waveDuration;
+        if(spawnEnemies.Count > 0)
+        {
+            spawnRate = waveDuration / spawnEnemies.Count;
+            waveCountdown = waveDuration;
+        }
 
         spawnedEnemies.Clear();
+        SpawningEnemies();
     }
 
     private void AttachCollision()
@@ -121,6 +124,10 @@ public class SpawnPoints : MonoBehaviour
         {
             spawnedEnemies.Remove(enemy);
             Destroy(enemy);
+        }
+        else
+        {
+            Debug.LogWarning("Trying to a remove an enemy not in SpawnedEnemy");
         }
     }
 
@@ -160,7 +167,7 @@ public class SpawnPoints : MonoBehaviour
 
                 GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
                 enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
-                
+
                 AttachCollision();
 
                 spawnEnemies.RemoveAt(0); // Remove it from the list. Does not remove from scene.
@@ -174,8 +181,7 @@ public class SpawnPoints : MonoBehaviour
             }
         }
     }
-
-    void ResetLists()
+     void ResetLists()
     {
         spawnEnemies.Clear();
         spawnedEnemies.Clear();
