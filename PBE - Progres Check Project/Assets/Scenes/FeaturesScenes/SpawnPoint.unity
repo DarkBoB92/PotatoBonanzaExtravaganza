@@ -180,6 +180,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
+--- !u!1 &331835720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+  m_PrefabInstance: {fileID: 2076604248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &466809847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,11 +554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - enemyP: {fileID: 8076346132498108624, guid: bafda16d523c64d44a78503fac3b2d07, type: 3}
+  - enemyP: {fileID: 4736609795978825101, guid: 0bb948d14903df643a9973760c545f88, type: 3}
     enemyValue: 1
-  - enemyP: {fileID: 4190303418597923897, guid: b2f3d6b132aeb264d8f39da844521fd8, type: 3}
+  - enemyP: {fileID: 3736915731119327756, guid: 5ab652ff4c63e6f4cbcabe18e7fcf796, type: 3}
     enemyValue: 2
-  - enemyP: {fileID: 3845682084606337104, guid: b604627665b98c246ad0cdd5cb9aa53b, type: 3}
+  - enemyP: {fileID: 331835720}
     enemyValue: 2
   spawnEnemies: []
   spawnedEnemies: []
@@ -637,6 +642,14 @@ PrefabInstance:
     - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
       propertyPath: m_Name
       value: Evil Carrot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
