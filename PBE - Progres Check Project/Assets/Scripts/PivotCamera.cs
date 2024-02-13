@@ -18,26 +18,22 @@ public class PivotCamera : MonoBehaviour
 
     void Update()
     {
-        DragCamera();
+        PivotInput();
     }
 
 
 
     // Functions ----------------------------------------------------------------------------------
 
-    void DragCamera()
+    void PivotInput()
     {
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
-
-        if (Input.GetMouseButton(0))   // If left button held, targetAngle is changed to mouseX value * dampening factor
+        if (Input.GetKeyDown(KeyCode.E))   // If left button held, targetAngle is changed to mouseX value * dampening factor
         {
-            targetAngle += mouseX * mouseSensitivity;
+            targetAngle -= 45;
         }
-        else   // If not held, round to the nearest 45° angle
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
-            targetAngle = Mathf.Round(targetAngle / 45);
-            targetAngle *= 45;
+            targetAngle += 45;
         }
 
         if (targetAngle <  0)   // Ensures angle does not go below 0
