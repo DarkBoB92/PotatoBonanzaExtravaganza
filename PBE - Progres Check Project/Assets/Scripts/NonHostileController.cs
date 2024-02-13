@@ -22,7 +22,7 @@ public class NonHostileController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isHopping)
+        if (!isHopping && other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(Hop());
         }

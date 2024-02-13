@@ -561,10 +561,10 @@ MonoBehaviour:
   - {fileID: 6043679504236148428, guid: 7966e6e368efb6d4980f56cd94f72e93, type: 3}
   - {fileID: 4307787353004337151, guid: 3b3aec6295b68324ba72d0bc9a5c3435, type: 3}
   - {fileID: 8373973030475168972, guid: 01bac63f967ac1143900c590708d726f, type: 3}
-  currentWave: 1
+  currentWave: 2
   waveValue: 0
   difficultyMultiplier: 5
-  waveDuration: 5
+  waveDuration: 20
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
 --- !u!4 &1755881993

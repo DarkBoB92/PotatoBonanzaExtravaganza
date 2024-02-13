@@ -18,6 +18,7 @@ public class SpawnPoints : MonoBehaviour
     public int waveValue;
     public int difficultyMultiplier;
     private bool countdownPrinted = false;
+    private bool stopWaveIncrement = true;
 
     // Spawn Variables -----------------------------------------------------------------------------
     public int waveDuration; // How long the wave should last before moving on to next.
@@ -75,12 +76,18 @@ public class SpawnPoints : MonoBehaviour
             countdownPrinted = true;
         }
 
-        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0)
+        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0 && stopWaveIncrement)
         {
             currentWave++;
-            CreatingWave();
-            roundedCountdown = 0;
-            countdownPrinted = false;
+            if (currentWave <= 3)
+            {
+                CreatingWave();
+            }
+            else
+            {
+                stopWaveIncrement = false;
+                Debug.Log("Max wave reached!");
+            }
         }
     }
     // Functions ----------------------------------------------------------------------------------
@@ -88,36 +95,16 @@ public class SpawnPoints : MonoBehaviour
     public void CreatingWave()
     {
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
+        SpawningEnemies();
 
-        if(spawnEnemies.Count > 0)
+        if (spawnEnemies.Count > 0)
         {
             spawnRate = waveDuration / spawnEnemies.Count;
             waveCountdown = waveDuration;
         }
 
         spawnedEnemies.Clear();
-        SpawningEnemies();
     }
-
-    private void AttachCollision()
-    {
-        List<GameObject> enemiesToAddCollision = new List<GameObject>();
-        
-        foreach (GameObject enemy in spawnedEnemies)
-        {
-            if (enemy.GetComponent<KillEnemy>() == null)
-            {
-                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
-                enemiesToAddCollision.Add(enemy);
-            }
-        }
-
-        foreach (GameObject enemy in enemiesToAddCollision)
-        {
-            
-        }
-    }
-
     public void RemoveEnemyFromList(GameObject enemy)
     {
         if (spawnedEnemies.Contains(enemy))
@@ -186,5 +173,19 @@ public class SpawnPoints : MonoBehaviour
         spawnEnemies.Clear();
         spawnedEnemies.Clear();
         currentWave = 1;
+    }
+
+    private void AttachCollision()
+    {
+        List<GameObject> enemiesToAddCollision = new List<GameObject>();
+
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy.GetComponent<KillEnemy>() == null)
+            {
+                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
+                enemiesToAddCollision.Add(enemy);
+            }
+        }
     }
 }

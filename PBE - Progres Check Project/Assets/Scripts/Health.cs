@@ -24,7 +24,10 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        TakeDamage(damage);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            TakeDamage(damage);
+        }
     }
 
 
