@@ -8,7 +8,7 @@ public class SpawnPoints : MonoBehaviour
 {
     // Pre-Requisite Variables --------------------------------------------------------------------
 
-    
+
     // Wave Variables -----------------------------------------------------------------------------
     public List<Enemies> enemies = new List<Enemies>();
     public List<GameObject> spawnEnemies = new List<GameObject>();
@@ -43,7 +43,9 @@ public class SpawnPoints : MonoBehaviour
 
     private void Awake()
     {
-        ResetLists();
+        spawnEnemies.Clear();
+        spawnedEnemies.Clear();
+        currentWave = 1;
     }
 
     void Start()
@@ -63,8 +65,8 @@ public class SpawnPoints : MonoBehaviour
         {
             spawnDelay -= Time.fixedDeltaTime;
         }
-    
-        
+
+
         waveCountdown -= Time.fixedDeltaTime;
         waveCountdown = Mathf.Max(0, waveCountdown);
 
@@ -85,8 +87,11 @@ public class SpawnPoints : MonoBehaviour
             }
             else
             {
+                currentWave = 1;
                 stopWaveIncrement = false;
                 Debug.Log("Max wave reached!");
+                CreatingWave();
+                Debug.Log("Restarting waves!");
             }
         }
     }
@@ -105,19 +110,6 @@ public class SpawnPoints : MonoBehaviour
 
         spawnedEnemies.Clear();
     }
-    public void RemoveEnemyFromList(GameObject enemy)
-    {
-        if (spawnedEnemies.Contains(enemy))
-        {
-            spawnedEnemies.Remove(enemy);
-            Destroy(enemy);
-        }
-        else
-        {
-            Debug.LogWarning("Trying to a remove an enemy not in SpawnedEnemy");
-        }
-    }
-
     public void SpawningEnemies()
     {
         spawnEnemies.Clear();
@@ -150,42 +142,31 @@ public class SpawnPoints : MonoBehaviour
 
             if (randomSpawnIndex < spawnPoint.Length) // If the generated random spawnIndex from 0-spawnPoint length is greater than or equal to 0 but less than the amount of spawnPoints.
             {
-                Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Create a new spawnPosition and assign it to the spawnPositions position based on the indexed spawnPoint.
+                Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Retrieval of the position of the spawn at the index generated.
 
-                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
-                enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
+                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // Creates an enemy object using the first element of the spawnEnemies list at the specified position.
 
-                AttachCollision();
-
-                spawnEnemies.RemoveAt(0); // Remove it from the list. Does not remove from scene.
-                spawnDelay = spawnRate;
-
-                spawnedEnemies.Add(enemy);
-            }
-            else
-            {
-                waveCountdown = 0;
+                if (enemy != null)
+                {
+                    enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
+                    spawnedEnemies.Add(enemy);
+                    spawnEnemies.RemoveAt(0); // Remove the first element from the spawnEnemies list.
+                    spawnDelay = spawnRate;
+                }
             }
         }
     }
-     void ResetLists()
-    {
-        spawnEnemies.Clear();
-        spawnedEnemies.Clear();
-        currentWave = 1;
-    }
 
-    private void AttachCollision()
+    public void RemoveEnemyFromList(GameObject enemy)
     {
-        List<GameObject> enemiesToAddCollision = new List<GameObject>();
-
-        foreach (GameObject enemy in spawnedEnemies)
+        if (spawnedEnemies.Contains(enemy))
         {
-            if (enemy.GetComponent<KillEnemy>() == null)
-            {
-                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
-                enemiesToAddCollision.Add(enemy);
-            }
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
+        }
+        else
+        {
+            Debug.LogWarning("Trying to a remove an enemy not in SpawnedEnemy");
         }
     }
 }
