@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -11,9 +9,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ParticleSystem ps;
     [SerializeField] private GameObject psObject;
     [SerializeField] private float speed = 5;
-    [SerializeField] private float sprintSpeed = 5;
+    [SerializeField] private float sprintSpeed = 8;
     private Vector3 playerInput;
-    private bool isSprint = false;
+    private bool canMove;
+    private bool isSprint;
 
 
 
@@ -45,8 +44,19 @@ public class PlayerControl : MonoBehaviour
 
     void GatherInput()
     {
-
-        playerInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));   // Gain inputs for X & Z axis, stored in a Vector3 - Y axis not required
+        if (Input.GetKey(KeyCode.W))
+        {
+            canMove = true;
+            if (canMove)
+            {
+                playerInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));   // Gain inputs for X & Z axis, stored in a Vector3 - Y axis not required
+            }
+        }
+        else
+        {
+            canMove = false;
+            playerInput = Vector3.zero;
+        }
 
         if (!isSprint && Input.GetKeyDown(KeyCode.LeftShift))   // Press Shift = Sprint
         {
@@ -74,7 +84,7 @@ public class PlayerControl : MonoBehaviour
 
     void ParticleManagement()
     {
-        if (playerInput != Vector3.zero)   // If the player presses any direction key (WASD), then run:
+        if (playerInput != Vector3.zero)    // If the player presses any direction key (WASD), then run:
         {
             psObject.SetActive(true);
         }
