@@ -6,8 +6,8 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     //Variables and references are declerade as SerializedField for testing purpose
-    public GameObject player, item; //item will be the current Item (weapon in this instance) that the player is holding 
-    public List<GameObject> bullet; //This list contains every throwed item before colliding, so multiple item can be thrown
+    public GameObject player, item, bullet; //item will be the current Item (weapon in this instance) that the player is holding 
+    public List<GameObject> bulletMovement; //This list contains every throwed item before colliding, so multiple item can be thro
     [SerializeField] Transform throwStartPosition; //This object will contain the position of an EmptyGameObject to set a starting point to shoot 
     [SerializeField] PlayerInventory inventory;
     [SerializeField] int bulletSpeed; 
@@ -33,20 +33,25 @@ public class Throwable : MonoBehaviour
                 
         if (Input.GetButtonDown("Fire1"))
         {            
-            ThrowItem(0);            
+            ThrowItem();
+            if (bullet != null)
+            {
+                bulletMovement.Add(bullet);
+                bullet = null;
+            }
         }
 
         //This loop is to give constant movement to the bullet only if the list has a game object if not, it deletes the element from the list.
         //This assures that there will be no missing object in the list.
-        for (int i = 0; i < bullet.Count; i++)
+        for (int i = 0; i < bulletMovement.Count; i++)
         {
-            if (bullet[i] != null)
+            if (bulletMovement[i] != null)
             {
-                bullet[i].transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime, Space.Self);
+                bulletMovement[i].transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime, Space.Self);
             }
             else
             {
-                bullet.RemoveAt(i);
+                bulletMovement.RemoveAt(i);
             }
         }
     }
@@ -54,15 +59,15 @@ public class Throwable : MonoBehaviour
     //This method launchs the item by removing the item form the player inventory and adding the holded item to the bullet list
     //and after setting the item true it moves it to the throwStartPoint position and rotation and clears the player holded item
     //this again to avoid the presence of missing object that might get caught in the loop and sent to the list.
-    public void ThrowItem(int bulletIndex)
+    public void ThrowItem()
     {
         if (item != null)
         {
             inventory.weaponList.RemoveAt(0);
-            bullet.Add(item);
-            bullet[bulletIndex].SetActive(true);
-            bullet[bulletIndex].transform.position = throwStartPosition.position;
-            bullet[bulletIndex].transform.rotation = throwStartPosition.rotation;
+            bullet = item;
+            bullet.SetActive(true);
+            bullet.transform.position = throwStartPosition.position;
+            bullet.transform.rotation = throwStartPosition.rotation;
             item = null;
         }
         else
@@ -76,13 +81,12 @@ public class Throwable : MonoBehaviour
     {
         if (inventory.weaponList.Contains(weapon))
         {
-            inventory.weaponList.Remove(weapon);
-            bullet.Remove(weapon);            
+            inventory.weaponList.Remove(weapon);           
         }
 
-        if (bullet.Contains(weapon))
+        if (bullet == weapon)
         {
-            bullet.Remove(weapon);
+            bullet = null;
         }
 
         if (item == weapon)

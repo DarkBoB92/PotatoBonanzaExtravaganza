@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Collectible
+public class Weapon : Collectible 
 {
     //Variables and references are declerade as SerializedField for testing purpose
     [SerializeField] float minPower, maxPower; //Range values to apply a random damage value for the weapon
     [SerializeField] int potatoPower, acutalPower; //Temporary variable to check functionality of the script
-    [SerializeField] GameObject player, enemy;
+    [SerializeField] GameObject player;
     [SerializeField] PlayerInventory inventory;
     [SerializeField] Throwable throwable;
 
@@ -34,7 +34,6 @@ public class Weapon : Collectible
         {
             //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
             Destroy(this.gameObject);
-            throwable.bullet.RemoveAt(0);
         }
     }
 
