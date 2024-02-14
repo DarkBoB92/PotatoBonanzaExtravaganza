@@ -5323,6 +5323,7 @@ GameObject:
   - component: {fileID: 13516216574438466}
   - component: {fileID: 3910142606668322330}
   - component: {fileID: 7301172841926326766}
+  - component: {fileID: 3194457864404820282}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Player
@@ -5394,7 +5395,7 @@ MonoBehaviour:
   ps: {fileID: 6022873124190787704}
   psObject: {fileID: 3659905474499992306}
   speed: 5
-  turnSpeed: 360
+  sprintSpeed: 8
 --- !u!136 &3910142606668322330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5439,6 +5440,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1557257, y: 3.7478795, z: 6.350211}
   m_Center: {x: 0.08552654, y: 1.3739392, z: 2.6751058}
+--- !u!114 &3194457864404820282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677762800744826111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2e0b773fead5c48acf0496a79bc0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &7970358131775299014
 GameObject:
   m_ObjectHideFlags: 0
