@@ -9,7 +9,7 @@ public class KillEnemy : MonoBehaviour
     private void Start()
     {
         spawnPoints = FindObjectOfType<SpawnPoints>();
-        throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>();
+        throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,7 +21,7 @@ public class KillEnemy : MonoBehaviour
             {
                 spawnPoints.RemoveEnemyFromList(gameObject);
             }
-            throwable.RemoveItemFromList(gameObject);
+            throwable.RemoveItemFromList(gameObject); //New added line
 
             Destroy(gameObject);
         }

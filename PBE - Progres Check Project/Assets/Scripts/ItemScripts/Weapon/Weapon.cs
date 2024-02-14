@@ -4,52 +4,45 @@ using UnityEngine;
 
 public class Weapon : Collectible
 {
-    [SerializeField] float minPower, maxPower; 
-    [SerializeField] int potatoPower, acutalPower;
+    //Variables and references are declerade as SerializedField for testing purpose
+    [SerializeField] float minPower, maxPower; //Range values to apply a random damage value for the weapon
+    [SerializeField] int potatoPower, acutalPower; //Temporary variable to check functionality of the script
     [SerializeField] GameObject player, enemy;
     [SerializeField] PlayerInventory inventory;
     [SerializeField] Throwable throwable;
 
     private void Start()
-    {
-        //player = GameObject.FindGameObjectWithTag("Player");
-        //enemy = GameObject.FindGameObjectWithTag("Enemy");
+    {        
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
-    }
-        
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    player = other.gameObject;
-    //    inventory = player.GetComponent<PlayerInventory>();
-    //    if (other.tag == "Player")
-    //    {
-    //        //Collected();
-    //        inventory.AddItem(gameObject);            
-    //        gameObject.SetActive(false);            
-    //    }        
-    //}
-
+    }      
+    
     private void OnCollisionEnter(Collision collision)
     {
+        //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
         player = collision.gameObject;
         inventory = player.GetComponent<PlayerInventory>();
         throwable = player.GetComponent<Throwable>();
         if (player.tag == "Player")
         {
-            //Collected();
+            Collected();
+            //Adding the collected item (this case Weapon) to the inventory of the player and set the object to false,
+            //this because the item still exists in the inventory
             inventory.AddItem(gameObject);
             gameObject.SetActive(false);
         }
         else
         {
+            //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
             Destroy(this.gameObject);
             throwable.bullet.RemoveAt(0);
         }
     }
 
-    //void Collected()
-    //{        
-    //    potatoPower += acutalPower;
-    //    Debug.Log($"potatoPower is {potatoPower}");
-    //}
+    //This method is to add the weapons damage
+    //TODO: Need to pass the damage to the Player once we implement DamageSystem
+    void Collected()
+    {        
+        potatoPower += acutalPower;
+        Debug.Log($"potatoPower is {potatoPower}");
+    }
 }
