@@ -8,16 +8,17 @@ public class SpawnPoints : MonoBehaviour
 {
     // Pre-Requisite Variables --------------------------------------------------------------------
 
-    
+
     // Wave Variables -----------------------------------------------------------------------------
     public List<Enemies> enemies = new List<Enemies>();
-    public List<GameObject> enemiesToSpawn = new List<GameObject>();
+    public List<GameObject> spawnEnemies = new List<GameObject>();
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // GameObject list is used as spawnedEnemies will be of type GameObject therefore tracking it by its type.
     [SerializeField] public Transform[] spawnPoint;
     public int currentWave;
     public int waveValue;
     public int difficultyMultiplier;
     private bool countdownPrinted = false;
+    private bool stopWaveIncrement = true;
 
     // Spawn Variables -----------------------------------------------------------------------------
     public int waveDuration; // How long the wave should last before moving on to next.
@@ -42,7 +43,9 @@ public class SpawnPoints : MonoBehaviour
 
     private void Awake()
     {
-        ResetLists();
+        spawnEnemies.Clear();
+        spawnedEnemies.Clear();
+        currentWave = 1;
     }
 
     void Start()
@@ -62,8 +65,8 @@ public class SpawnPoints : MonoBehaviour
         {
             spawnDelay -= Time.fixedDeltaTime;
         }
-    
-        
+
+
         waveCountdown -= Time.fixedDeltaTime;
         waveCountdown = Mathf.Max(0, waveCountdown);
 
@@ -75,39 +78,41 @@ public class SpawnPoints : MonoBehaviour
             countdownPrinted = true;
         }
 
-        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0)
+        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0 && stopWaveIncrement)
         {
             currentWave++;
-            CreatingWave();
-            roundedCountdown = 0;
-            countdownPrinted = false;
+            if (currentWave <= 3)
+            {
+                CreatingWave();
+            }
+            else
+            {
+                currentWave = 1;
+                stopWaveIncrement = false;
+                Debug.Log("Max wave reached!");
+                CreatingWave();
+                Debug.Log("Restarting waves!");
+            }
         }
     }
     // Functions ----------------------------------------------------------------------------------
 
     public void CreatingWave()
     {
-        
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
         SpawningEnemies();
 
-        spawnRate = waveDuration / enemiesToSpawn.Count;
-        waveCountdown = waveDuration;
-
-    }
-
-    public void RemoveEnemyFromList(GameObject enemy)
-    {
-        if (spawnedEnemies.Contains(enemy))
+        if (spawnEnemies.Count > 0)
         {
-            spawnedEnemies.Remove(enemy);
-            Destroy(enemy);
+            spawnRate = waveDuration / spawnEnemies.Count;
+            waveCountdown = waveDuration;
         }
-    }
 
+        spawnedEnemies.Clear();
+    }
     public void SpawningEnemies()
     {
-        enemiesToSpawn.Clear();
+        spawnEnemies.Clear();
 
         while (waveValue > 0 && enemies.Count > 0)
         {
@@ -118,7 +123,7 @@ public class SpawnPoints : MonoBehaviour
 
             if (remainingWaveValue >= 0)
             {
-                enemiesToSpawn.Add(enemies[randomEnemy].enemyP);
+                spawnEnemies.Add(enemies[randomEnemy].enemyP);
                 waveValue -= randomEnemyValue;
             }
 
@@ -129,52 +134,39 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
-
     void SpawnEnemy()
     {
-        if (enemiesToSpawn.Count > 0)
+        if (spawnEnemies.Count > 0)
         {
             int randomSpawnIndex = Random.Range(0, spawnPoint.Length);
 
             if (randomSpawnIndex < spawnPoint.Length) // If the generated random spawnIndex from 0-spawnPoint length is greater than or equal to 0 but less than the amount of spawnPoints.
             {
-                Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Create a new spawnPosition and assign it to the spawnPositions position based on the indexed spawnPoint.
+                Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Retrieval of the position of the spawn at the index generated.
 
-                GameObject enemy = Instantiate(enemiesToSpawn[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
-                enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
-                
-                AttachCollision();
+                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // Creates an enemy object using the first element of the spawnEnemies list at the specified position.
 
-                enemiesToSpawn.RemoveAt(0); // Remove it from the list. Does not remove from scene.
-                spawnDelay = spawnRate;
-
-                spawnedEnemies.Add(enemy);
-            }
-            else
-            {
-                waveCountdown = 0;
+                if (enemy != null)
+                {
+                    enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
+                    spawnedEnemies.Add(enemy);
+                    spawnEnemies.RemoveAt(0); // Remove the first element from the spawnEnemies list.
+                    spawnDelay = spawnRate;
+                }
             }
         }
     }
 
-    private void AttachCollision()
+    public void RemoveEnemyFromList(GameObject enemy)
     {
-        List<GameObject> enemiesToAddCollision = new List<GameObject>();
-
-        foreach (GameObject enemy in spawnedEnemies)
+        if (spawnedEnemies.Contains(enemy))
         {
-            if (enemy.GetComponent<KillEnemy>() == null)
-            {
-                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
-                enemiesToAddCollision.Add(enemy);
-            }
+            spawnedEnemies.Remove(enemy);
+            Destroy(enemy);
         }
-    }
-
-    void ResetLists()
-    {
-        enemiesToSpawn.Clear();
-        spawnedEnemies.Clear();
-        currentWave = 1;
+        else
+        {
+            Debug.LogWarning("Trying to a remove an enemy not in SpawnedEnemy");
+        }
     }
 }

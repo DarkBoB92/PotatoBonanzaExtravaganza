@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Pre-Requisites -----------------------------------------------------------------------------
+    // Pre-Requisites ----------------------------------------------------------------------------- 
 
     [SerializeField] private EnemyHealthBar healthBarScript;
     [SerializeField] int damage;
     [SerializeField] int maxHealth = 10;
     int currentHealth;
 
+    private SpawnPoints spawnPoints;
 
 
-    // Main Loops ---------------------------------------------------------------------------------
+    // Main Loops --------------------------------------------------------------------------------- 
 
     void Start()
     {
         currentHealth = maxHealth;
+        spawnPoints = FindObjectOfType<SpawnPoints>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        TakeDamage(damage);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            TakeDamage(damage);
+        }
     }
 
 
 
-    // Functions ----------------------------------------------------------------------------------
+    // Functions ---------------------------------------------------------------------------------- 
 
     void TakeDamage(int amount)
     {
@@ -36,6 +41,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
     }
