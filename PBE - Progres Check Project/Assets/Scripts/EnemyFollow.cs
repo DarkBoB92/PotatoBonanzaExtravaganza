@@ -6,12 +6,16 @@ using UnityEngine.AI;
 public class EnemyFollow : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent enemy;
-    [SerializeField] private Transform player;
+    [SerializeField] public GameObject potato;
 
-
+    void Awake()
+    {
+        potato = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
-        enemy.SetDestination(player.position);
+        enemy.SetDestination(potato.transform.position);
     }
 }
+

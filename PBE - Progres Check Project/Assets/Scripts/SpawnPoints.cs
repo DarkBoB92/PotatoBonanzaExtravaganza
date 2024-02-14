@@ -11,7 +11,7 @@ public class SpawnPoints : MonoBehaviour
     
     // Wave Variables -----------------------------------------------------------------------------
     public List<Enemies> enemies = new List<Enemies>();
-    public List<GameObject> spawnEnemies = new List<GameObject>();
+    public List<GameObject> enemiesToSpawn = new List<GameObject>();
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // GameObject list is used as spawnedEnemies will be of type GameObject therefore tracking it by its type.
     [SerializeField] public Transform[] spawnPoint;
     public int currentWave;
@@ -87,32 +87,13 @@ public class SpawnPoints : MonoBehaviour
 
     public void CreatingWave()
     {
+        
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
         SpawningEnemies();
 
-        spawnRate = waveDuration / spawnEnemies.Count;
+        spawnRate = waveDuration / enemiesToSpawn.Count;
         waveCountdown = waveDuration;
 
-        spawnedEnemies.Clear();
-    }
-
-    private void AttachCollision()
-    {
-        List<GameObject> enemiesToAddCollision = new List<GameObject>();
-        
-        foreach (GameObject enemy in spawnedEnemies)
-        {
-            if (enemy.GetComponent<KillEnemy>() == null)
-            {
-                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
-                enemiesToAddCollision.Add(enemy);
-            }
-        }
-
-        foreach (GameObject enemy in enemiesToAddCollision)
-        {
-            
-        }
     }
 
     public void RemoveEnemyFromList(GameObject enemy)
@@ -126,7 +107,7 @@ public class SpawnPoints : MonoBehaviour
 
     public void SpawningEnemies()
     {
-        spawnEnemies.Clear();
+        enemiesToSpawn.Clear();
 
         while (waveValue > 0 && enemies.Count > 0)
         {
@@ -137,7 +118,7 @@ public class SpawnPoints : MonoBehaviour
 
             if (remainingWaveValue >= 0)
             {
-                spawnEnemies.Add(enemies[randomEnemy].enemyP);
+                enemiesToSpawn.Add(enemies[randomEnemy].enemyP);
                 waveValue -= randomEnemyValue;
             }
 
@@ -148,9 +129,10 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
+
     void SpawnEnemy()
     {
-        if (spawnEnemies.Count > 0)
+        if (enemiesToSpawn.Count > 0)
         {
             int randomSpawnIndex = Random.Range(0, spawnPoint.Length);
 
@@ -158,12 +140,12 @@ public class SpawnPoints : MonoBehaviour
             {
                 Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Create a new spawnPosition and assign it to the spawnPositions position based on the indexed spawnPoint.
 
-                GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
+                GameObject enemy = Instantiate(enemiesToSpawn[0], spawnPosition, Quaternion.identity); // instantiation with a 0 rotation, directed at the concluded spawnPosition based on enemyPrefab
                 enemy.transform.parent = enemiesParent.transform; // Adds all instantiated enemies under the Enemy parent 
                 
                 AttachCollision();
 
-                spawnEnemies.RemoveAt(0); // Remove it from the list. Does not remove from scene.
+                enemiesToSpawn.RemoveAt(0); // Remove it from the list. Does not remove from scene.
                 spawnDelay = spawnRate;
 
                 spawnedEnemies.Add(enemy);
@@ -175,9 +157,23 @@ public class SpawnPoints : MonoBehaviour
         }
     }
 
+    private void AttachCollision()
+    {
+        List<GameObject> enemiesToAddCollision = new List<GameObject>();
+
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy.GetComponent<KillEnemy>() == null)
+            {
+                KillEnemy collisionInstance = enemy.AddComponent<KillEnemy>();
+                enemiesToAddCollision.Add(enemy);
+            }
+        }
+    }
+
     void ResetLists()
     {
-        spawnEnemies.Clear();
+        enemiesToSpawn.Clear();
         spawnedEnemies.Clear();
         currentWave = 1;
     }

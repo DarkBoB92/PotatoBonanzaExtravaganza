@@ -94,4 +94,6 @@ public class PlayerControl : MonoBehaviour
             rb.MovePosition(transform.position + (transform.forward * playerInput.magnitude) * speed * Time.deltaTime);   // Move the GameObject forward by the set speed with framerate independence
         }
     }
+
+
 }
