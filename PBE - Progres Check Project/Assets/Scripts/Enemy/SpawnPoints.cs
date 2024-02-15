@@ -15,7 +15,7 @@ public class SpawnPoints : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // GameObject list is used as spawnedEnemies will be of type GameObject therefore tracking it by its type.
     [SerializeField] public Transform[] spawnPoint;
     public int currentWave;
-    public int waveValue;
+    [HideInInspector] public int waveValue;
     public int difficultyMultiplier;
     private bool countdownPrinted = false;
     private bool stopWaveIncrement = true;
@@ -105,7 +105,7 @@ public class SpawnPoints : MonoBehaviour
 
         if (spawnEnemies.Count > 0)
         {
-            spawnRate = waveDuration / spawnEnemies.Count;
+            spawnRate = 1f;
             waveCountdown = waveDuration;
         }
 
@@ -136,14 +136,16 @@ public class SpawnPoints : MonoBehaviour
     }
 
     void SpawnEnemy()
-    {
+    {   
         if (spawnEnemies.Count > 0)
         {
-            int randomSpawnIndex = Random.Range(0, spawnPoint.Length);
+            int randomIndex = GenerateRandomIndex();
+            // Add functionality so that it cannot spawn in the same place after it has already spawned. Has to choose from the other two SP's before spawning again. Then loop.
 
-            if (randomSpawnIndex < spawnPoint.Length) // If the generated random spawnIndex from 0-spawnPoint length is greater than or equal to 0 but less than the amount of spawnPoints.
+            if (randomIndex < spawnPoint.Length) // If the generated random spawnIndex from 0-spawnPoint length is greater than or equal to 0 but less than the amount of spawnPoints.
             {
-                Vector3 spawnPosition = spawnPoint[randomSpawnIndex].position; // Retrieval of the position of the spawn at the index generated.
+                
+                Vector3 spawnPosition = spawnPoint[randomIndex].position; // Retrieval of the position of the spawn at the index generated.
 
                 GameObject enemy = Instantiate(spawnEnemies[0], spawnPosition, Quaternion.identity); // Creates an enemy object using the first element of the spawnEnemies list at the specified position.
 
@@ -169,5 +171,11 @@ public class SpawnPoints : MonoBehaviour
         {
             Debug.LogWarning("Trying to a remove an enemy not in SpawnedEnemy");
         }
+    }
+
+    public int GenerateRandomIndex()
+    {
+        int randomSpawnIndex = Random.Range(0, spawnPoint.Length);
+        return randomSpawnIndex;
     }
 }
