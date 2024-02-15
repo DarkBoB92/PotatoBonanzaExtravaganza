@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     int currentHealth;
 
     private SpawnPoints spawnPoints;
+    private Throwable throwable;
 
 
     // Main Loops --------------------------------------------------------------------------------- 
@@ -20,11 +21,12 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
+        throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Weapon"))
         {
             TakeDamage(damage);
         }
@@ -44,6 +46,7 @@ public class Health : MonoBehaviour
             spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
+        throwable.RemoveItemFromList(gameObject); //New added line
     }
 
     void Heal(int amount)
