@@ -99,6 +99,7 @@ public class SpawnPoints : MonoBehaviour
 
     public void CreatingWave()
     {
+        stopWaveIncrement = true;
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
         SpawningEnemies();
 

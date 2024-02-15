@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
                 playerInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));   // Gain inputs for X & Z axis, stored in a Vector3 - Y axis not required
             }
         }
-        else
+        else 
         {
             canMove = false;
             playerInput = Vector3.zero;
