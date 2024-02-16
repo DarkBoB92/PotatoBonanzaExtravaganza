@@ -9,7 +9,6 @@ public class PivotCamera : MonoBehaviour
 
     [SerializeField] private float targetAngle = 45f;
     [SerializeField] private float currentAngle = 0f;
-    [SerializeField] private float mouseSensitivity = 2f;
     [SerializeField] private float rotationSpeed = 5f;
 
 
