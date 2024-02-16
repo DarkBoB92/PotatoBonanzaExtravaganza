@@ -39,6 +39,7 @@ public class Throwable : MonoBehaviour
                 bulletMovement.Add(bullet);
                 bullet = null;
             }
+            inventory.weaponAmount--;
         }
 
         //This loop is to give constant movement to the bullet only if the list has a game object if not, it deletes the element from the list.
