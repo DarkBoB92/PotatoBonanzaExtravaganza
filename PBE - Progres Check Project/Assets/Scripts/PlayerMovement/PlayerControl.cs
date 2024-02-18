@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject psObject;
     [SerializeField] private float speed = 5;
     [SerializeField] private float sprintSpeed = 8;
+    [SerializeField] private Slider staminaSlider1;
+    [SerializeField] private Slider staminaSlider2;
     private Vector3 playerInput;
-    private bool canMove;
-    private bool isSprint;
+    private bool canMove, staminaZero;
+    public bool isSprint;
 
 
 
@@ -75,10 +79,23 @@ public class PlayerControl : MonoBehaviour
         if (isSprint)
         {
             rb.MovePosition(transform.position + (transform.forward * playerInput.magnitude) * (sprintSpeed * Time.deltaTime));   // Move the GameObject forward by the set speed + 5 with framerate independence
+            staminaSlider1.value -= 0.01f;
+            staminaSlider2.value -= 0.01f;
         }
         else if (!isSprint)
         {
             rb.MovePosition(transform.position + (transform.forward * playerInput.magnitude) * speed * Time.deltaTime);   // Move the GameObject forward by the set speed with framerate independence
+            if (!staminaZero)
+            {
+                StopCoroutine(StaminaRechargeDelay());
+                staminaSlider1.value += 0.005f;
+                staminaSlider2.value += 0.005f;
+            }
+        }
+
+        if (staminaSlider1.value == 0 )
+        {
+            StartCoroutine(StaminaRechargeDelay());
         }
     }
 
@@ -92,5 +109,22 @@ public class PlayerControl : MonoBehaviour
         {
             psObject.SetActive(false);
         }
+    }
+
+    IEnumerator StaminaRechargeDelay()
+    {
+        staminaZero = true;
+        isSprint = false;
+        ps.emissionRate = 15;
+        staminaSlider1.value = 0f;
+        staminaSlider2.value = 0f;
+        yield return new WaitForSeconds(3f);
+        while (staminaSlider1.value != 1)
+        {
+            yield return new WaitForSeconds(0.2f);
+            staminaSlider1.value += 0.005f;
+            staminaSlider2.value += 0.005f;
+        }
+        staminaZero = false;
     }
 }
