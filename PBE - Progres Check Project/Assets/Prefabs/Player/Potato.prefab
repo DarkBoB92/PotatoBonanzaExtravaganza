@@ -5734,8 +5734,6 @@ GameObject:
   - component: {fileID: 3194457864404820282}
   - component: {fileID: 427985394025122538}
   - component: {fileID: 5399031746357489808}
-  - component: {fileID: 2016848951085207660}
-  - component: {fileID: 263640987735410391}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Player
@@ -5901,34 +5899,6 @@ MonoBehaviour:
   throwStartPosition: {fileID: 4948717015635558176}
   inventory: {fileID: 0}
   bulletSpeed: 10
---- !u!114 &2016848951085207660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677762800744826111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb3fc57076cd3d4bbadea599086b2cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarScript: {fileID: 263640987735410391}
-  damage: 3
-  maxHealth: 9
---- !u!114 &263640987735410391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677762800744826111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5eb085d3bcf23149973566d80656a89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1874462134454021501}
 --- !u!1 &7970358131775299014
 GameObject:
   m_ObjectHideFlags: 0
