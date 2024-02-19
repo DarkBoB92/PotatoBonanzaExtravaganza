@@ -9,32 +9,41 @@ public class Health : MonoBehaviour
     [SerializeField] private EnemyHealthBar healthBarScript;
     [SerializeField] int damage;
     [SerializeField] int maxHealth = 10;
+    [SerializeField] private float damageCooldown = 1.5f;
     int currentHealth;
+    private float delayBetweenDamage;
 
     private SpawnPoints spawnPoints;
     private Throwable throwable;
-    EnemyTypes.EnemyType enemyTypes;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
     void Start()
     {
+        delayBetweenDamage = Time.time;
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
         throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Weapon") || other.gameObject.CompareTag("Enemy"))
-    //    {
-
-    //    }
-    //}
-
-
-
     // Functions ---------------------------------------------------------------------------------- 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (Time.time >= delayBetweenDamage)
+            {
+                Health playerHealth = other.gameObject.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    Debug.Log("Damaged player!");
+                    playerHealth.TakeDamage(2);
+                }
+                delayBetweenDamage = Time.time + damageCooldown;
+            }
+        }
+    }
 
     public void TakeDamage(int amount)
     {
