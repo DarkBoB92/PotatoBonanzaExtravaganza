@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     private SpawnPoints spawnPoints;
     private Throwable throwable;
-
+    EnemyTypes.EnemyType enemyTypes;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
@@ -24,19 +24,19 @@ public class Health : MonoBehaviour
         throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Weapon") || other.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(damage);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Weapon") || other.gameObject.CompareTag("Enemy"))
+    //    {
+
+    //    }
+    //}
 
 
 
     // Functions ---------------------------------------------------------------------------------- 
 
-    void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
         healthBarScript.UpdateHealthBar(currentHealth, maxHealth);
