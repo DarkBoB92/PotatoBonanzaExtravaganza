@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private ParticleSystem ps;
     [SerializeField] private GameObject psObject;
+    [SerializeField] private Slider staminaSlider1;
+    [SerializeField] private Slider staminaSlider2;
     private Vector3 mousePos;
-    private bool isSprint;
+    private bool isSprint, staminaZero;
     Rigidbody rb;
     Transform tf;
 
@@ -80,12 +83,47 @@ public class PlayerController : MonoBehaviour
         {
             moveVector.x = skewedX * (speed + sprintSpeed);
             moveVector.z = skewedZ * (speed + sprintSpeed);
+
+            staminaSlider1.value -= 0.005f;
+            staminaSlider2.value -= 0.005f;
         }
         else if (!isSprint)
         {
             moveVector.x = skewedX * speed;
             moveVector.z = skewedZ * speed;
+
+            if (!staminaZero)
+            {
+                staminaSlider1.value += 0.002f;
+                staminaSlider2.value += 0.002f;
+            }
         }
+
+        if (staminaSlider1.value == 0 )
+        {
+            StartCoroutine(StaminaRechargeDelay());
+        }
+        else if (staminaSlider1.value == 1)
+        {
+            StopCoroutine(StaminaRechargeDelay());
+        }
+    }
+
+    IEnumerator StaminaRechargeDelay()
+    {
+        staminaZero = true;
+        isSprint = false;
+        ps.emissionRate = 15;
+        staminaSlider1.value = 0f;
+        staminaSlider2.value = 0f;
+        yield return new WaitForSeconds(3f);
+        while (staminaSlider1.value != 1)
+        {
+            yield return new WaitForSeconds(0.2f);
+            staminaSlider1.value += 0.005f;
+            staminaSlider2.value += 0.005f;
+        }
+        staminaZero = false;
     }
 
     private void Aim()
