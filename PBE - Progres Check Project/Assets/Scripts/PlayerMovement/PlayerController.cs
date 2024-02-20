@@ -84,8 +84,8 @@ public class PlayerController : MonoBehaviour
             moveVector.x = skewedX * (speed + sprintSpeed);
             moveVector.z = skewedZ * (speed + sprintSpeed);
 
-            staminaSlider1.value -= 0.005f;
-            staminaSlider2.value -= 0.005f;
+            staminaSlider1.value -= 0.5f * Time.deltaTime;
+            staminaSlider2.value -= 0.5f * Time.deltaTime;
         }
         else if (!isSprint)
         {
@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour
 
             if (!staminaZero)
             {
-                staminaSlider1.value += 0.002f;
-                staminaSlider2.value += 0.002f;
+                staminaSlider1.value += 0.25f * Time.deltaTime;
+                staminaSlider2.value += 0.25f * Time.deltaTime;
             }
         }
 
@@ -117,11 +117,20 @@ public class PlayerController : MonoBehaviour
         staminaSlider1.value = 0f;
         staminaSlider2.value = 0f;
         yield return new WaitForSeconds(3f);
-        while (staminaSlider1.value != 1)
+        while (staminaSlider1.value != 1 && staminaZero)
         {
             yield return new WaitForSeconds(0.2f);
-            staminaSlider1.value += 0.005f;
-            staminaSlider2.value += 0.005f;
+            staminaSlider1.value += 0.25f * Time.deltaTime;
+            staminaSlider2.value += 0.25f * Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                float skewedX = inputVector.x + inputVector.z;   // Functions same as a rotational linear transformation that is
+                float skewedZ = inputVector.z - inputVector.x;   // Typically done using matrix multiplication. This is more efficient.
+
+                moveVector.x = skewedX * speed;
+                moveVector.z = skewedZ * speed;
+            }
         }
         staminaZero = false;
     }
