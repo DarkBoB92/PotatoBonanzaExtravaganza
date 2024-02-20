@@ -5916,6 +5916,7 @@ MonoBehaviour:
   healthBarScript: {fileID: 263640987735410391}
   damage: 3
   maxHealth: 9
+  damageCooldown: 1.5
 --- !u!114 &263640987735410391
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -178,10 +178,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3960712480181698382, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 685609079}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
 --- !u!1001 &288048600
 PrefabInstance:
@@ -455,42 +452,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 441aa36dccbedce4281b1b539b60054e, type: 3}
---- !u!1 &685609076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3960712480181698382, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-  m_PrefabInstance: {fileID: 857436}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &685609079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 685609076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 1479372276
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 0b927e2fa992afb429b68a023c150c7d, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,13 +832,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suicide Bomber
       objectReference: {fileID: 0}
-    - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2529195569458886249, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8618150689453864396, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
       propertyPath: m_LocalPosition.x
@@ -975,6 +940,18 @@ PrefabInstance:
     - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
       propertyPath: m_Name
       value: Evil Carrot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1164,8 +1141,8 @@ SceneRoots:
   - {fileID: 1084651201}
   - {fileID: 705507995}
   - {fileID: 511938745}
-  - {fileID: 857436}
   - {fileID: 466809847}
+  - {fileID: 857436}
   - {fileID: 1311483382}
   - {fileID: 493899749}
   - {fileID: 1755881993}
