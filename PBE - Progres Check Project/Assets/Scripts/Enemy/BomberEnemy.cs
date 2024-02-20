@@ -36,7 +36,6 @@ public class BomberEnemy : MonoBehaviour
 
     public void OverlappingTest()
     {
-        Debug.Log("Current enemyType is Bomber ");
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, overlapRadius);
         foreach (Collider obj in objectsInRange)
         {
