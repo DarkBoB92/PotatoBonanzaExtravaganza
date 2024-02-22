@@ -65,8 +65,9 @@ public class Throwable : MonoBehaviour
             inventory.weaponList.RemoveAt(0);
             bullet = item;
             bullet.SetActive(true);
-            bullet.transform.position = throwStartPosition.position;
-            bullet.transform.rotation = throwStartPosition.rotation;
+            //bullet.transform.position = throwStartPosition.position;
+            //bullet.transform.rotation = throwStartPosition.rotation;
+            GameObject bulletToSpawn = Instantiate(bullet, throwStartPosition.position, Quaternion.identity);
             item = null;
         }
         else

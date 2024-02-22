@@ -14,8 +14,13 @@ public class Weapon : Collectible
     private void Start()
     {        
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
-    }      
-    
+    }
+
+    private void Update()
+    {
+        Debug.Log(GetComponent<Rigidbody>().velocity.magnitude);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
@@ -32,17 +37,25 @@ public class Weapon : Collectible
             gameObject.SetActive(false);
         }
         else
-        {
-            //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
-            Destroy(this.gameObject);
+        { //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
+            if (collision.gameObject.CompareTag("Weapon") || collision.gameObject.CompareTag("Coin"))
+            {
+
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
     //This method is to add the weapons damage
     //TODO: Need to pass the damage to the Player once we implement DamageSystem
     void Collected()
-    {        
+    {   
         potatoPower += acutalPower;
+        type = CollectibleType.Weapon;
+        SetType();
         Debug.Log($"potatoPower is {potatoPower}");
     }
 }

@@ -482,6 +482,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2243492877404890270}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2619297280760981050}
   m_SourcePrefab: {fileID: 100100000, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
 --- !u!4 &5068980991632372441 stripped
 Transform:
@@ -557,6 +560,8 @@ MonoBehaviour:
   healthBarScript: {fileID: 3173019997355268919}
   damage: 3
   maxHealth: 10
+  damageCooldown: 1.5
+  weaponPrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
 --- !u!136 &6661949368456987112
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -601,3 +606,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15884945, y: 4.360803, z: 1.935511}
   m_Center: {x: -0.0024053028, y: 1.6804018, z: 1.2800702}
+--- !u!114 &2619297280760981050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553910267651565667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86d2890e9fdd694db4262f7557f2ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  damage: 2
