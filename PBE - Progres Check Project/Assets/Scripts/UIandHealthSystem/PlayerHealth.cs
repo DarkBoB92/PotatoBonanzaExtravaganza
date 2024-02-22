@@ -58,17 +58,17 @@ public class PlayerHealth : MonoBehaviour
         else if (gameObject.tag == "Enemy")
         {
             enemyBarScript.UpdateHealthBar(currentHealth, maxHealth);
-        }
- 
-        if (currentHealth <= 0)
-        {
-            //  spawnPoints.RemoveEnemyFromList(gameObject);
-            Destroy(gameObject);
-            item.SpawnWeapon();
-            Debug.Log("Weapon spawned!! :3");
-        }
 
-        throwable.RemoveItemFromList(gameObject); //New added line
+            if (currentHealth <= 0)
+            {
+                spawnPoints.RemoveEnemyFromList(gameObject);
+                Destroy(gameObject);
+                item.SpawnWeapon();
+                Debug.Log("Weapon spawned!! :3");
+            }
+
+            throwable.RemoveItemFromList(gameObject); //New added line
+        }
     }
 
     void Heal(int amount)

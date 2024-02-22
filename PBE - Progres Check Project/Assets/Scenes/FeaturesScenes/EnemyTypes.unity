@@ -933,10 +933,10 @@ MonoBehaviour:
   enemies:
   - enemyP: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
     enemyValue: 1
-  - enemyP: {fileID: 3736915731119327756, guid: 5ab652ff4c63e6f4cbcabe18e7fcf796, type: 3}
+  - enemyP: {fileID: 5553910267651565667, guid: 1e2c7295401551947bb3813265108e31, type: 3}
     enemyValue: 2
-  - enemyP: {fileID: 4736609795978825101, guid: 0bb948d14903df643a9973760c545f88, type: 3}
-    enemyValue: 2
+  - enemyP: {fileID: 2529195569458886249, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
+    enemyValue: 3
   spawnEnemies: []
   spawnedEnemies: []
   spawnPoint:
@@ -945,7 +945,7 @@ MonoBehaviour:
   - {fileID: 8373973030475168972, guid: 01bac63f967ac1143900c590708d726f, type: 3}
   currentWave: 1
   waveValue: 0
-  difficultyMultiplier: 20
+  difficultyMultiplier: 25
   waveDuration: 0
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
@@ -964,124 +964,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1963772324
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.6178007
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.9874105
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068980991632372441, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_Name
-      value: Evil Carrot (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2075747224}
-    - targetCorrespondingSourceObject: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2075747223}
-  m_SourcePrefab: {fileID: 100100000, guid: 981ffdf59429a044788a90a90388340e, type: 3}
---- !u!1 &2075747222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
-  m_PrefabInstance: {fileID: 1963772324}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &2075747223
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075747222}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.851419
-  m_Height: 4.671637
-  m_Direction: 1
-  m_Center: {x: -0.05723511, y: 1.835818, z: 0.05499091}
---- !u!114 &2075747224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075747222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e447d559373e1f4cb4ecebd5f4fd949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
-  enemyPosition: {fileID: 0}
-  currentPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2091455263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,17 +1017,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suicide Bomber
       objectReference: {fileID: 0}
-    - target: {fileID: 2529195569458886249, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4919794991085471214, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8618150689453864396, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1246,15 +1124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6334684459571299581, guid: 981ffdf59429a044788a90a90388340e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1457,7 +1335,6 @@ SceneRoots:
   - {fileID: 1755881993}
   - {fileID: 2091455264}
   - {fileID: 2792499390917452012}
-  - {fileID: 1963772324}
   - {fileID: 2141147597164534162}
   - {fileID: 1347507164}
   - {fileID: 566458557}

@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 2062612370245450573}
   - component: {fileID: 4176951683815204038}
   - component: {fileID: 4299765576114447439}
-  - component: {fileID: 2893341827350329982}
+  - component: {fileID: 6882364080975569005}
+  - component: {fileID: 234799977017425096}
   m_Layer: 0
   m_Name: Suicide Bomber
   m_TagString: Enemy
@@ -122,8 +123,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.5
-  m_Speed: 3
-  m_Acceleration: 12
+  m_Speed: 20
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -161,9 +162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlapRadius: 3
-  maxHealth: 10
+  maxHealth: 1
   damageToPlayer: 7
---- !u!114 &2893341827350329982
+--- !u!114 &6882364080975569005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +173,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2529195569458886249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5eb085d3bcf23149973566d80656a89, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bb3fc57076cd3d4bbadea599086b2cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarScript: {fileID: 0}
+  enemyBarScript: {fileID: 234799977017425096}
+  damage: 0
+  maxHealth: 10
+  damageCooldown: 1.5
+--- !u!114 &234799977017425096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529195569458886249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55646ffa756b39e41bf63fdcc4d7f2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7632322624559974091}

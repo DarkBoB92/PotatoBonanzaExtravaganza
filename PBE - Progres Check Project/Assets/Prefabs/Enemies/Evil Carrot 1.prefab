@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 79fe2487302d77d488a5519298d5d6ea, type: 2}
     - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_Name
-      value: Evil Carrot
+      value: Evil Carrot 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_IsActive
@@ -560,7 +560,7 @@ MonoBehaviour:
   healthBarScript: {fileID: 0}
   enemyBarScript: {fileID: 3173019997355268919}
   damage: 3
-  maxHealth: 4
+  maxHealth: 10
   damageCooldown: 1.5
 --- !u!136 &6661949368456987112
 CapsuleCollider:
@@ -618,5 +618,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86d2890e9fdd694db4262f7557f2ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 10
   damage: 2
