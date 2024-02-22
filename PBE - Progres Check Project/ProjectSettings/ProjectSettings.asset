@@ -12,10 +12,10 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Isometric Test
-  defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  companyName: B.E.S.T.
+  productName: Potato Bonanza Extravaganza
+  defaultCursor: {fileID: 2800000, guid: f2fa287653647ea40965c593fae3fc36, type: 3}
+  cursorHotspot: {x: 75, y: 75}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -153,7 +153,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.Isometric-Test
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -896,8 +897,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Isometric Test
-  metroPackageVersion: 
+  metroPackageName: IsometricTest
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -905,7 +906,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Isometric Test
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Isometric Test
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
