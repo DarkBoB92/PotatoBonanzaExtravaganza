@@ -7,7 +7,7 @@ public class FollowCamera : MonoBehaviour
 
     private Vector3 offset;
     private Vector3 currentVelocity = Vector3.zero;
-    [SerializeField] private Transform target;
+    private Transform target;
     [SerializeField] private float smoothTime;
 
 
@@ -16,6 +16,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         offset = transform.position - target.position;   // Finds the vector difference between the applied GameObject and target GameObject, then stored into "offset"
     }
 
