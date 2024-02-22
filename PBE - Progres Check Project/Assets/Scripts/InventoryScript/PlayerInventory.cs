@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<GameObject> weaponList;
+    public int weaponAmount;
     [SerializeField] int ammo;
     [SerializeField] private GameObject inventoryWeapon;
     [SerializeField] private Transform throwStartPoint;

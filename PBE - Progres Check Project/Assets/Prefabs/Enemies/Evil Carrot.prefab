@@ -541,7 +541,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5553910267651565667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5eb085d3bcf23149973566d80656a89, type: 3}
+  m_Script: {fileID: 11500000, guid: 55646ffa756b39e41bf63fdcc4d7f2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5244228750310698589}
@@ -557,11 +557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb3fc57076cd3d4bbadea599086b2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarScript: {fileID: 3173019997355268919}
+  healthBarScript: {fileID: 0}
+  enemyBarScript: {fileID: 3173019997355268919}
   damage: 3
   maxHealth: 10
   damageCooldown: 1.5
-  weaponPrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
 --- !u!136 &6661949368456987112
 CapsuleCollider:
   m_ObjectHideFlags: 0

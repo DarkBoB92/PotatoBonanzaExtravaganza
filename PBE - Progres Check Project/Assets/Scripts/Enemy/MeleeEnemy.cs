@@ -9,14 +9,14 @@ public class MeleeEnemy : MonoBehaviour
     int currentHealth;
 
     EnemyHealthBar healthBar;
-    Health health;
+    PlayerHealth health;
     Weapon weapon;
 
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar = GetComponent<EnemyHealthBar>();
-        health = GetComponent<Health>();
+        health = GetComponent<PlayerHealth>();
         weapon = GetComponent<Weapon>();
     }
 

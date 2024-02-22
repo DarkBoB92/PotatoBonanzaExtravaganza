@@ -10,7 +10,7 @@ public class BomberEnemy : MonoBehaviour
     [SerializeField] private int damageToPlayer;
     int currentHealth;
 
-    Health health;
+    PlayerHealth health;
     EnemyHealthBar healthBarScript;
     SpawnPoints spawnPoints;
     Throwable throwable;
@@ -21,7 +21,7 @@ public class BomberEnemy : MonoBehaviour
         currentHealth = maxHealth;
 
         healthBarScript = GetComponent<EnemyHealthBar>();
-        health = GetComponent<Health>();
+        health = GetComponent<PlayerHealth>();
         spawnPoints = FindObjectOfType<SpawnPoints>();
         throwable = GetComponent<Throwable>();
     }
@@ -39,7 +39,7 @@ public class BomberEnemy : MonoBehaviour
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, overlapRadius);
         foreach (Collider obj in objectsInRange)
         {
-            Health playerHealth = obj.GetComponent<Health>();
+            PlayerHealth playerHealth = obj.GetComponent<PlayerHealth>();
 
             if (obj.GetType() == typeof(CapsuleCollider) && obj.CompareTag("Player")) // Trying to make it so it avoids BoxCollider!! :(
             {
