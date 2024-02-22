@@ -5882,6 +5882,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponList: []
+  ammo: 1
+  inventoryWeapon: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
+  throwStartPoint: {fileID: 4948717015635558176}
 --- !u!114 &5399031746357489808
 MonoBehaviour:
   m_ObjectHideFlags: 0

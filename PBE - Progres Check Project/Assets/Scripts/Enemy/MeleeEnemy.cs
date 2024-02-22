@@ -10,17 +10,19 @@ public class MeleeEnemy : MonoBehaviour
 
     EnemyHealthBar healthBar;
     Health health;
+    Weapon weapon;
 
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar = GetComponent<EnemyHealthBar>();
         health = GetComponent<Health>();
+        weapon = GetComponent<Weapon>();
     }
 
     private void Update()
     {
-
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,5 +36,4 @@ public class MeleeEnemy : MonoBehaviour
             health.TakeDamage(4);
         }
     }
-
 }

@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     private SpawnPoints spawnPoints;
     private Throwable throwable;
+    private ItemDrop item;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
         throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
+        item = GetComponent<ItemDrop>();
     }
 
     // Functions ---------------------------------------------------------------------------------- 
@@ -52,9 +54,12 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            spawnPoints.RemoveEnemyFromList(gameObject);
+            //  spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
+            item.SpawnWeapon();
+            Debug.Log("Weapon spawned!! :3");
         }
+
         throwable.RemoveItemFromList(gameObject); //New added line
     }
 
