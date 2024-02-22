@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<GameObject> weaponList;
-
-    public void AddItem(GameObject weapon)
+    public int weaponAmount;
+      
+    public void AddItem(GameObject item)
     {
-        weaponList.Add(weapon);
+        weaponList.Add(item);
     }
+
 }

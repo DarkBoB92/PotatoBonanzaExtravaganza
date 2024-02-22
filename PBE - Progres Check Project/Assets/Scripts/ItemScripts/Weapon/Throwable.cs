@@ -21,7 +21,16 @@ public class Throwable : MonoBehaviour
 
     void Update()
     {
-        //Assigns to item the first object of the player inventory if there is an item, otherwise it keeps it empy.
+        UpdateCurrentItem();
+
+        GetFireInput();
+
+        SetItemDirection();
+    }
+
+    //Assigns to item the first object of the player inventory if there is an item, otherwise it keeps it empty.
+    void UpdateCurrentItem()
+    {        
         if (inventory.weaponList.Count > 0)
         {
             item = inventory.weaponList[0];
@@ -30,29 +39,19 @@ public class Throwable : MonoBehaviour
         {
             item = null;
         }
-                
+    }
+
+    void GetFireInput()
+    {
         if (Input.GetButtonDown("Fire1"))
-        {            
+        {
             ThrowItem();
             if (bullet != null)
             {
                 bulletMovement.Add(bullet);
                 bullet = null;
             }
-        }
-
-        //This loop is to give constant movement to the bullet only if the list has a game object if not, it deletes the element from the list.
-        //This assures that there will be no missing object in the list.
-        for (int i = 0; i < bulletMovement.Count; i++)
-        {
-            if (bulletMovement[i] != null)
-            {
-                bulletMovement[i].transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime, Space.Self);
-            }
-            else
-            {
-                bulletMovement.RemoveAt(i);
-            }
+            inventory.weaponAmount--;
         }
     }
 
@@ -92,6 +91,23 @@ public class Throwable : MonoBehaviour
         if (item == weapon)
         {
             item = null;
+        }
+    }
+
+    //This loop is to give constant movement to the bullet only if the list has a game object if not, it deletes the element from the list.
+    //This assures that there will be no missing object in the list.
+    void SetItemDirection()
+    {        
+        for (int i = 0; i < bulletMovement.Count; i++)
+        {
+            if (bulletMovement[i] != null)
+            {
+                bulletMovement[i].transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime, Space.Self);
+            }
+            else
+            {
+                bulletMovement.RemoveAt(i);
+            }
         }
     }
 }

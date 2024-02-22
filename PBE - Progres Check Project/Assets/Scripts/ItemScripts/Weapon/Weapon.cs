@@ -28,6 +28,7 @@ public class Weapon : Collectible
             //Adding the collected item (this case Weapon) to the inventory of the player and set the object to false,
             //this because the item still exists in the inventory
             inventory.AddItem(gameObject);
+            inventory.weaponAmount++;
             gameObject.SetActive(false);
         }
         else
