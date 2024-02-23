@@ -61,6 +61,21 @@ public class BomberEnemy : MonoBehaviour
         }
     }
 
+    public void OverlappingEnemy()
+    {
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, overlapRadius);
+        foreach (Collider obj in objectsInRange)
+        {
+            enemyHealth = obj.GetComponent<PlayerHealth>();
+
+            if (obj.CompareTag("Enemy")) // Trying to make it so it avoids BoxCollider!! :(
+            {
+                enemyHealth.TakeDamage(4);
+                Destroy(gameObject);
+            }
+        }
+    }
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -78,6 +93,10 @@ public class BomberEnemy : MonoBehaviour
         if (other.gameObject.CompareTag("Weapon"))
         {
             TakeDamage(4);
+            //if (currentHealth <= 0)
+            //{
+            //    OverlappingEnemy();
+            //}
         }
     }
 
