@@ -23,7 +23,7 @@ public class SpawnPoints : MonoBehaviour
     // Spawn Variables -----------------------------------------------------------------------------
     public int waveDuration; // How long the wave should last before moving on to next.
     private float waveCountdown; // Countdown timer, how long is left.
-    private float spawnRate; // Enemy spawn rate.
+    [SerializeField] public float spawnRate; // Enemy spawn rate.
     private float spawnDelay; // Enemy spawn delay.
 
     [SerializeField] private GameObject enemiesParent;
@@ -105,7 +105,7 @@ public class SpawnPoints : MonoBehaviour
 
         if (spawnEnemies.Count > 0)
         {
-            spawnRate = 1f;
+            float enemySpawnRate = spawnRate;
             waveCountdown = waveDuration;
         }
 

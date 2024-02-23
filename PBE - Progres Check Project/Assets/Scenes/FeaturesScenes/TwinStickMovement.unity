@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44940567, g: 0.49948174, b: 0.57569546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44940513, g: 0.4994812, b: 0.5756945, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -801,8 +801,9 @@ MonoBehaviour:
   - {fileID: 8373973030475168972, guid: 01bac63f967ac1143900c590708d726f, type: 3}
   currentWave: 1
   waveValue: 0
-  difficultyMultiplier: 30
+  difficultyMultiplier: 40
   waveDuration: 0
+  spawnRate: 0.5
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
 --- !u!4 &1755881993
