@@ -5352,7 +5352,6 @@ GameObject:
   - component: {fileID: 7045657566338801221}
   - component: {fileID: 2868475766259345143}
   - component: {fileID: 3910142606668322330}
-  - component: {fileID: 7301172841926326766}
   - component: {fileID: 8059689739035543890}
   - component: {fileID: 4810719984967002718}
   - component: {fileID: 410647240707990875}
@@ -5437,27 +5436,6 @@ CapsuleCollider:
   m_Height: 3.021958
   m_Direction: 1
   m_Center: {x: 0.030000022, y: 2.419896, z: -0.047461137}
---- !u!65 &7301172841926326766
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677762800744826111}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.1557257, y: 3.7478795, z: 6.350211}
-  m_Center: {x: 0.08552654, y: 1.3739392, z: 2.6751058}
 --- !u!114 &8059689739035543890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5528,10 +5506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 1000
-  bulletPrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
+  bulletPrefab: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   bulletSpeed: 25
   spawnPoint: {fileID: 4948717015635558176}
-  fireRate: 0
+  fireRate: 0.1
 --- !u!114 &8097353836590456443
 MonoBehaviour:
   m_ObjectHideFlags: 0

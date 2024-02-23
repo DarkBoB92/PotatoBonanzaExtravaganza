@@ -30,7 +30,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Functions ---------------------------------------------------------------------------------- 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -55,13 +54,14 @@ public class PlayerHealth : MonoBehaviour
         {
             healthBarScript.UpdateHealthBar(currentHealth, maxHealth);
         }
-        else if (gameObject.tag == "Enemy")
+        else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
         {
             enemyBarScript.UpdateHealthBar(currentHealth, maxHealth);
+            
 
             if (currentHealth <= 0)
             {
-                spawnPoints.RemoveEnemyFromList(gameObject);
+                //spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(gameObject);
                 item.SpawnWeapon();
                 Debug.Log("Weapon spawned!! :3");

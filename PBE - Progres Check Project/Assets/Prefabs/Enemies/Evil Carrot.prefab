@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -448,6 +448,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_Name
       value: Evil Carrot
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_IsActive
@@ -566,7 +570,7 @@ MonoBehaviour:
   healthBarScript: {fileID: 0}
   enemyBarScript: {fileID: 3173019997355268919}
   damage: 3
-  maxHealth: 4
+  maxHealth: 10
   damageCooldown: 1.5
 --- !u!136 &6661949368456987112
 CapsuleCollider:

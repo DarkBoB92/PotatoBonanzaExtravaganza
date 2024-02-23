@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4079765899402379465}
   m_Layer: 0
   m_Name: Suicide Bomber
-  m_TagString: Enemy
+  m_TagString: Bomber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,9 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4f8e49b9ed69d438e06e7c044454f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRadius: 3
+  overlapRadius: 5
   maxHealth: 1
   damageToPlayer: 7
+  damagingObjects:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6882364080975569005
 MonoBehaviour:
   m_ObjectHideFlags: 0

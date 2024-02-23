@@ -9,11 +9,12 @@ public class BomberEnemy : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int damageToPlayer;
     int currentHealth;
+    [SerializeField] LayerMask damagingObjects;
 
-    PlayerHealth health;
+    PlayerHealth playerHealth;
+    PlayerHealth enemyHealth;
     EnemyHealthBar healthBarScript;
     SpawnPoints spawnPoints;
-    Throwable throwable;
 
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
@@ -21,31 +22,42 @@ public class BomberEnemy : MonoBehaviour
         currentHealth = maxHealth;
 
         healthBarScript = GetComponent<EnemyHealthBar>();
-        health = GetComponent<PlayerHealth>();
-        spawnPoints = FindObjectOfType<SpawnPoints>();
-        throwable = GetComponent<Throwable>();
+        spawnPoints = FindObjectOfType<SpawnPoints>();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        OverlappingTest();
+
     }
 
     // Functions ----------------------------------------------------------------------------------
-
-    public void OverlappingTest()
+ 
+    void DistanceCheck()
     {
-        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, overlapRadius);
-        foreach (Collider obj in objectsInRange)
-        {
-            PlayerHealth playerHealth = obj.GetComponent<PlayerHealth>();
+        //TODO: Write a distance check -> delay when it's reached [animation] -> after delay, call OverlappingPlayer() [It'll check for anything in the range and then do damage]. 
+    }
 
-            if (obj.GetType() == typeof(CapsuleCollider) && obj.CompareTag("Player")) // Trying to make it so it avoids BoxCollider!! :(
+    public void OverlappingPlayer()
+    {
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, overlapRadius, damagingObjects);
+        
+        if(objectsInRange.Length > 0)
+        {
+            foreach (Collider obj in objectsInRange)
             {
-                playerHealth.TakeDamage(damageToPlayer);
-                Destroy(gameObject);
+                if (obj.CompareTag("Player")) // Trying to make it so it avoids BoxCollider!! :(
+                {
+                    playerHealth = obj.GetComponent<PlayerHealth>();
+                    playerHealth.TakeDamage(damageToPlayer);
+                }
+                if (obj.CompareTag("Enemy"))
+                {
+                    enemyHealth = obj.GetComponent<PlayerHealth>();
+                    enemyHealth.TakeDamage(2);
+                }
             }
+            Destroy(gameObject);
         }
     }
 
@@ -56,10 +68,9 @@ public class BomberEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            spawnPoints.RemoveEnemyFromList(gameObject);
+            //spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
-        throwable.RemoveItemFromList(gameObject); //New added line
     }
 
     private void OnTriggerEnter(Collider other)
