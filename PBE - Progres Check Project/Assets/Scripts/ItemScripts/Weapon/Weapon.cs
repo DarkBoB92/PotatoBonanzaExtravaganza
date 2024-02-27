@@ -8,33 +8,39 @@ public class Weapon : Collectible
     [SerializeField] float minPower, maxPower; //Range values to apply a random damage value for the weapon
     [SerializeField] int potatoPower, acutalPower; //Temporary variable to check functionality of the script
     [SerializeField] GameObject player;
-    [SerializeField] PlayerInventory inventory;
-    [SerializeField] Throwable throwable;
+    [SerializeField] PlayerShoot ammo;
 
     private void Start()
     {        
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
+        player = GameObject.FindGameObjectWithTag("Player");
+        ammo = player.GetComponent<PlayerShoot>();
     }
 
     private void Update()
     {
-        Debug.Log(GetComponent<Rigidbody>().velocity.magnitude);
+        //Debug.Log(GetComponent<Rigidbody>().velocity.magnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
         player = collision.gameObject;
-        inventory = player.GetComponent<PlayerInventory>();
-        throwable = player.GetComponent<Throwable>();
+        //inventory = player.GetComponent<PlayerInventory>();
+        //throwable = player.GetComponent<Throwable>();
         if (player.tag == "Player")
         {
-            Collected();
+            //Collected();
             //Adding the collected item (this case Weapon) to the inventory of the player and set the object to false,
             //this because the item still exists in the inventory
-            inventory.AddItem(gameObject);
-            inventory.weaponAmount++;
-            gameObject.SetActive(false);
+            //inventory.AddItem(gameObject);
+            //inventory.weaponAmount++;
+            //gameObject.SetActive(false);
+
+            ammo.AddAmmo();
+            Debug.Log($"Ammo increasing {ammo.ammo}");
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         else
         { //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
@@ -49,13 +55,13 @@ public class Weapon : Collectible
         }
     }
 
-    //This method is to add the weapons damage
-    //TODO: Need to pass the damage to the Player once we implement DamageSystem
-    void Collected()
+        //This method is to add the weapons damage
+        //TODO: Need to pass the damage to the Player once we implement DamageSystem
+        void Collected()
     {   
         potatoPower += acutalPower;
-        type = CollectibleType.Weapon;
-        SetType();
+        //type = CollectibleType.Weapon;
+        //SetType();        
         Debug.Log($"potatoPower is {potatoPower}");
     }
 }

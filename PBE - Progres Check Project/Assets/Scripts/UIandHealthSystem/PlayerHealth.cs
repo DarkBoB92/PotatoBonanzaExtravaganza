@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private PlayerHealthBar healthBarScript;
     [SerializeField] private EnemyHealthBar enemyBarScript;
+    [SerializeField] private GameObject weapon;
     [SerializeField] int damage;
     [SerializeField] int maxHealth = 10;
     [SerializeField] private float damageCooldown = 1.5f;
@@ -15,8 +16,8 @@ public class PlayerHealth : MonoBehaviour
     private float delayBetweenDamage;
 
     private SpawnPoints spawnPoints;
-    private Throwable throwable;
-    private ItemDrop item;
+    //private Throwable throwable;
+    //private ItemDrop item;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
@@ -25,8 +26,8 @@ public class PlayerHealth : MonoBehaviour
         delayBetweenDamage = Time.time;
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
-        throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
-        item = GetComponent<ItemDrop>();
+        //throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
+        //item = GetComponent<ItemDrop>();
     }
 
     // Functions ---------------------------------------------------------------------------------- 
@@ -63,11 +64,12 @@ public class PlayerHealth : MonoBehaviour
             {
                 //spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(gameObject);
-                item.SpawnWeapon();
+                //item.SpawnWeapon();
+                GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
                 Debug.Log("Weapon spawned!! :3");
             }
 
-            throwable.RemoveItemFromList(gameObject); //New added line
+            //throwable.RemoveItemFromList(gameObject); //New added line
         }
     }
 

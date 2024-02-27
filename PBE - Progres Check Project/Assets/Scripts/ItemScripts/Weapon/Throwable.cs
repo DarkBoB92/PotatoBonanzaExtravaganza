@@ -10,9 +10,11 @@ public class Throwable : MonoBehaviour
     public List<GameObject> bulletMovement; //This list contains every throwed item before colliding, so multiple item can be thro
     [SerializeField] Transform throwStartPosition; //This object will contain the position of an EmptyGameObject to set a starting point to shoot 
     [SerializeField] PlayerInventory inventory;
-    [SerializeField] int bulletSpeed; 
+    [SerializeField] int bulletSpeed;
+    GameObject bulletToSpawn;
 
-    
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); //Fetch the current GameObject of the Hierarchy that has the "PLayer" tag 
@@ -23,9 +25,9 @@ public class Throwable : MonoBehaviour
     {
         UpdateCurrentItem();
 
-        GetFireInput();
+        //GetFireInput();
 
-        SetItemDirection();
+        //SetItemDirection();
     }
 
     //Assigns to item the first object of the player inventory if there is an item, otherwise it keeps it empty.
@@ -41,19 +43,19 @@ public class Throwable : MonoBehaviour
         }
     }
 
-    void GetFireInput()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            ThrowItem();
-            if (bullet != null)
-            {
-                bulletMovement.Add(bullet);
-                bullet = null;
-            }
-            inventory.weaponAmount--;
-        }
-    }
+    //void GetFireInput()
+    //{
+    //    if (Input.GetButtonDown("Fire2"))
+    //    {
+    //        ThrowItem();
+    //        //if (bullet != null)
+    //        //{
+    //        //    bulletMovement.Add(bullet);
+    //        //    bullet = null;
+    //        //}
+    //        inventory.weaponAmount--;
+    //    }
+    //}
 
     //This method launchs the item by removing the item form the player inventory and adding the holded item to the bullet list
     //and after setting the item true it moves it to the throwStartPoint position and rotation and clears the player holded item
@@ -65,9 +67,10 @@ public class Throwable : MonoBehaviour
             inventory.weaponList.RemoveAt(0);
             bullet = item;
             bullet.SetActive(true);
+            bulletToSpawn = Instantiate(bullet, throwStartPosition.position, throwStartPosition.rotation);
+            bulletToSpawn.GetComponent<Rigidbody>().velocity = bulletToSpawn.transform.up * bulletSpeed;
             //bullet.transform.position = throwStartPosition.position;
-            //bullet.transform.rotation = throwStartPosition.rotation;
-            GameObject bulletToSpawn = Instantiate(bullet, throwStartPosition.position, Quaternion.identity);
+            //bullet.transform.rotation = throwStartPosition.rotation;                       
             item = null;
         }
         else
@@ -97,18 +100,18 @@ public class Throwable : MonoBehaviour
 
     //This loop is to give constant movement to the bullet only if the list has a game object if not, it deletes the element from the list.
     //This assures that there will be no missing object in the list.
-    void SetItemDirection()
-    {        
-        for (int i = 0; i < bulletMovement.Count; i++)
-        {
-            if (bulletMovement[i] != null)
-            {
-                bulletMovement[i].transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime, Space.Self);
-            }
-            else
-            {
-                bulletMovement.RemoveAt(i);
-            }
-        }
-    }
+    //void SetItemDirection()
+    //{        
+    //    for (int i = 0; i < bulletMovement.Count; i++)
+    //    {
+    //        if (bulletMovement[i] != null)
+    //        {                
+    //            bulletToSpawn.GetComponent<Rigidbody>().velocity = bulletToSpawn.transform.up * bulletSpeed;
+    //        }
+    //        else
+    //        {
+    //            bulletMovement.RemoveAt(i);
+    //        }
+    //    }
+    //}
 }

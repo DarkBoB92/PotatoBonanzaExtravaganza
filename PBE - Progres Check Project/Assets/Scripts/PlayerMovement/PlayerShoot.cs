@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] int ammo;
+    public int ammo;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform spawnPoint;
@@ -19,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && ammo > 0)
+        if (Input.GetButtonDown("Fire1") && ammo > 0)
         {
             ShootBullet();
 
@@ -31,18 +32,24 @@ public class PlayerShoot : MonoBehaviour
     {
         Debug.Log("Shoot");
         GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-        bulletSpawned.SetActive(true);
+        //bulletSpawned.SetActive(true);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
         ammo--;
+        Debug.Log($"Ammo decreasing {ammo}");
     }
 
     IEnumerator ShootBulletHold()
     {
-        while (Input.GetButton("Fire2") && ammo > 0)
+        while (Input.GetButton("Fire1") && ammo > 0)
         {
             yield return new WaitForSeconds(fireRate);
             ShootBullet();
             Debug.Log("Shooting");
         }
+    }
+
+    public void AddAmmo()
+    {
+        ammo++;
     }
 }

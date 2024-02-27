@@ -569,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarScript: {fileID: 0}
   enemyBarScript: {fileID: 3173019997355268919}
+  weapon: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   damage: 3
   maxHealth: 10
   damageCooldown: 1.5
