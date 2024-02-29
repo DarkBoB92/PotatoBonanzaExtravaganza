@@ -16,8 +16,6 @@ public class PlayerHealth : MonoBehaviour
     private float delayBetweenDamage;
 
     private SpawnPoints spawnPoints;
-    //private Throwable throwable;
-    //private ItemDrop item;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
@@ -26,8 +24,6 @@ public class PlayerHealth : MonoBehaviour
         delayBetweenDamage = Time.time;
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
-        //throwable = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwable>(); //Reference to the Throwable Script attached to the Player
-        //item = GetComponent<ItemDrop>();
     }
 
     // Functions ---------------------------------------------------------------------------------- 
@@ -58,18 +54,14 @@ public class PlayerHealth : MonoBehaviour
         else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
         {
             enemyBarScript.UpdateHealthBar(currentHealth, maxHealth);
-            
 
             if (currentHealth <= 0)
             {
-                //spawnPoints.RemoveEnemyFromList(gameObject);
+                spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(gameObject);
-                //item.SpawnWeapon();
                 GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
                 Debug.Log("Weapon spawned!! :3");
             }
-
-            //throwable.RemoveItemFromList(gameObject); //New added line
         }
     }
 

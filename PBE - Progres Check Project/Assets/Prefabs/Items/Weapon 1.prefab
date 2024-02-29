@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3073322133001758909}
   - component: {fileID: 1337774903067654454}
   - component: {fileID: -249258649260771765}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon 1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -125,8 +125,13 @@ MonoBehaviour:
   potatoPower: 0
   acutalPower: 0
   player: {fileID: 0}
-  inventory: {fileID: 0}
-  throwable: {fileID: 0}
+  ammo: {fileID: 0}
+  map:
+    serializedVersion: 2
+    m_Bits: 8
+  weapon:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &-249258649260771765
 Rigidbody:
   m_ObjectHideFlags: 0

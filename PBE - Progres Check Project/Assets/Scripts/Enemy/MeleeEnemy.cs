@@ -34,6 +34,7 @@ public class MeleeEnemy : MonoBehaviour
         else if (other.gameObject.CompareTag("Weapon"))
         {
             health.TakeDamage(4);
+            Destroy(other.gameObject);
         }
     }
 }

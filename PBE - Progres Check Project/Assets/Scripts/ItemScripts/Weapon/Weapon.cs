@@ -15,53 +15,32 @@ public class Weapon : Collectible
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
         player = GameObject.FindGameObjectWithTag("Player");
         ammo = player.GetComponent<PlayerShoot>();
+        
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(GetComponent<Rigidbody>().velocity.magnitude);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
+        Debug.Log($"Colliding with {other}");
         //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
-        player = collision.gameObject;
-        //inventory = player.GetComponent<PlayerInventory>();
-        //throwable = player.GetComponent<Throwable>();
+        player = other.gameObject;
         if (player.tag == "Player")
         {
-            //Collected();
-            //Adding the collected item (this case Weapon) to the inventory of the player and set the object to false,
-            //this because the item still exists in the inventory
-            //inventory.AddItem(gameObject);
-            //inventory.weaponAmount++;
-            //gameObject.SetActive(false);
-
-            ammo.AddAmmo();
-            Debug.Log($"Ammo increasing {ammo.ammo}");
-            //gameObject.SetActive(false);
+            Collected();
             Destroy(gameObject);
         }
-        else
-        { //Any other collision will delete the item and clear the Throwable bullet list (check Throwable Script for more info)
-            if (collision.gameObject.CompareTag("Weapon") || collision.gameObject.CompareTag("Coin"))
-            {
 
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+        if (other.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
         }
     }
 
-        //This method is to add the weapons damage
-        //TODO: Need to pass the damage to the Player once we implement DamageSystem
-        void Collected()
+    //This method is to add the weapons damage
+    //TODO: Need to pass the damage to the Player once we implement DamageSystem
+    void Collected()
     {   
         potatoPower += acutalPower;
-        //type = CollectibleType.Weapon;
-        //SetType();        
+        ammo.AddAmmo();        
         Debug.Log($"potatoPower is {potatoPower}");
     }
 }

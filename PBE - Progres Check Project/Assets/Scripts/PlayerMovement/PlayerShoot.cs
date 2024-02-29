@@ -30,12 +30,10 @@ public class PlayerShoot : MonoBehaviour
 
     void ShootBullet()
     {
-        Debug.Log("Shoot");
         GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
         //bulletSpawned.SetActive(true);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
         ammo--;
-        Debug.Log($"Ammo decreasing {ammo}");
     }
 
     IEnumerator ShootBulletHold()
@@ -44,7 +42,6 @@ public class PlayerShoot : MonoBehaviour
         {
             yield return new WaitForSeconds(fireRate);
             ShootBullet();
-            Debug.Log("Shooting");
         }
     }
 
