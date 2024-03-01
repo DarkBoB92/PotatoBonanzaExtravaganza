@@ -8,7 +8,7 @@ public class PlayerShoot : MonoBehaviour
     public int ammo, grenades;
     [SerializeField] GameObject bulletPrefab, grenadePrefab;
     [SerializeField] float bulletSpeed;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform bulletSpawnPoint, grenadeSpawnPoint;
     [SerializeField] float fireRate, throwForce;
     bool isGrenade;
 
@@ -37,7 +37,7 @@ public class PlayerShoot : MonoBehaviour
 
     void ShootBullet()
     {
-        GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
         bulletSpawned.GetComponent<Weapon>().shooted = true;
         bulletSpawned.GetComponent<Weapon>().isGranade = false;
@@ -45,12 +45,12 @@ public class PlayerShoot : MonoBehaviour
     }
 
     void ThrowGrenade()
-    {
-        //TODO: create new spawn position for grenades
-        GameObject grenadeSpawned = Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
-        grenadePrefab.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Acceleration);
-        grenadePrefab.GetComponent<Weapon>().shooted = true;
-        grenadePrefab.GetComponent<Weapon>().isGranade = true;
+    {        
+        GameObject grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint.position, grenadeSpawnPoint.rotation);
+        grenadeSpawned.GetComponent <Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+        grenadeSpawned.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        grenadeSpawned.GetComponent<Weapon>().shooted = true;
+        grenadeSpawned.GetComponent<Weapon>().isGranade = true;
         grenades--;
     }
 
@@ -66,5 +66,10 @@ public class PlayerShoot : MonoBehaviour
     public void AddAmmo()
     {        
         ammo++;
+    }
+
+    public void AddGrenade() 
+    {
+        grenades++;
     }
 }

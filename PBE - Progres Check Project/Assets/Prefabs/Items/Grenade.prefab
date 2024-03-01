@@ -128,7 +128,7 @@ MonoBehaviour:
   ammo: {fileID: 0}
   lifeTime: 3
   shooted: 0
-  isGranade: 1
+  isGranade: 0
 --- !u!54 &-249258649260771765
 Rigidbody:
   m_ObjectHideFlags: 0

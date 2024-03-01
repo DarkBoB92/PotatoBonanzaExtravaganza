@@ -35,6 +35,7 @@ public class Weapon : Collectible
         if (player.tag == "Player")
         {
             Collected();
+            ammo.AddAmmo();
             Destroy(gameObject);
         }
 
@@ -46,7 +47,13 @@ public class Weapon : Collectible
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Player" && !shooted)
+        {
+            ammo.AddGrenade();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Ground")
         {
             Explode();
         }
@@ -58,8 +65,6 @@ public class Weapon : Collectible
     {
         //potatoPower += acutalPower;
         //Debug.Log($"potatoPower is {potatoPower}");
-        ammo.AddAmmo();        
-        //TODO: add grenade increaser
     }
 
     void LifeTime()
