@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public int ammo;
-    [SerializeField] GameObject bulletPrefab;
+    public int ammo, grenades;
+    [SerializeField] GameObject bulletPrefab, grenadePrefab;
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform spawnPoint;
-    [SerializeField] float fireRate;
+    [SerializeField] float fireRate, throwForce;
+    bool isGrenade;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +28,30 @@ public class PlayerShoot : MonoBehaviour
 
             StartCoroutine(ShootBulletHold());
         }
+
+        if (Input.GetButtonDown("Fire2") && grenades > 0)
+        {
+            ThrowGrenade();
+        }
     }
 
     void ShootBullet()
     {
         GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-        //bulletSpawned.SetActive(true);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
+        bulletSpawned.GetComponent<Weapon>().shooted = true;
+        bulletSpawned.GetComponent<Weapon>().isGranade = false;
         ammo--;
+    }
+
+    void ThrowGrenade()
+    {
+        //TODO: create new spawn position for grenades
+        GameObject grenadeSpawned = Instantiate(grenadePrefab, spawnPoint.position, spawnPoint.rotation);
+        grenadePrefab.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Acceleration);
+        grenadePrefab.GetComponent<Weapon>().shooted = true;
+        grenadePrefab.GetComponent<Weapon>().isGranade = true;
+        grenades--;
     }
 
     IEnumerator ShootBulletHold()
@@ -46,7 +64,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
     public void AddAmmo()
-    {
+    {        
         ammo++;
     }
 }
