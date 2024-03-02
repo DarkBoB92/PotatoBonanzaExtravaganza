@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int damage;
+    int currentHealth;
+
+    EnemyHealthBar healthBar;
+    PlayerHealth health;
+
+    private void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar = GetComponent<EnemyHealthBar>();
+        health = GetComponent<PlayerHealth>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            health.TakeDamage(2);
+        }
+        else if (other.gameObject.CompareTag("Weapon"))
+        {
+            health.TakeDamage(4);
+            Destroy(other.gameObject);
+        }
     }
 }

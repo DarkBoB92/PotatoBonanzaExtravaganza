@@ -10,14 +10,12 @@ public class MeleeEnemy : MonoBehaviour
 
     EnemyHealthBar healthBar;
     PlayerHealth health;
-    Weapon weapon;
 
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar = GetComponent<EnemyHealthBar>();
         health = GetComponent<PlayerHealth>();
-        weapon = GetComponent<Weapon>();
     }
 
     private void Update()
