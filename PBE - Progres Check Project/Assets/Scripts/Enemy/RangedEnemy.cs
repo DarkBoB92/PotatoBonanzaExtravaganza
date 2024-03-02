@@ -6,22 +6,51 @@ public class RangedEnemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int damage;
+    [SerializeField] int bulletSpeed;
+    [SerializeField] float range, fireRate, resetFireRate;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform spawnPoint;
     int currentHealth;
 
     EnemyHealthBar healthBar;
     PlayerHealth health;
+    EnemyKeepDistance engage;
 
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar = GetComponent<EnemyHealthBar>();
         health = GetComponent<PlayerHealth>();
+        engage = GetComponent<EnemyKeepDistance>();
+        range = engage.radius + 5;
+        fireRate = resetFireRate;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-
+        if(fireRate <= 0)
+        {
+            Shoot();
+        }
+        else
+        {
+            fireRate -= Time.fixedDeltaTime;
+        }
     }
+
+    void Shoot()
+    {
+        if(engage.distance <= range)
+        {
+            GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
+            if(bulletSpawned != null)
+            {
+                fireRate = resetFireRate;
+            }
+        }
+    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
