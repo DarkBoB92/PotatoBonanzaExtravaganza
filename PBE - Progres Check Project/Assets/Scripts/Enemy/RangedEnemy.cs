@@ -4,15 +4,64 @@ using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int damage;
+    [SerializeField] int bulletSpeed;
+    [SerializeField] float range, fireRate, resetFireRate;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform spawnPoint;
+    int currentHealth;
+
+    EnemyHealthBar healthBar;
+    PlayerHealth health;
+    EnemyKeepDistance engage;
+
+    private void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar = GetComponent<EnemyHealthBar>();
+        health = GetComponent<PlayerHealth>();
+        engage = GetComponent<EnemyKeepDistance>();
+        range = engage.radius + 5;
+        fireRate = resetFireRate;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        if(fireRate <= 0)
+        {
+            Shoot();
+        }
+        else
+        {
+            fireRate -= Time.fixedDeltaTime;
+        }
+    }
+
+    void Shoot()
+    {
+        if(engage.distance <= range)
+        {
+            GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
+            if(bulletSpawned != null)
+            {
+                fireRate = resetFireRate;
+            }
+        }
+    }
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            health.TakeDamage(2);
+        }
+        else if (other.gameObject.CompareTag("Weapon"))
+        {
+            health.TakeDamage(4);
+            Destroy(other.gameObject);
+        }
     }
 }
