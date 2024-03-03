@@ -83,7 +83,7 @@ public class BomberEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //spawnPoints.RemoveEnemyFromList(gameObject);
+            spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
     }

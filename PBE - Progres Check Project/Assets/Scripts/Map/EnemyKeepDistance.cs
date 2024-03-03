@@ -13,11 +13,10 @@ public class EnemyKeepDistance : MonoBehaviour
     void Awake()
     {
         potato = GameObject.FindGameObjectWithTag("Player");
-        SetPosition();
     }
 
     void Update()
-    {
+    {     
         distance = Vector3.Distance(transform.position, potato.transform.position);
         SetPosition();
         SetSpeed();

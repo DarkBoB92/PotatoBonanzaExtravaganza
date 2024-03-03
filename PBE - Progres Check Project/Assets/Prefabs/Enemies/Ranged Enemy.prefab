@@ -389,7 +389,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bd91f0f019a8303488e35aaf045a970d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   damage: 0
-  bulletSpeed: 5
+  bulletSpeed: 20
   range: 0
   fireRate: 0
   resetFireRate: 2
@@ -492,7 +492,7 @@ MonoBehaviour:
   potato: {fileID: 0}
   radius: 10
   distance: 0
-  speed: 0
+  speed: 5
 --- !u!114 &7529383671912746630
 MonoBehaviour:
   m_ObjectHideFlags: 0

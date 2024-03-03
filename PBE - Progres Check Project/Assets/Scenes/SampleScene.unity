@@ -781,9 +781,9 @@ MonoBehaviour:
   enemies:
   - enemyP: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
     enemyValue: 1
-  - enemyP: {fileID: 5553910267651565667, guid: 1e2c7295401551947bb3813265108e31, type: 3}
+  - enemyP: {fileID: 8120018268914431050, guid: 9c0a028b37e7db247835fd0f7513f2cf, type: 3}
     enemyValue: 2
-  - enemyP: {fileID: 5553910267651565667, guid: 1e2c7295401551947bb3813265108e31, type: 3}
+  - enemyP: {fileID: 2529195569458886249, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
     enemyValue: 3
   spawnEnemies: []
   spawnedEnemies: []
