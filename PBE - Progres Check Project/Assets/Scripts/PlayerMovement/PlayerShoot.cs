@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public int ammo;
-    [SerializeField] GameObject bulletPrefab;
+    public int ammo, grenades;
+    [SerializeField] GameObject bulletPrefab, grenadePrefab;
     [SerializeField] float bulletSpeed;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] float fireRate;
+    [SerializeField] Transform bulletSpawnPoint, grenadeSpawnPoint;
+    [SerializeField] float fireRate, throwForce;
+    bool isGrenade;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +28,30 @@ public class PlayerShoot : MonoBehaviour
 
             StartCoroutine(ShootBulletHold());
         }
+
+        if (Input.GetButtonDown("Fire2") && grenades > 0)
+        {
+            ThrowGrenade();
+        }
     }
 
     void ShootBullet()
     {
-        GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-        //bulletSpawned.SetActive(true);
+        GameObject bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
+        bulletSpawned.GetComponent<Weapon>().shooted = true;
+        bulletSpawned.GetComponent<Weapon>().isGranade = false;
         ammo--;
+    }
+
+    void ThrowGrenade()
+    {        
+        GameObject grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint.position, grenadeSpawnPoint.rotation);
+        grenadeSpawned.GetComponent <Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
+        grenadeSpawned.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        grenadeSpawned.GetComponent<Weapon>().shooted = true;
+        grenadeSpawned.GetComponent<Weapon>().isGranade = true;
+        grenades--;
     }
 
     IEnumerator ShootBulletHold()
@@ -46,7 +64,12 @@ public class PlayerShoot : MonoBehaviour
     }
 
     public void AddAmmo()
-    {
+    {        
         ammo++;
+    }
+
+    public void AddGrenade() 
+    {
+        grenades++;
     }
 }

@@ -131,33 +131,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 411061333657063490, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 939446492618020075, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 1053502999986021811, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 2272720068128042032, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 2970226287423680798, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
     - target: {fileID: 3960712480181698382, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
       propertyPath: m_Name
       value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 3960712480181698382, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4448597282096408052, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -198,22 +174,6 @@ PrefabInstance:
     - target: {fileID: 4448597282096408052, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7788880079444230769, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 7952467696164096500, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8555004206272811083, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 9218329444549719494, guid: feec3f271d403ae49bab4da2282893c9, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
