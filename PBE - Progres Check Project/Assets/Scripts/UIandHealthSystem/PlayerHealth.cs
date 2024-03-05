@@ -27,9 +27,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Functions ---------------------------------------------------------------------------------- 
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // Refers to any trigger entering the Player's collider. Note: ensure enemies that are not meant to be triggered by this are accounted for.
         {
             if (Time.time >= delayBetweenDamage)
             {

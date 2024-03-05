@@ -125,7 +125,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.5
-  m_Speed: 20
+  m_Speed: 3
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2529195569458886249}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f683cc77ec22baa48a4be89fcb05f4ce, type: 3}
   m_Name: 
@@ -163,12 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4f8e49b9ed69d438e06e7c044454f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRadius: 5
+  initialOverlapRadius: 3
+  increasedOverlapRadius: 10
   maxHealth: 1
   damageToPlayer: 7
   damagingObjects:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
 --- !u!114 &6882364080975569005
 MonoBehaviour:
   m_ObjectHideFlags: 0
