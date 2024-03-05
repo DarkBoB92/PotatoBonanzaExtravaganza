@@ -6,7 +6,14 @@ public class CameraZoom : MonoBehaviour
 {
     [SerializeField] private Transform endPoint;
     [SerializeField] private float speed;
+    private bool isStart;
 
+
+    private void Start()
+    {
+        isStart = false;
+        StartCoroutine(WaitTime());
+    }
     private void Update()
     {
         Zoom();
@@ -14,6 +21,16 @@ public class CameraZoom : MonoBehaviour
 
     void Zoom()
     {
-        transform.position = Vector3.Lerp(transform.position, endPoint.position, speed * Time.deltaTime);
+        if (isStart)
+        {
+            float percentage = speed * Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, endPoint.position, percentage);
+        }
+    }
+
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(4f);
+        isStart = true;
     }
 }
