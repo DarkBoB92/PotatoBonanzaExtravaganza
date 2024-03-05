@@ -406,6 +406,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1438801882}
   m_SourcePrefab: {fileID: 100100000, guid: 1a8f2e20dab465a43af969cb94bd5423, type: 3}
+--- !u!1 &512612509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512612511}
+  - component: {fileID: 512612510}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &512612510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512612509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb7a6520d1844a96dd51c24953ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioObject: {fileID: 4476623152352901599, guid: b381c960484637f4d909ea60f3ed9187, type: 3}
+  LogoWoosh: {fileID: 8300000, guid: 7096421afc5a732419719663ec9fe95a, type: 3}
+  CameraWoosh: {fileID: 8300000, guid: f731395fdc1b1604c8832836dee73268, type: 3}
+  FridgeHum: {fileID: 8300000, guid: d41d31a5330e39d4e8a8284bf136ac0f, type: 3}
+  MouseHover: {fileID: 8300000, guid: 53bdeb8d2b289ba498acdd935cd3fb31, type: 3}
+  ButtonSelect: {fileID: 8300000, guid: 192145d061d07c64ea641aaf3f7f8fc3, type: 3}
+  ButtonBack: {fileID: 8300000, guid: e7e5b9ad952cd6a41ae4313202e8b06e, type: 3}
+  KitchenSFX: {fileID: 8300000, guid: cf5289d343291864780881deb7ebc7f2, type: 3}
+  Jazz: {fileID: 8300000, guid: 98b7c5556dfdee44ab569783818d8d25, type: 3}
+--- !u!4 &512612511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512612509}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.588234, y: 8.833223, z: -0.17424393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615582123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,3 +1388,4 @@ SceneRoots:
   - {fileID: 31248561}
   - {fileID: 1566655902}
   - {fileID: 1387119287}
+  - {fileID: 512612511}

@@ -7,7 +7,13 @@ public class PlayButton : MonoBehaviour
 {
     private void OnMouseUpAsButton()
     {
-        Debug.Log("Play Button Pressed");
+        StartCoroutine(DelayAndSFX());
+    }
+
+    IEnumerator DelayAndSFX()
+    {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("TwinStickMovement");
     }
 }

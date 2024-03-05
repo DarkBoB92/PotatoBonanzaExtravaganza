@@ -11,6 +11,9 @@ public class CameraZoom : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.FridgeHum, transform.position, 0.35f);
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.Jazz, transform.position, 0.3f);
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.KitchenSFX, transform.position, 0.05f);
         isStart = false;
         StartCoroutine(WaitTime());
     }
@@ -31,6 +34,7 @@ public class CameraZoom : MonoBehaviour
     IEnumerator WaitTime()
     {
         yield return new WaitForSeconds(4f);
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.CameraWoosh, transform.position, 0.5f);
         isStart = true;
     }
 }

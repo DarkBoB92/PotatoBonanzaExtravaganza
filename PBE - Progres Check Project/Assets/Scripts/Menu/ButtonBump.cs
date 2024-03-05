@@ -8,6 +8,7 @@ public class ButtonBump : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.MouseHover, transform.position, 0.2f);
         StartCoroutine(Bump());
     }
 

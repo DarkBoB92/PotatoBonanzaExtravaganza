@@ -13,6 +13,7 @@ public class Intro : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         StartCoroutine(backgroundAnim());
         StartCoroutine(logoAnim());
     }
@@ -34,6 +35,7 @@ public class Intro : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Color tempColor = logo.color;
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.LogoWoosh, transform.position, 0.5f);
         tempColor.a = 0f;
         while (tempColor.a <= 1)
         {
@@ -50,5 +52,6 @@ public class Intro : MonoBehaviour
             logo.color = tempColor;
             yield return new WaitForSeconds(0.01f);
         }
+        Cursor.visible = true;
     }
 }
