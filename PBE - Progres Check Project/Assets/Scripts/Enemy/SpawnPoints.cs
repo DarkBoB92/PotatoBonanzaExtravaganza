@@ -63,7 +63,7 @@ public class SpawnPoints : MonoBehaviour
         }
         else
         {
-            spawnDelay -= Time.fixedDeltaTime;
+            spawnDelay -= Time.fixedDeltaTime; // Decrease spawnDelay by a fixed time.
         }
 
 
@@ -134,7 +134,10 @@ public class SpawnPoints : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// Function to instantiate enemies into a list to 'ready' them for spawning. Afterwards they will be added to a spawnedEnemies list where they are actively being tracked until death.
+    /// Note: the randomIndex simply refers to the amount of possible spawnPoints that it has. If the game has 3, the randomIndex will generate from 0-3; where they are all the spawnPoints.
+    /// </summary>
     void SpawnEnemy()
     {   
         if (spawnEnemies.Count > 0)
