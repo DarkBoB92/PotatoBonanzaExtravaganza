@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BomberEnemy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BomberEnemy : MonoBehaviour
     [SerializeField] float increasedOverlapRadius = 6.0f;
     [SerializeField] private int maxHealth;
     [SerializeField] private int damageToPlayer;
+    [SerializeField] float detonation;
     int currentHealth;
     [SerializeField] LayerMask damagingObjects;   // Use this for referencing any enemies that NEED to be damaged by this enemy AS LONG as they have different tags.
 
@@ -16,6 +18,7 @@ public class BomberEnemy : MonoBehaviour
     PlayerHealth enemyHealth;
     EnemyHealthBar healthBarScript;
     SpawnPoints spawnPoints;
+    Transform potato;
 
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
@@ -25,6 +28,7 @@ public class BomberEnemy : MonoBehaviour
         healthBarScript = GetComponent<EnemyHealthBar>();
         spawnPoints = FindObjectOfType<SpawnPoints>();
         playerHealth = FindObjectOfType<PlayerHealth>();
+        potato = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -36,7 +40,7 @@ public class BomberEnemy : MonoBehaviour
  
     void DistanceCheck()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, playerHealth.transform.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, potato.position);
 
         if(distanceToPlayer <= initialOverlapRadius) // if the distance to the player is less than the radius of the sphere then start the coroutine.
         {
@@ -46,13 +50,14 @@ public class BomberEnemy : MonoBehaviour
 
     IEnumerator DelayBeforeDamage()
     {
-        yield return new WaitForSeconds(1.5f); // Modify that value for an increased or decreased delay.
+        yield return new WaitForSeconds(detonation); // Modify that value for an increased or decreased delay.
 
         OverlappingPlayer();
 
         if(gameObject != null)
         {
             initialOverlapRadius = increasedOverlapRadius;
+            spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(gameObject);
         }
     }
@@ -96,7 +101,9 @@ public class BomberEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Weapon"))
+        Weapon weapon = other.GetComponent<Weapon>();
+
+        if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
         {
             TakeDamage(4);
         }

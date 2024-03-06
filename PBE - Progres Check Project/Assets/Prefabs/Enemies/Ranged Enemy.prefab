@@ -474,7 +474,7 @@ MonoBehaviour:
   range: 0
   fireRate: 0
   resetFireRate: 2
-  bulletPrefab: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
+  bulletPrefab: {fileID: 2369225003101911904, guid: 3d8241eda1af6954cbc993444517e17d, type: 3}
   spawnPoint: {fileID: 4680087029566467241}
 --- !u!114 &2168054732255361673
 MonoBehaviour:

@@ -163,10 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4f8e49b9ed69d438e06e7c044454f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialOverlapRadius: 3
+  initialOverlapRadius: 6
   increasedOverlapRadius: 10
   maxHealth: 1
   damageToPlayer: 7
+  detonation: 2
   damagingObjects:
     serializedVersion: 2
     m_Bits: 192

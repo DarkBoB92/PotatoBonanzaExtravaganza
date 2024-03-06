@@ -12,7 +12,8 @@ public class UIToggle : MonoBehaviour
     {
         if (sliderObject.value == 0)
         {
-            Destroy(player); player = null;
+            Destroy(player); 
+            player = null;
             canvasObject.SetActive(false);
         }
         else

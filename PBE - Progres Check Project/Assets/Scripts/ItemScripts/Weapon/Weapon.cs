@@ -30,7 +30,7 @@ public class Weapon : Collectible
 
     private void OnTriggerEnter(Collider other)
     {
-        //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
+        //Used player for logic connection
         player = other.gameObject;
         if (player.tag == "Player")
         {
