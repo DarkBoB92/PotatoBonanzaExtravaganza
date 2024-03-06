@@ -1,24 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonBump : MonoBehaviour
 {
     private bool isHover;
+    private Coroutine bumpCoroutine;
+    private Vector3 originalPosition;
+
+    private void Start()
+    {
+        originalPosition = transform.position;
+    }
 
     private void OnMouseEnter()
     {
-        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.MouseHover, transform.position, 0.2f);
-        StartCoroutine(Bump());
+        if (!isHover)
+        {
+            FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.MouseHover, transform.position, 0.2f);
+            bumpCoroutine = StartCoroutine(BumpUp());
+        }
     }
 
-    IEnumerator Bump()
+    private void OnMouseExit()
+    {
+        if (isHover)
+        {
+            StopCoroutine(bumpCoroutine);
+            StartCoroutine(BumpDown());
+        }
+    }
+
+    IEnumerator BumpUp()
     {
         float bumpDistance = 0.2f;
         float duration = 0.1f;
         float elapsedTime = 0f;
         Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + Vector3.back * bumpDistance;
+        Vector3 targetPos = originalPosition + Vector3.back * bumpDistance;
 
         isHover = true;
 
@@ -29,17 +47,23 @@ public class ButtonBump : MonoBehaviour
             yield return null;   // Don't wait any longer
         }
 
-        transform.position = targetPos;   // swap object position and target to ready for fall
-        elapsedTime = 0f;   // Reset elapsed variable
+        transform.position = targetPos;   // Set position to target position
+    }
+
+    IEnumerator BumpDown()
+    {
+        float duration = 0.1f;
+        float elapsedTime = 0f;
+        Vector3 startPos = transform.position;
 
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(targetPos, startPos, elapsedTime / duration);   // Smoothly move between origin to target
+            transform.position = Vector3.Lerp(startPos, originalPosition, elapsedTime / duration);   // Smoothly move between current position and original position
             elapsedTime += Time.deltaTime;
             yield return null;   // Don't wait any longer
         }
 
-        transform.position = startPos;   // reset position to original start position in any chance this wasnt already done
+        transform.position = originalPosition;   // Set position to original position
         isHover = false;
     }
 }
