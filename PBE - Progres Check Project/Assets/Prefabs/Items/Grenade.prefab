@@ -122,10 +122,17 @@ MonoBehaviour:
   type: 2
   minPower: 0
   maxPower: 0
+  explosionRadius: 3
   potatoPower: 0
   acutalPower: 0
+  damageToEnemies: 3
   player: {fileID: 0}
   ammo: {fileID: 0}
+  playerHealth: {fileID: 0}
+  enemyHealth: {fileID: 0}
+  damagingObjects:
+    serializedVersion: 2
+    m_Bits: 192
   lifeTime: 3
   shooted: 0
   isGranade: 0
@@ -137,7 +144,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2369225003101911904}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

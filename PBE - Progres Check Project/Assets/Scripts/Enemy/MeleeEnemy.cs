@@ -32,8 +32,16 @@ public class MeleeEnemy : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
         {
-            health.TakeDamage(4);
-            Destroy(other.gameObject);
+            if (weapon.isGranade)
+            {
+                weapon.OverlappingPlayer();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                health.TakeDamage(4);
+                Destroy(other.gameObject);
+            }
         }
     }
 }

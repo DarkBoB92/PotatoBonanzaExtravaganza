@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7843207836824655500}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4680087029566467241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8860798684455633552}
   - component: {fileID: 3220385476109110506}
   - component: {fileID: 8283869271272297850}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 4208076122813162688}
   - component: {fileID: 713470332928284135}
   - component: {fileID: 6711217208087725566}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 192509434592795144}
   - component: {fileID: 8902746907560005915}
   - component: {fileID: 1969768518706716592}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 2168054732255361673}
   - component: {fileID: 7529383671912746630}
   - component: {fileID: 582570022146993376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ranged Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3259376146502791226}
   - component: {fileID: 315376683085591839}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,6 +664,10 @@ PrefabInstance:
     - target: {fileID: 7998787685313564408, guid: 42c9706c80cf3864899e7a298cb0aced, type: 3}
       propertyPath: m_Name
       value: Dust Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998787685313564408, guid: 42c9706c80cf3864899e7a298cb0aced, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

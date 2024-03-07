@@ -806,6 +806,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 702776654}
     - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: throwForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: knifeAmmoText
       value: 
       objectReference: {fileID: 828275022}
@@ -813,6 +817,14 @@ PrefabInstance:
       propertyPath: timerAmmoText
       value: 
       objectReference: {fileID: 702776656}
+    - target: {fileID: 5354878600001596545, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354878600001596545, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7045657566338801221, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1140,7 +1152,7 @@ MonoBehaviour:
   waveValue: 0
   difficultyMultiplier: 20
   waveDuration: 0
-  spawnRate: 0
+  spawnRate: 0.5
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
 --- !u!4 &1755881993
