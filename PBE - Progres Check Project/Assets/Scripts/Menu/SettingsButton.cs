@@ -7,6 +7,14 @@ public class SettingsButton : MonoBehaviour
 {
     [SerializeField] Image settingsBackground;
     [SerializeField] GameObject buttons;
+    [SerializeField] GameObject volumeSlider;
+
+
+
+    private void Start()
+    {
+        volumeSlider.SetActive(false);
+    }
 
     private void OnMouseUpAsButton()
     {
@@ -23,7 +31,10 @@ public class SettingsButton : MonoBehaviour
             settingsBackground.color = tempColor;
             yield return new WaitForSeconds(0.01f);
         }
+        yield return new WaitForSeconds(0.5f);
         buttons.SetActive(false);
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
+        volumeSlider.SetActive(true);
 
     }
 }
