@@ -7,6 +7,7 @@ public class BackButton : MonoBehaviour
 {
     [SerializeField] Image settingsBackground;
     [SerializeField] GameObject buttons;
+    [SerializeField] GameObject volumeSlider;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class BackButton : MonoBehaviour
     IEnumerator SettingsFadeOut()
     {
         FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonBack, transform.position, 0.5f);
+        volumeSlider.SetActive(false);
         buttons.SetActive(true);
         Color tempColor = settingsBackground.color;
         while (tempColor.a >= 0)
