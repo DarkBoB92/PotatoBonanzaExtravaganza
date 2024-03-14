@@ -160,4 +160,17 @@ public class PlayerController : MonoBehaviour
             return (success: false, position: Vector3.zero);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        var (success, position) = GetMousePosition();
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(position, 0.5f);
+        var ray = secondaryCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        {
+            Gizmos.DrawLine(secondaryCamera.transform.position, hitInfo.point);
+        }
+
+    }
 }
