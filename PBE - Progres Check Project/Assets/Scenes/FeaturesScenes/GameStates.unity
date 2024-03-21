@@ -667,6 +667,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6001482662835967749, guid: 2dd7cd70d45e28f4fb821f792d3016fe, type: 3}
+      propertyPath: m_Name
+      value: GameOver
+      objectReference: {fileID: 0}
     - target: {fileID: 7128634802714442709, guid: 2dd7cd70d45e28f4fb821f792d3016fe, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

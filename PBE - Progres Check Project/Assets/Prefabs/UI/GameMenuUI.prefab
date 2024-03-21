@@ -3067,7 +3067,7 @@ MonoBehaviour:
   videoSettingsPanel: {fileID: 6313123404213060650}
   audioSettingsPanel: {fileID: 3497839897717309306}
   controlSettingsPanel: {fileID: 5420373274775018664}
-  gameOverPanel: {fileID: 0}
+  gameOverPanel: {fileID: 7150121030716203937}
   titleText: {fileID: 4677455439599488825}
   currentPanel: {fileID: 0}
   saveScreen: 0
@@ -3075,6 +3075,7 @@ MonoBehaviour:
   videoSettingsScreen: 0
   audioSettingsScreen: 0
   controlSettingsScreen: 0
+  playerIsDead: 0
   texts: []
   audioMixer: {fileID: 0}
   currentButton: {fileID: 0}

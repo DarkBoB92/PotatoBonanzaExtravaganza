@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider staminaSlider2;
     private Vector3 mousePos;
     private bool isSprint, staminaZero;
-    public bool dead;
     Rigidbody rb;
     Transform tf;
     GameUIManager gameUIManager;
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
             Aim();
             GetInput();
             CalculateMovement();
-            gameUIManager.playerIsDead = dead;
         }
     }
 

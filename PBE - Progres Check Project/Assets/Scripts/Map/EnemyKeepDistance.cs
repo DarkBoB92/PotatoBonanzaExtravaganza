@@ -16,11 +16,14 @@ public class EnemyKeepDistance : MonoBehaviour
     }
 
     void Update()
-    {     
-        distance = Vector3.Distance(transform.position, potato.transform.position);
-        SetPosition();
-        SetSpeed();
-        FollowDirection();
+    {
+        if (potato != null)
+        {
+            distance = Vector3.Distance(transform.position, potato.transform.position);
+            SetPosition();
+            SetSpeed();
+            FollowDirection();
+        }
     }
 
     void SetPosition()

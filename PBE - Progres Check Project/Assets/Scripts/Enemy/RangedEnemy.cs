@@ -60,17 +60,20 @@ public class RangedEnemy : MonoBehaviour
         {
             health.TakeDamage(2);
         }
-        else if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+        else if (weapon != null)
         {
-            if (weapon.isGranade)
+            if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
             {
-                weapon.OverlappingPlayer();
-                Destroy(other.gameObject);
-            }
-            else
-            {
-                health.TakeDamage(4);
-                Destroy(other.gameObject);
+                if (weapon.isGranade)
+                {
+                    weapon.OverlappingPlayer();
+                    Destroy(other.gameObject);
+                }
+                else
+                {
+                    health.TakeDamage(4);
+                    Destroy(other.gameObject);
+                }
             }
         }
     }
