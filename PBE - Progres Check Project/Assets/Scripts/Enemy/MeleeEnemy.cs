@@ -13,6 +13,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Spawn, transform.position, 1f);
         currentHealth = maxHealth;
         healthBar = GetComponent<EnemyHealthBar>();
         health = GetComponent<PlayerHealth>();

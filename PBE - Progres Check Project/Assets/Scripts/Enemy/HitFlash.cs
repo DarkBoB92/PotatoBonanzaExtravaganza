@@ -10,24 +10,18 @@ public class HitFlash : MonoBehaviour
     [SerializeField] private MeshRenderer[] mr;
     [SerializeField] private Material[] originalMaterial;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(FlashRoutine());
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Weapon")
         {
+            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
             StartCoroutine(FlashRoutine());
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-            StartCoroutine(FlashRoutine());
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
+        StartCoroutine(FlashRoutine());
     }
 
     IEnumerator FlashRoutine()

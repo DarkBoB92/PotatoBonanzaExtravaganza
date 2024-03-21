@@ -24,6 +24,7 @@ public class BomberEnemy : MonoBehaviour
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
     {
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Spawn, transform.position, 1f);
         currentHealth = maxHealth;
 
         healthBarScript = GetComponent<EnemyHealthBar>();
