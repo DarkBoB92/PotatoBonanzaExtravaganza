@@ -41,12 +41,12 @@ public class Weapon : Collectible
         {
             Collected();
             ammo.AddAmmo();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if (other.gameObject.tag == "Ground")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -55,7 +55,7 @@ public class Weapon : Collectible
         if (collision.gameObject.tag == "Player" && !shooted)
         {
             ammo.AddGrenade();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
@@ -76,14 +76,14 @@ public class Weapon : Collectible
         print(lifeTime);
         if(lifeTime <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
     void Explode()
     {
         OverlappingPlayer();
-        Destroy(gameObject);
+        Destroy(this.gameObject);
         Debug.Log("BOOOOOOOOOOOM!");
     }
 
