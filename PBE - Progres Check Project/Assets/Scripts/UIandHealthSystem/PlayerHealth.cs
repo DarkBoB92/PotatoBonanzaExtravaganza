@@ -51,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
         if (gameObject.tag == "Player")
         {
             healthBarScript.UpdateHealthBar(currentHealth, maxHealth);
+            gameObject.GetComponent<PlayerController>().dead = true;
         }
         else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
         {

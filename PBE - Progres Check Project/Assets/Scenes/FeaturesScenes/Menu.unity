@@ -1453,6 +1453,7 @@ GameObject:
   - component: {fileID: 1566655903}
   - component: {fileID: 1566655904}
   - component: {fileID: 1566655905}
+  - component: {fileID: 1566655906}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1589,6 +1590,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: 0
   mixer: {fileID: 24100000, guid: d10d4d9f11161924bbc333949a533cdc, type: 2}
+--- !u!114 &1566655906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566655898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f5fc567c2cfad478a97beaebfddd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  pauseMenuPanel: {fileID: 0}
+  saveFilePanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  videoSettingsPanel: {fileID: 0}
+  audioSettingsPanel: {fileID: 0}
+  controlSettingsPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  titleText: {fileID: 0}
+  currentPanel: {fileID: 0}
+  saveScreen: 0
+  settingsScreen: 0
+  videoSettingsScreen: 0
+  audioSettingsScreen: 0
+  controlSettingsScreen: 0
+  texts: []
+  audioMixer: {fileID: 0}
+  currentButton: {fileID: 0}
+  buttons: []
 --- !u!1 &1641062131
 GameObject:
   m_ObjectHideFlags: 0
