@@ -57,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
                 spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(gameObject);
                 GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
