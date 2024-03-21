@@ -18,7 +18,8 @@ public class BomberEnemy : MonoBehaviour
     PlayerHealth enemyHealth;
     EnemyHealthBar healthBarScript;
     SpawnPoints spawnPoints;
-    Transform potato;
+    GameObject potato;
+    Transform potatoPos;
 
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
@@ -28,7 +29,8 @@ public class BomberEnemy : MonoBehaviour
         healthBarScript = GetComponent<EnemyHealthBar>();
         spawnPoints = FindObjectOfType<SpawnPoints>();
         playerHealth = FindObjectOfType<PlayerHealth>();
-        potato = GameObject.FindGameObjectWithTag("Player").transform;
+        potato = GameObject.FindGameObjectWithTag("Player");
+        potatoPos = potato.transform;
     }
 
     void Update()
@@ -40,11 +42,14 @@ public class BomberEnemy : MonoBehaviour
  
     void DistanceCheck()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, potato.position);
-
-        if(distanceToPlayer <= initialOverlapRadius) // if the distance to the player is less than the radius of the sphere then start the coroutine.
+        if (potato != null)
         {
-            StartCoroutine(DelayBeforeDamage());
+            float distanceToPlayer = Vector3.Distance(transform.position, potatoPos.position);
+
+            if (distanceToPlayer <= initialOverlapRadius) // if the distance to the player is less than the radius of the sphere then start the coroutine.
+            {
+                StartCoroutine(DelayBeforeDamage());
+            }
         }
     }
 
@@ -103,9 +108,12 @@ public class BomberEnemy : MonoBehaviour
     {
         Weapon weapon = other.GetComponent<Weapon>();
 
-        if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+        if (weapon != null)
         {
-            TakeDamage(4);
+            if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+            {
+                TakeDamage(4);
+            }
         }
     }
 

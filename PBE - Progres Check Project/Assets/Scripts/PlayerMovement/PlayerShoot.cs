@@ -13,11 +13,12 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] float fireRate, throwForce;
     [SerializeField] TextMeshProUGUI knifeAmmoText, timerAmmoText;
     bool isGrenade;
-
+    GameUIManager gameUIManager;
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
         knifeAmmoText.text = ammo.ToString();
         timerAmmoText.text = grenades.ToString();
     }
@@ -25,16 +26,19 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && ammo > 0)
+        if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {
-            ShootBullet();
+            if (Input.GetButtonDown("Fire1") && ammo > 0)
+            {
+                ShootBullet();
 
-            StartCoroutine(ShootBulletHold());
-        }
+                StartCoroutine(ShootBulletHold());
+            }
 
-        if (Input.GetButtonDown("Fire2") && grenades > 0)
-        {
-            ThrowGrenade();
+            if (Input.GetButtonDown("Fire2") && grenades > 0)
+            {
+                ThrowGrenade();
+            }
         }
         knifeAmmoText.text = ammo.ToString();
         timerAmmoText.text = grenades.ToString();

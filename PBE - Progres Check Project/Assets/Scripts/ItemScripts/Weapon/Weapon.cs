@@ -19,8 +19,10 @@ public class Weapon : Collectible
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = FindObjectOfType<PlayerHealth>();
-        ammo = player.GetComponent<PlayerShoot>();
-        
+        if (player != null)
+        {
+            ammo = player.GetComponent<PlayerShoot>();
+        }
     }
 
     private void Update()

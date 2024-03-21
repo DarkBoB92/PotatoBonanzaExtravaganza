@@ -14,7 +14,10 @@ public class EnemyWeapon : Collectible
     private void Start()
     {    
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
     }
 
     private void Update()

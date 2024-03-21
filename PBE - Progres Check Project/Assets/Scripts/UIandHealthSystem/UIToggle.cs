@@ -8,17 +8,25 @@ public class UIToggle : MonoBehaviour
     [SerializeField] private GameObject canvasObject;
     [SerializeField] private GameObject player;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void Update()
     {
-        if (sliderObject.value == 0)
+        if (player != null)
         {
-            Destroy(player); 
-            player = null;
-            canvasObject.SetActive(false);
-        }
-        else
-        {
-            canvasObject.SetActive(true);
+            if (sliderObject.value == 0)
+            {
+                Destroy(player);
+                player = null;
+                canvasObject.SetActive(false);
+            }
+            else
+            {
+                canvasObject.SetActive(true);
+            }
         }
     }
 }

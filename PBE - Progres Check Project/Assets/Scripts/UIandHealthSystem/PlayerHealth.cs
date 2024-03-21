@@ -12,9 +12,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] int maxHealth = 10;
     [SerializeField] private float damageCooldown = 1.5f;
-    int currentHealth;
+    public int currentHealth;
     private float delayBetweenDamage;
-
     private SpawnPoints spawnPoints;
 
     // Main Loops --------------------------------------------------------------------------------- 

@@ -22,7 +22,10 @@ public class FollowCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3  targetPosition = target.position + offset;   // Calculate the desired position of the camera, stored into a new Vector3
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);   // Moves the camera to the targetPosition Vector3 values smoothly using a dampening factor
+        if (target != null)
+        {
+            Vector3 targetPosition = target.position + offset;   // Calculate the desired position of the camera, stored into a new Vector3
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);   // Moves the camera to the targetPosition Vector3 values smoothly using a dampening factor
+        }
     }
 }

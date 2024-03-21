@@ -1334,7 +1334,7 @@ MonoBehaviour:
   waveValue: 0
   difficultyMultiplier: 20
   waveDuration: 0
-  spawnRate: 0.5
+  spawnRate: 0.7
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
 --- !u!4 &1755881993
