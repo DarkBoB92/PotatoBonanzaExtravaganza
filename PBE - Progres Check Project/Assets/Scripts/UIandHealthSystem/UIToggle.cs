@@ -15,18 +15,18 @@ public class UIToggle : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
-        {
-            if (sliderObject.value == 0)
-            {
-                Destroy(player);
-                player = null;
-                canvasObject.SetActive(false);
-            }
-            else
-            {
-                canvasObject.SetActive(true);
-            }
-        }
+        //if (player != null)
+        //{
+        //    if (sliderObject.value == 0)
+        //    {
+        //        Destroy(player);
+        //        player = null;
+        //        canvasObject.SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        canvasObject.SetActive(true);
+        //    }
+        //}
     }
 }

@@ -34,7 +34,7 @@ public class EnemyWeapon : Collectible
         if (player.tag == "Player")
         {
             playerHealth.TakeDamage(damage);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -44,7 +44,7 @@ public class EnemyWeapon : Collectible
         print(lifeTime);
         if(lifeTime <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

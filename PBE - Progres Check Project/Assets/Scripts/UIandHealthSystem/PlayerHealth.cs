@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     private float delayBetweenDamage;
     private SpawnPoints spawnPoints;
+    GameUIManager gameUIManager;
 
     // Main Loops --------------------------------------------------------------------------------- 
 
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         delayBetweenDamage = Time.time;
         currentHealth = maxHealth;
         spawnPoints = FindObjectOfType<SpawnPoints>();
+        gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
     }
 
     // Functions ---------------------------------------------------------------------------------- 
@@ -49,19 +51,35 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         if (gameObject.tag == "Player")
         {
-            healthBarScript.UpdateHealthBar(currentHealth, maxHealth);
+            healthBarScript.UpdateHealthBar(currentHealth, maxHealth);           
         }
         else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
         {
-            enemyBarScript.UpdateHealthBar(currentHealth, maxHealth);
+            enemyBarScript.UpdateHealthBar(currentHealth, maxHealth);            
+        }
 
-            if (currentHealth <= 0)
+        if (currentHealth <= 0)
+        {
+            if (gameObject.tag == "Player")
+            {
+                if (currentHealth <= 0)
+                {                    
+                    if (gameUIManager != null)
+                    {
+                        Debug.Log("UwU");
+                        this.gameObject.SetActive(false);
+                        gameUIManager.CheckGameState(GameUIManager.GameState.GameOver);                        
+                    }
+                }
+            }
+            else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
             {
                 spawnPoints.RemoveEnemyFromList(gameObject);
-                Destroy(gameObject);
+                Destroy(this.gameObject);
                 GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
                 Debug.Log("Weapon spawned!! :3");
             }
+
         }
     }
 

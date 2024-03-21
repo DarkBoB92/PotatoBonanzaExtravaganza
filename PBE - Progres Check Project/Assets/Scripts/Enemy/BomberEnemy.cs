@@ -63,7 +63,7 @@ public class BomberEnemy : MonoBehaviour
         {
             initialOverlapRadius = increasedOverlapRadius;
             spawnPoints.RemoveEnemyFromList(gameObject);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
     /// <summary>
@@ -100,7 +100,7 @@ public class BomberEnemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             spawnPoints.RemoveEnemyFromList(gameObject);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 

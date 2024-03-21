@@ -12,14 +12,12 @@ public class GameUIManager : MonoBehaviour
 {
     public enum GameState { MainMenu, Paused, Playing, GameOver };
     public GameState currentState;
-    public GameObject allGameUI, pauseMenuPanel, saveFilePanel, settingsPanel, videoSettingsPanel, audioSettingsPanel, controlSettingsPanel, gameOverPanel, titleText, currentPanel, player;
+    public GameObject allGameUI, pauseMenuPanel, saveFilePanel, settingsPanel, videoSettingsPanel, audioSettingsPanel, controlSettingsPanel, gameOverPanel, titleText, currentPanel;
     public bool saveScreen, settingsScreen, videoSettingsScreen, audioSettingsScreen, controlSettingsScreen, playerIsDead;
     public TMP_Text[] texts;
     public AudioMixer audioMixer;
     public Button currentButton;
     public Button[] buttons;
-    //[SerializeField] PlayerHealth player;
-
 
     private void Awake()
     {
@@ -34,8 +32,6 @@ public class GameUIManager : MonoBehaviour
 
         texts = GetComponentsInChildren<TMP_Text>(true);       
         buttons = GetComponentsInChildren<Button>(false);
-        player = GameObject.FindGameObjectWithTag("Player");
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     public void CheckGameState(GameState newGameState)
@@ -116,7 +112,6 @@ public class GameUIManager : MonoBehaviour
     void Update()
     {
         CheckInputs();
-        CheckPLayerStatus();
     }
 
     void CheckInputs()
@@ -133,15 +128,7 @@ public class GameUIManager : MonoBehaviour
                 CheckGameState(GameState.Playing);
             }
         }
-    }
-
-    void CheckPLayerStatus()
-    {
-        if(player.IsDestroyed())
-        {
-            currentState = GameState.GameOver;
-        }
-    }
+    }    
 
     public void StartGame()
     {
