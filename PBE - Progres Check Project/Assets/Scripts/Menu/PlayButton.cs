@@ -14,6 +14,6 @@ public class PlayButton : MonoBehaviour
     {
         FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("HitFlash");
     }
 }
