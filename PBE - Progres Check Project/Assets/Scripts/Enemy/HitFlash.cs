@@ -9,17 +9,27 @@ public class HitFlash : MonoBehaviour
     [SerializeField] private float duration = 0.15f;
     [SerializeField] private MeshRenderer[] mr;
     [SerializeField] private Material[] originalMaterial;
+    [SerializeField] private ShakeCamera shake;
+
+
+
+    private void Start()
+    {
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<ShakeCamera>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Weapon")
         {
+            shake.CamShake();
             FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
             StartCoroutine(FlashRoutine());
         }
     }
     private void OnTriggerEnter(Collider other)
     {
+        shake.CamShake();
         FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
         StartCoroutine(FlashRoutine());
     }
