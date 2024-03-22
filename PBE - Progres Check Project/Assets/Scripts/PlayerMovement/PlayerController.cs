@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isSprint, staminaZero;
     Rigidbody rb;
     Transform tf;
+    GameUIManager gameUIManager;
 
     private CapsuleCollider2D col;
     private GameObject Player;
@@ -28,14 +29,18 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         Player = GameObject.FindWithTag("Player");
+        gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
         psObject.SetActive(false);
     }
 
     private void Update()
     {
-        Aim();
-        GetInput();
-        CalculateMovement();
+        if (gameUIManager.currentState == GameUIManager.GameState.Playing)
+        {
+            Aim();
+            GetInput();
+            CalculateMovement();
+        }
     }
 
     private void FixedUpdate()
@@ -45,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetInput()
     {
+
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (!isSprint && Input.GetKeyDown(KeyCode.LeftShift))   // Press Shift = Sprint
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour
             isSprint = false;
             ps.emissionRate = 15;
         }
+
     }
 
     private void CalculateMovement()
@@ -141,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
         if (success)
         {
-            var direction = position - transform.position;
+            Vector3 direction = position - transform.position;
             direction.y = 0;
             transform.forward = direction;
         }
@@ -149,9 +156,9 @@ public class PlayerController : MonoBehaviour
 
     private (bool success, Vector3 position) GetMousePosition()
     {
-        var ray = secondaryCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = secondaryCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, groundMask))
         {
             return (success: true, position: hitInfo.point);
         }
@@ -159,5 +166,18 @@ public class PlayerController : MonoBehaviour
         {
             return (success: false, position: Vector3.zero);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        var (success, position) = GetMousePosition();
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(position, 0.5f);
+        var ray = secondaryCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        {
+            Gizmos.DrawLine(secondaryCamera.transform.position, hitInfo.point);
+        }
+
     }
 }

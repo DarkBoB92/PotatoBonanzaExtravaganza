@@ -15,7 +15,10 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
-        enemy.SetDestination(potato.transform.position);
+        if (potato != null)
+        {
+            enemy.SetDestination(potato.transform.position);
+        }
     }
 }
 

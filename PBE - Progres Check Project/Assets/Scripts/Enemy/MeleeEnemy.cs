@@ -24,15 +24,27 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {        
+        Weapon weapon = other.GetComponent<Weapon>();
         if (other.gameObject.CompareTag("Player"))
         {
             health.TakeDamage(2);
         }
-        else if (other.gameObject.CompareTag("Weapon"))
-        {
-            health.TakeDamage(4);
-            Destroy(other.gameObject);
+        else if (weapon != null)
+        {  
+           if(other.gameObject.CompareTag("Weapon") && weapon.shooted)
+           {
+               if (weapon.isGranade)
+               {
+                   weapon.OverlappingPlayer();
+                   Destroy(other.gameObject);
+               }
+               else
+               {
+                   health.TakeDamage(4);
+                   Destroy(other.gameObject);
+               }
+           }
         }
     }
 }

@@ -5387,7 +5387,7 @@ GameObject:
   - component: {fileID: 4810719984967002718}
   - component: {fileID: 410647240707990875}
   - component: {fileID: 5105922612709979081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Potato
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5479,7 +5479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677b446e85804114ebcb0774e785fa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   sprintSpeed: 5
   inputVector: {x: 0, y: 0, z: 0}
   moveVector: {x: 0, y: 0, z: 0}

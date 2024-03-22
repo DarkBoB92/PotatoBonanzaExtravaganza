@@ -54,14 +54,27 @@ public class RangedEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Weapon weapon = other.GetComponent<Weapon>();
+
         if (other.gameObject.CompareTag("Player"))
         {
             health.TakeDamage(2);
         }
-        else if (other.gameObject.CompareTag("Weapon"))
+        else if (weapon != null)
         {
-            health.TakeDamage(4);
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+            {
+                if (weapon.isGranade)
+                {
+                    weapon.OverlappingPlayer();
+                    Destroy(other.gameObject);
+                }
+                else
+                {
+                    health.TakeDamage(4);
+                    Destroy(other.gameObject);
+                }
+            }
         }
     }
 }

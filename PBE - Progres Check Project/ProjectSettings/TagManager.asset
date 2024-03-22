@@ -9,6 +9,7 @@ TagManager:
   - Bomber
   - Enemy
   - Ground
+  - UIManager
   layers:
   - Default
   - TransparentFX

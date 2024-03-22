@@ -377,6 +377,92 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &825455725687447435
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5068980991632372441}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.85714287
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.85714287
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.85714287
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3219761744108584998, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
+    - target: {fileID: -862821465182500461, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca78a3b48e8b6a1498a4563993d93838, type: 2}
+    - target: {fileID: -730010648731057305, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
+    - target: {fileID: 919132149155446097, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+      propertyPath: m_Name
+      value: Meat Tenderizer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+--- !u!4 &936224146291226720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 13f23929283d8f148b2154c9972a21eb, type: 3}
+  m_PrefabInstance: {fileID: 825455725687447435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4742882114759365938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,6 +531,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 79fe2487302d77d488a5519298d5d6ea, type: 2}
+    - target: {fileID: -6254576130858204229, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 635547659545568360, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       propertyPath: m_Name
       value: Evil Carrot
@@ -461,6 +555,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6657560127643677590, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032823420476312315, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -470,6 +572,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5596280669646326736}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 936224146291226720}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
       insertIndex: -1

@@ -1,38 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
     public int ammo, grenades;
-    [SerializeField] GameObject bulletPrefab, grenadePrefab;
+    [SerializeField] GameObject bulletPrefab, grenadePrefab, knifeAmmo, timerAmmo;
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform bulletSpawnPoint, grenadeSpawnPoint;
     [SerializeField] float fireRate, throwForce;
+    [SerializeField] TextMeshProUGUI knifeAmmoText, timerAmmoText;
     bool isGrenade;
-
+    GameUIManager gameUIManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
+        knifeAmmoText.text = ammo.ToString();
+        timerAmmoText.text = grenades.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && ammo > 0)
+        if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {
-            ShootBullet();
+            if (Input.GetButtonDown("Fire1") && ammo > 0)
+            {
+                ShootBullet();
 
-            StartCoroutine(ShootBulletHold());
-        }
+                StartCoroutine(ShootBulletHold());
+            }
 
-        if (Input.GetButtonDown("Fire2") && grenades > 0)
-        {
-            ThrowGrenade();
+            if (Input.GetButtonDown("Fire2") && grenades > 0)
+            {
+                ThrowGrenade();
+            }
         }
+        knifeAmmoText.text = ammo.ToString();
+        timerAmmoText.text = grenades.ToString();
     }
 
     void ShootBullet()
@@ -42,6 +51,7 @@ public class PlayerShoot : MonoBehaviour
         bulletSpawned.GetComponent<Weapon>().shooted = true;
         bulletSpawned.GetComponent<Weapon>().isGranade = false;
         ammo--;
+
     }
 
     void ThrowGrenade()

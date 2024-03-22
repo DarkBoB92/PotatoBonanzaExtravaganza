@@ -5,10 +5,12 @@ using UnityEngine;
 public class Weapon : Collectible 
 {
     //Variables and references are declerade as SerializedField for testing purpose
-    [SerializeField] float minPower, maxPower; //Range values to apply a random damage value for the weapon
-    [SerializeField] int potatoPower, acutalPower; //Temporary variable to check functionality of the script
+    [SerializeField] float minPower, maxPower, explosionRadius; //Range values to apply a random damage value for the weapon
+    [SerializeField] int potatoPower, acutalPower, damageToEnemies; //Temporary variable to check functionality of the script
     [SerializeField] GameObject player;
     [SerializeField] PlayerShoot ammo;
+    [SerializeField] PlayerHealth playerHealth, enemyHealth;
+    [SerializeField] LayerMask damagingObjects;   // Use this for referencing any enemies that NEED to be damaged by this enemy AS LONG as they have different tags.
     [SerializeField] float lifeTime = 3;
     public bool shooted, isGranade;
 
@@ -16,8 +18,11 @@ public class Weapon : Collectible
     {        
         acutalPower = (int)Random.RandomRange(minPower, maxPower);
         player = GameObject.FindGameObjectWithTag("Player");
-        ammo = player.GetComponent<PlayerShoot>();
-        
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        if (player != null)
+        {
+            ammo = player.GetComponent<PlayerShoot>();
+        }
     }
 
     private void Update()
@@ -30,18 +35,18 @@ public class Weapon : Collectible
 
     private void OnTriggerEnter(Collider other)
     {
-        //Used player for logic connection, on collision takes the player components PlayerInventory and Throwable
+        //Used player for logic connection
         player = other.gameObject;
         if (player.tag == "Player")
         {
             Collected();
             ammo.AddAmmo();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         if (other.gameObject.tag == "Ground")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -50,17 +55,15 @@ public class Weapon : Collectible
         if (collision.gameObject.tag == "Player" && !shooted)
         {
             ammo.AddGrenade();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
         {
             Explode();
         }
     }
 
-    //This method is to add the weapons damage
-    //TODO: Need to pass the damage to the Player once we implement DamageSystem
     void Collected()
     {
         //potatoPower += acutalPower;
@@ -73,13 +76,37 @@ public class Weapon : Collectible
         print(lifeTime);
         if(lifeTime <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
     void Explode()
     {
-        Destroy(gameObject);
+        OverlappingPlayer();
+        Destroy(this.gameObject);
         Debug.Log("BOOOOOOOOOOOM!");
+    }
+
+    public void OverlappingPlayer()
+    {
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, explosionRadius, damagingObjects);
+
+        if (objectsInRange.Length > 0)
+        {
+            foreach (Collider obj in objectsInRange)
+            {
+
+                if (obj.CompareTag("Player") && playerHealth != null) // Null checks to make sure no NRE's happen.
+                {
+                    playerHealth = obj.GetComponent<PlayerHealth>();
+                    playerHealth.TakeDamage(2); // Inspector dependent variable. Can be removed if you want to internally modify [Enemy damage right below]
+                }
+                if (obj.CompareTag("Enemy") && playerHealth != null)
+                {
+                    enemyHealth = obj.GetComponent<PlayerHealth>();
+                    enemyHealth.TakeDamage(damageToEnemies); // Modify this value for damaging the enemies. Can do more if needed.
+                }
+            }
+        }
     }
 }
