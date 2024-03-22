@@ -74,7 +74,6 @@ public class SpawnPoints : MonoBehaviour
 
         if (roundedCountdown >= 0 || !countdownPrinted)
         {
-            Debug.Log(roundedCountdown);
             countdownPrinted = true;
         }
 

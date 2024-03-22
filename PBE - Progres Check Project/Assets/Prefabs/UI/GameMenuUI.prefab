@@ -3035,8 +3035,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4550181493132385676}
   - {fileID: 3163949406788590109}
+  - {fileID: 4550181493132385676}
   - {fileID: 4778004013278063850}
   - {fileID: 2632428223475143968}
   - {fileID: 7020026704614275188}
@@ -3070,6 +3070,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 7150121030716203937}
   titleText: {fileID: 4677455439599488825}
   currentPanel: {fileID: 0}
+  player: {fileID: 0}
   saveScreen: 0
   settingsScreen: 0
   videoSettingsScreen: 0
@@ -9671,13 +9672,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6043906369980031342}
   - {fileID: 3509510948945696329}
   - {fileID: 4434733183589310924}
   - {fileID: 3635318586900351347}
   - {fileID: 89028757163765584}
   - {fileID: 2369661975105546977}
   - {fileID: 2810299334611747802}
+  - {fileID: 6043906369980031342}
   m_Father: {fileID: 1509385062432921073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2144375, y: 0.40366545}

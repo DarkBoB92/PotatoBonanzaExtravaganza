@@ -24,6 +24,7 @@ public class BomberEnemy : MonoBehaviour
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
     {
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Spawn, transform.position, 1f);
         currentHealth = maxHealth;
 
         healthBarScript = GetComponent<EnemyHealthBar>();
@@ -61,6 +62,7 @@ public class BomberEnemy : MonoBehaviour
 
         if(gameObject != null)
         {
+            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
             initialOverlapRadius = increasedOverlapRadius;
             spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(this.gameObject);
@@ -99,6 +101,7 @@ public class BomberEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
             spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(this.gameObject);
         }

@@ -20,6 +20,11 @@ public class FollowCamera : MonoBehaviour
         offset = transform.position - target.position;   // Finds the vector difference between the applied GameObject and target GameObject, then stored into "offset"
     }
 
+    private void Start()
+    {
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Music, transform.position, 0.2f);
+    }
+
     private void LateUpdate()
     {
         if (target != null)
