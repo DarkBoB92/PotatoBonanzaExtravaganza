@@ -31,9 +31,6 @@ public class SpawnPoints : MonoBehaviour
     [Header("Rest Break Variables")]
     public float restDuration;
     private bool inBreak = false;
-    /*public int wavesPerBreak;
-    private int wavesSinceBreak = 0;
-    private float breakTimer = 0f;*/
 
     [SerializeField] private GameObject enemiesParent;
 

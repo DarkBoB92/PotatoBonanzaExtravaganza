@@ -17,9 +17,9 @@ public class PlayerShoot : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
-        //knifeAmmoText.text = ammo.ToString();
-        //timerAmmoText.text = grenades.ToString();
+    {
+        knifeAmmoText.text = ammo.ToString();
+        timerAmmoText.text = grenades.ToString();
     }
 
     // Update is called once per frame
@@ -36,8 +36,8 @@ public class PlayerShoot : MonoBehaviour
         {
             ThrowGrenade();
         }
-        //knifeAmmoText.text = ammo.ToString();
-        //timerAmmoText.text = grenades.ToString();
+        knifeAmmoText.text = ammo.ToString();
+        timerAmmoText.text = grenades.ToString();
     }
 
     void ShootBullet()
