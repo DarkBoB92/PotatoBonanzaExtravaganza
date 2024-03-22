@@ -123,6 +123,7 @@ public class GameUIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
             if (currentState == GameState.Playing)
             {
                 CheckGameState(GameState.Paused);
@@ -156,6 +157,7 @@ public class GameUIManager : MonoBehaviour
 
     public void SaveGame()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (!saveScreen)
         {
             saveFilePanel.SetActive(true);
@@ -185,6 +187,7 @@ public class GameUIManager : MonoBehaviour
 
     public void Settings()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (!settingsScreen)
         {
             settingsPanel.SetActive(true);
@@ -220,6 +223,7 @@ public class GameUIManager : MonoBehaviour
 
     public void VideoSettings()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (!videoSettingsScreen)
         {
             videoSettingsPanel.SetActive(true);
@@ -238,6 +242,7 @@ public class GameUIManager : MonoBehaviour
 
     public void AudioSettings()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (!audioSettingsScreen)
         {
             audioSettingsPanel.SetActive(true);
@@ -256,6 +261,7 @@ public class GameUIManager : MonoBehaviour
 
     public void ControlSettings()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (!controlSettingsScreen)
         {
             controlSettingsPanel.SetActive(true);
@@ -274,6 +280,7 @@ public class GameUIManager : MonoBehaviour
 
     public void Apply()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (currentPanel != null)
         {
             if (currentPanel == settingsPanel) //<---And Changes Have Been Made, if No changes have been made, just closes the settings
@@ -295,6 +302,7 @@ public class GameUIManager : MonoBehaviour
 
     public void Exit()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         if (currentPanel != null)
         {            
             {
@@ -315,16 +323,19 @@ public class GameUIManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         CheckGameState(GameState.Playing);
     }
 
     public void GameSaved()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         Debug.Log("Game Saved!");
     }
 
     public void GoToMainMenu()
     {
+        FindObjectOfType<MenuAudio>().AudioTrigger(MenuAudio.SoundFXCat.ButtonSelect, transform.position, 0.5f);
         SceneManager.LoadScene("Menu");
         CheckGameState(GameState.MainMenu);
     }
