@@ -78,7 +78,6 @@ public class PlayerHealth : MonoBehaviour
                 spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(this.gameObject);
                 GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
-                Debug.Log("Weapon spawned!! :3");
             }
 
         }
