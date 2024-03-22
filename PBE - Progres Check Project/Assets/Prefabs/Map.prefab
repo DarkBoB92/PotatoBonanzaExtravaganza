@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6663081010268542834}
   - component: {fileID: 5198809369474639989}
   - component: {fileID: 4874404491418618456}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Oven_Vents
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 795875777633649589}
   - component: {fileID: 5885953896711854267}
   - component: {fileID: 2686586651710758049}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Oven_Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,9 +453,9 @@ GameObject:
   - component: {fileID: 8884338187287014129}
   - component: {fileID: 1510522821717370679}
   - component: {fileID: 2135542106672295467}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Oven_Stove_Top
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,9 +537,9 @@ GameObject:
   - component: {fileID: 4156781207380200078}
   - component: {fileID: 3484003044438513928}
   - component: {fileID: 6454398178087037283}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Map
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,6 +565,7 @@ Transform:
   - {fileID: 6663081010268542834}
   - {fileID: 5149246482812669066}
   - {fileID: 2880220093726806836}
+  - {fileID: 6990911891571670473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4156781207380200078
@@ -660,6 +661,112 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: cebe1cea0899a4849a0687a5861be5dc, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &4151497843416404449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6990911891571670473}
+  - component: {fileID: 2326260846565734811}
+  - component: {fileID: 8257838286582564612}
+  - component: {fileID: 1169836102638128065}
+  m_Layer: 9
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6990911891571670473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151497843416404449}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.56222636, z: -0.62469596}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4448597282096408052}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2326260846565734811
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151497843416404449}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8257838286582564612
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151497843416404449}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1169836102638128065
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151497843416404449}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7788880079444230769
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,9 +778,9 @@ GameObject:
   - component: {fileID: 1565181916821661141}
   - component: {fileID: 8748806327940321250}
   - component: {fileID: 8048776768492837335}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Oven_Frame_and_Dials
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,9 +861,9 @@ GameObject:
   - component: {fileID: 2880220093726806836}
   - component: {fileID: 6471777563038204512}
   - component: {fileID: 4359578638595172092}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Oven_Windows
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +944,7 @@ GameObject:
   - component: {fileID: 7533816940302943898}
   - component: {fileID: 7952467696164096500}
   - component: {fileID: 4795094679020275827}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: OOB_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
