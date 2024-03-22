@@ -14,17 +14,26 @@ public class SpawnPoints : MonoBehaviour
     public List<GameObject> spawnEnemies = new List<GameObject>();
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // GameObject list is used as spawnedEnemies will be of type GameObject therefore tracking it by its type.
     [SerializeField] public Transform[] spawnPoint;
+    [Header("Wave Variables")]
     public int currentWave;
-    [HideInInspector] public int waveValue;
     public int difficultyMultiplier;
-    private bool countdownPrinted = false;
+    [HideInInspector] public int waveValue;
     private bool stopWaveIncrement = true;
 
     // Spawn Variables -----------------------------------------------------------------------------
+    [Header("Spawn Variables")]
     public int waveDuration; // How long the wave should last before moving on to next.
-    private float waveCountdown; // Countdown timer, how long is left.
     [SerializeField] public float spawnRate; // Enemy spawn rate.
     private float spawnDelay; // Enemy spawn delay.
+
+
+    // Rest Break Variables
+    [Header("Rest Break Variables")]
+    public float restDuration;
+    private bool inBreak = false;
+    /*public int wavesPerBreak;
+    private int wavesSinceBreak = 0;
+    private float breakTimer = 0f;*/
 
     [SerializeField] private GameObject enemiesParent;
 
@@ -67,31 +76,17 @@ public class SpawnPoints : MonoBehaviour
         }
 
 
-        waveCountdown -= Time.fixedDeltaTime;
-        waveCountdown = Mathf.Max(0, waveCountdown);
-
-        float roundedCountdown = Mathf.Round(waveCountdown);
-
-        if (roundedCountdown >= 0 || !countdownPrinted)
-        {
-            Debug.Log(roundedCountdown);
-            countdownPrinted = true;
-        }
-
-        if (roundedCountdown <= 0 && spawnedEnemies.Count == 0 && stopWaveIncrement)
+        //Debug.Log("Is in break " + inBreak + " spawned enemies " + spawnedEnemies.Count + " Stop Wave Increment " + stopWaveIncrement);
+        if (!inBreak && spawnedEnemies.Count == 0 && spawnEnemies.Count == 0 && stopWaveIncrement)
         {
             currentWave++;
-            if (currentWave <= 3)
+            if (currentWave > 3)
             {
-                CreatingWave();
+                StartCoroutine(RestBreak());
             }
             else
             {
-                currentWave = 1;
-                stopWaveIncrement = false;
-                Debug.Log("Max wave reached!");
                 CreatingWave();
-                Debug.Log("Restarting waves!");
             }
         }
     }
@@ -99,14 +94,13 @@ public class SpawnPoints : MonoBehaviour
 
     public void CreatingWave()
     {
-        stopWaveIncrement = true;
         waveValue = currentWave * difficultyMultiplier; // Scaling of the waves, on wave 2 there will be 20 points to spend and so on. Adjust the multiplier for a harder / easier difficulty curve.
         SpawningEnemies();
+        stopWaveIncrement = true;
 
         if (spawnEnemies.Count > 0)
         {
             float enemySpawnRate = spawnRate;
-            waveCountdown = waveDuration;
         }
 
         spawnedEnemies.Clear();
@@ -114,7 +108,6 @@ public class SpawnPoints : MonoBehaviour
     public void SpawningEnemies()
     {
         spawnEnemies.Clear();
-
         while (waveValue > 0 && enemies.Count > 0)
         {
             int randomEnemy = Random.Range(0, enemies.Count); // Random generation from 0 to the length of the List.
@@ -161,6 +154,19 @@ public class SpawnPoints : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator RestBreak()
+    {
+        inBreak = true;
+        Debug.Log("Rest started..");
+        yield return new WaitForSeconds(restDuration);
+        Debug.Log("Rest ended..");
+
+        currentWave = 1;
+        stopWaveIncrement = false;
+        inBreak = false;
+        CreatingWave();
     }
 
     public void RemoveEnemyFromList(GameObject enemy)

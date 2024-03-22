@@ -196,6 +196,14 @@ PrefabInstance:
       propertyPath: slider2
       value: 
       objectReference: {fileID: 478264221}
+    - target: {fileID: 4810719984967002718, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810719984967002718, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: maxHealth
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7045657566338801221, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -647,9 +655,9 @@ MonoBehaviour:
   enemies:
   - enemyP: {fileID: 5553910267651565667, guid: 981ffdf59429a044788a90a90388340e, type: 3}
     enemyValue: 1
-  - enemyP: {fileID: 3736915731119327756, guid: 5ab652ff4c63e6f4cbcabe18e7fcf796, type: 3}
+  - enemyP: {fileID: 8120018268914431050, guid: 9c0a028b37e7db247835fd0f7513f2cf, type: 3}
     enemyValue: 2
-  - enemyP: {fileID: 4736609795978825101, guid: 0bb948d14903df643a9973760c545f88, type: 3}
+  - enemyP: {fileID: 2529195569458886249, guid: 0e518c390d25a304686d8034df6f5895, type: 3}
     enemyValue: 2
   spawnEnemies: []
   spawnedEnemies: []
@@ -658,9 +666,11 @@ MonoBehaviour:
   - {fileID: 4307787353004337151, guid: 3b3aec6295b68324ba72d0bc9a5c3435, type: 3}
   - {fileID: 8373973030475168972, guid: 01bac63f967ac1143900c590708d726f, type: 3}
   currentWave: 1
-  waveValue: 0
   difficultyMultiplier: 5
+  waveValue: 0
   waveDuration: 20
+  spawnRate: 1
+  restDuration: 10
   enemiesParent: {fileID: 493899748}
   collision: {fileID: 0}
 --- !u!4 &1755881993

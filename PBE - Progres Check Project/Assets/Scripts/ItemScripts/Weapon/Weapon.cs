@@ -71,7 +71,7 @@ public class Weapon : Collectible
     void LifeTime()
     {
         lifeTime -= Time.deltaTime;
-        print(lifeTime);
+      //  print(lifeTime);
         if(lifeTime <= 0)
         {
             Destroy(gameObject);
