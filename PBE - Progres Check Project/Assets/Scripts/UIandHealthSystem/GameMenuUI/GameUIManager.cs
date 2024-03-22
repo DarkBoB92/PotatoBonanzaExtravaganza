@@ -21,7 +21,7 @@ public class GameUIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "PrototypeMenu")
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
             CheckGameState(GameState.MainMenu);
         }
@@ -132,7 +132,7 @@ public class GameUIManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameStates");
+        SceneManager.LoadScene("SampleScene");
         currentState = GameState.Playing;
     }
 
