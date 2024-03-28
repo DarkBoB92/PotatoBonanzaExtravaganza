@@ -8,14 +8,14 @@ public class ShakeCamera : MonoBehaviour
     public string isShake = "isShake";
     public Toggle screenShakeToggle;
 
-    private void Update()
-    {
-        Toggled();
-    }
+    
 
     public void CamShake()
     {
-        StartCoroutine(ShakeOnTime());
+        if (screenShakeToggle.isOn)
+        {
+            StartCoroutine(ShakeOnTime());
+        }
     }
 
     IEnumerator ShakeOnTime()
@@ -26,16 +26,15 @@ public class ShakeCamera : MonoBehaviour
         camAnim.SetBool(isShake, false);
     }
 
-    public void Toggled()
+    public void ToogleShakeCamera()
     {
         if (screenShakeToggle.isOn)
         {
-            CamShake();
-            Debug.Log("Boolean is true");
+            screenShakeToggle.isOn = false;
         }
         else
         {
-            camAnim.SetBool(isShake, false);
+            screenShakeToggle.isOn = true;
         }
     }
 }
