@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Collectible;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class PlayerShoot : MonoBehaviour
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
         bulletSpawned.GetComponent<Weapon>().shooted = true;
         bulletSpawned.GetComponent<Weapon>().isGranade = false;
+        bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
+        bulletSpawned.GetComponent<Weapon>().SetType();
         ammo--;
 
     }

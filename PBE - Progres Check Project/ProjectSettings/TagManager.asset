@@ -12,6 +12,7 @@ TagManager:
   - UIManager
   - ScreenShake
   - ScreenShakeTog
+  - Item
   layers:
   - Default
   - TransparentFX

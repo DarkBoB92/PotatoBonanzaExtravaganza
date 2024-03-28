@@ -16,7 +16,7 @@ public class Weapon : Collectible
 
     private void Start()
     {        
-        acutalPower = (int)Random.RandomRange(minPower, maxPower);
+        acutalPower = (int)Random.Range(minPower, maxPower);
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = FindObjectOfType<PlayerHealth>();
         if (player != null)
@@ -26,7 +26,7 @@ public class Weapon : Collectible
     }
 
     private void Update()
-    {
+    {        
         if (shooted && !isGranade)
         {
             LifeTime();

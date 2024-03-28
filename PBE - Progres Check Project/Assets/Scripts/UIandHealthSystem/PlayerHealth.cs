@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private EnemyHealthBar enemyBarScript;
     [SerializeField] private GameObject weapon;
     [SerializeField] int damage;
-    [SerializeField] int maxHealth = 10;
+    public int maxHealth = 10;
     [SerializeField] private float damageCooldown = 1.5f;
     public int currentHealth;
     private float delayBetweenDamage;
