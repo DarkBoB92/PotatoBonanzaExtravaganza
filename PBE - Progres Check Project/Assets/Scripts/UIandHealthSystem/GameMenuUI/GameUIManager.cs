@@ -80,7 +80,6 @@ public class GameUIManager : MonoBehaviour
         audioSettingsPanel.SetActive(false);
         controlSettingsPanel.SetActive(false);
         gameOverPanel.SetActive(false);
-        titleText.SetActive(false);
     }
 
     public void GamePaused()
@@ -93,7 +92,6 @@ public class GameUIManager : MonoBehaviour
         audioSettingsPanel.SetActive(false);
         controlSettingsPanel.SetActive(false);
         gameOverPanel.SetActive(false);
-        titleText.SetActive(true);
     }
 
     public void GameOver()
