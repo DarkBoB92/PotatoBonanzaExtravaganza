@@ -1,12 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShakeCamera : MonoBehaviour
 {
     public Animator camAnim;
     public string isShake = "isShake";
+    public Toggle screenShakeToggle;
 
-
+    private void Update()
+    {
+        Toggled();
+    }
 
     public void CamShake()
     {
@@ -19,5 +24,18 @@ public class ShakeCamera : MonoBehaviour
         camAnim.SetBool(isShake, true);
         yield return new WaitForSeconds(0.06f);
         camAnim.SetBool(isShake, false);
+    }
+
+    public void Toggled()
+    {
+        if (screenShakeToggle.isOn)
+        {
+            CamShake();
+            Debug.Log("Boolean is true");
+        }
+        else
+        {
+            camAnim.SetBool(isShake, false);
+        }
     }
 }
