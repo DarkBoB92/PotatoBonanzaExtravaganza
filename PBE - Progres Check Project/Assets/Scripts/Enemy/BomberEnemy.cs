@@ -102,8 +102,9 @@ public class BomberEnemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
-            spawnPoints.RemoveEnemyFromList(gameObject);
-            Destroy(this.gameObject);
+            OverlappingPlayer();
+            spawnPoints.RemoveEnemyFromList(gameObject);            
+            Destroy(gameObject);
         }
     }
 

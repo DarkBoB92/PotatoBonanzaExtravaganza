@@ -165,10 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4f8e49b9ed69d438e06e7c044454f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialOverlapRadius: 6
-  increasedOverlapRadius: 10
+  initialOverlapRadius: 2
+  increasedOverlapRadius: 6
   maxHealth: 1
-  damageToPlayer: 7
+  damageToPlayer: 5
   detonation: 2
   damagingObjects:
     serializedVersion: 2
@@ -258,6 +258,7 @@ MonoBehaviour:
   - {fileID: -1580535799172915004, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
   - {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
   - {fileID: 2100000, guid: b633de1d39320dd408e8214f23619c0e, type: 2}
+  shake: {fileID: 0}
 --- !u!1 &2790896655533119029
 GameObject:
   m_ObjectHideFlags: 0
