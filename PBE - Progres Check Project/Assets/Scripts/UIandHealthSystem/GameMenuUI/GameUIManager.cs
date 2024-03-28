@@ -85,7 +85,7 @@ public class GameUIManager : MonoBehaviour
 
     public void GamePaused()
     {
-        allGameUI.SetActive(true);
+        allGameUI.SetActive(false);
         pauseMenuPanel.SetActive(true);
         saveFilePanel.SetActive(false);
         settingsPanel.SetActive(false);
