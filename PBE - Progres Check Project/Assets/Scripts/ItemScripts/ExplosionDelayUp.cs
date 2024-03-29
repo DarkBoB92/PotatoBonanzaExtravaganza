@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPowerUp : Collectible
+public class ExplosionDelayUp : Collectible
 {
     PlayerShoot player;
+    float maxDelayReduction = 2.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,15 +17,19 @@ public class WeaponPowerUp : Collectible
     {
         if (collision.gameObject.tag == "Player")
         {
-            DamageUp();
+            ReduceDelay();
             Destroy(this.gameObject);
         }
     }
-    void DamageUp()
+    void ReduceDelay()
     {
-        if(player != null)
+        if (player != null)
         {
-            player.damageIncrement++;
+            player.delayReduction += 0.5f;
+            if (player.delayReduction > maxDelayReduction)
+            {
+                player.delayReduction = maxDelayReduction;
+            }
         }
     }
 }

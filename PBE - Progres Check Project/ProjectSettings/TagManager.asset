@@ -13,6 +13,7 @@ TagManager:
   - ScreenShake
   - ScreenShakeTog
   - Item
+  - CameraPOV
   layers:
   - Default
   - TransparentFX

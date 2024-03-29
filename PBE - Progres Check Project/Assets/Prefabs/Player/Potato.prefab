@@ -83,6 +83,135 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &352202729939671811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6644602778478867086}
+  m_Layer: 0
+  m_Name: KnifeThrowPosition05
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6644602778478867086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352202729939671811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.45, y: 2.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4487290915251388552}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &705629313324074322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3914492089188979014}
+  m_Layer: 0
+  m_Name: KnifeThrowPosition04
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3914492089188979014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705629313324074322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.45, y: 2.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4487290915251388552}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1168554910527086996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8843259577451722483}
+  m_Layer: 0
+  m_Name: TimerThrowPosition05
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8843259577451722483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168554910527086996}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
+  m_LocalPosition: {x: -17.346, y: 0.275, z: -13.648}
+  m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2039081298841978151}
+  m_LocalEulerAnglesHint: {x: -60.992, y: 0, z: 0}
+--- !u!1 &1216916710607010529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039081298841978151}
+  m_Layer: 0
+  m_Name: TimerThrowPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2039081298841978151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216916710607010529}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.345135, y: 4.3070517, z: 23.948456}
+  m_LocalScale: {x: 1.6007788, y: 1.6007788, z: 1.6007788}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5354878600001596545}
+  - {fileID: 3425874046494532033}
+  - {fileID: 6099456070365440710}
+  - {fileID: 4691188434172314053}
+  - {fileID: 8843259577451722483}
+  m_Father: {fileID: 7045657566338801221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2231582698587918227
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5354878600001596545}
   m_Layer: 0
-  m_Name: TimerThrowPosition
+  m_Name: TimerThrowPosition01
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -108,11 +237,11 @@ Transform:
   m_GameObject: {fileID: 2231582698587918227}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
-  m_LocalPosition: {x: 0, y: 4.09, z: 2.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -17.082394, y: -0.13559118, z: -13.654887}
+  m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7045657566338801221}
+  m_Father: {fileID: 2039081298841978151}
   m_LocalEulerAnglesHint: {x: -60.992, y: 0, z: 0}
 --- !u!1 &2542552255789949671
 GameObject:
@@ -198,6 +327,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2679589581298525089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2333559550671729356}
+  m_Layer: 0
+  m_Name: KnifeThrowPosition03
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2333559550671729356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679589581298525089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.9, y: 1.8000001, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4487290915251388552}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &3659905474499992306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,6 +5186,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &3676178093124316759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4079929646457529779}
+  m_Layer: 0
+  m_Name: KnifeThrowPosition02
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4079929646457529779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676178093124316759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.9, y: 1.8000001, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4487290915251388552}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &3740319515961870905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,6 +5366,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5876786881071046034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6099456070365440710}
+  m_Layer: 0
+  m_Name: TimerThrowPosition03
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6099456070365440710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876786881071046034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
+  m_LocalPosition: {x: -17.635, y: -0.13559118, z: -13.654887}
+  m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2039081298841978151}
+  m_LocalEulerAnglesHint: {x: -60.992, y: 0, z: 0}
 --- !u!1 &6005630494656061396
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,6 +5563,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6587374262200353505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3425874046494532033}
+  m_Layer: 0
+  m_Name: TimerThrowPosition02
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3425874046494532033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587374262200353505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
+  m_LocalPosition: {x: -16.509, y: -0.13559118, z: -13.654887}
+  m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2039081298841978151}
+  m_LocalEulerAnglesHint: {x: -60.992, y: 0, z: 0}
 --- !u!1 &6736576189824179378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5351,7 +5604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948717015635558176}
   m_Layer: 0
-  m_Name: KnifeThrowPosition
+  m_Name: KnifeThrowPosition01
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5365,13 +5618,49 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6736576189824179378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.8, z: 2}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.8000001, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7045657566338801221}
+  m_Father: {fileID: 4487290915251388552}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &7159979635849272363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4487290915251388552}
+  m_Layer: 6
+  m_Name: KnifeThrowPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4487290915251388552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159979635849272363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4948717015635558176}
+  - {fileID: 4079929646457529779}
+  - {fileID: 2333559550671729356}
+  - {fileID: 3914492089188979014}
+  - {fileID: 6644602778478867086}
+  m_Father: {fileID: 7045657566338801221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7677762800744826111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,8 +5702,8 @@ Transform:
   - {fileID: 2868978103517622074}
   - {fileID: 3307968342122496090}
   - {fileID: 3254101922834809534}
-  - {fileID: 4948717015635558176}
-  - {fileID: 5354878600001596545}
+  - {fileID: 4487290915251388552}
+  - {fileID: 2039081298841978151}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2868475766259345143
@@ -5509,8 +5798,8 @@ MonoBehaviour:
   enemyBarScript: {fileID: 0}
   weapon: {fileID: 0}
   damage: 2
-  maxHealth: 10
   damageCooldown: 1.5
+  maxHealth: 10
   currentHealth: 0
 --- !u!114 &410647240707990875
 MonoBehaviour:
@@ -5540,15 +5829,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: 999
   grenades: 999
+  damageIncrement: 0
+  maxIncrement: 5
   bulletPrefab: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   grenadePrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
   knifeAmmo: {fileID: 0}
   timerAmmo: {fileID: 0}
   bulletSpeed: 25
-  bulletSpawnPoint: {fileID: 4948717015635558176}
-  grenadeSpawnPoint: {fileID: 5354878600001596545}
-  fireRate: 0.1
+  bulletSpawnPoint:
+  - {fileID: 4948717015635558176}
+  - {fileID: 4079929646457529779}
+  - {fileID: 2333559550671729356}
+  - {fileID: 3914492089188979014}
+  - {fileID: 6644602778478867086}
+  grenadeSpawnPoint:
+  - {fileID: 5354878600001596545}
+  - {fileID: 3425874046494532033}
+  - {fileID: 6099456070365440710}
+  - {fileID: 4691188434172314053}
+  - {fileID: 8843259577451722483}
+  fireRate: 0.6
   throwForce: 50
+  delayReduction: 0
   knifeAmmoText: {fileID: 0}
   timerAmmoText: {fileID: 0}
 --- !u!1 &7970358131775299014
@@ -5634,6 +5936,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8187742583667925402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4691188434172314053}
+  m_Layer: 0
+  m_Name: TimerThrowPosition04
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4691188434172314053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8187742583667925402}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
+  m_LocalPosition: {x: -16.786, y: 0.275, z: -13.654887}
+  m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2039081298841978151}
+  m_LocalEulerAnglesHint: {x: -60.992, y: 0, z: 0}
 --- !u!1 &8569782649566532843
 GameObject:
   m_ObjectHideFlags: 0

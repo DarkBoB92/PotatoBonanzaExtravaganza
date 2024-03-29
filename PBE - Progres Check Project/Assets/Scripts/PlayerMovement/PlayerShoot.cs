@@ -7,13 +7,13 @@ using static Collectible;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public int ammo, grenades;
+    public int ammo, grenades, damageIncrement, maxIncrement;
     [SerializeField] GameObject bulletPrefab, grenadePrefab, knifeAmmo, timerAmmo;
     [SerializeField] float bulletSpeed;
-    [SerializeField] Transform bulletSpawnPoint, grenadeSpawnPoint;
-    [SerializeField] float fireRate, throwForce;
+    [SerializeField] Transform[] bulletSpawnPoint, grenadeSpawnPoint;
+    public float fireRate, throwForce, delayReduction;
     [SerializeField] TextMeshProUGUI knifeAmmoText, timerAmmoText;
-    bool isGrenade;
+    bool isGrenade;    
     GameUIManager gameUIManager;
 
     // Start is called before the first frame update
@@ -47,23 +47,25 @@ public class PlayerShoot : MonoBehaviour
 
     void ShootBullet()
     {
-        GameObject bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        GameObject bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[0].position, bulletSpawnPoint[0].rotation);
         bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
         bulletSpawned.GetComponent<Weapon>().shooted = true;
         bulletSpawned.GetComponent<Weapon>().isGranade = false;
+        bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
         bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
         bulletSpawned.GetComponent<Weapon>().SetType();
         ammo--;
-
     }
 
     void ThrowGrenade()
     {        
-        GameObject grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint.position, grenadeSpawnPoint.rotation);
+        GameObject grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[0].position, grenadeSpawnPoint[0].rotation);
         grenadeSpawned.GetComponent <Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
         grenadeSpawned.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        grenadeSpawned.GetComponent<Weapon>().shooted = true;
         grenadeSpawned.GetComponent<Weapon>().isGranade = true;
+        grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
+        grenadeSpawned.GetComponent<Weapon>().shooted = true;
+        grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
         grenades--;
     }
 

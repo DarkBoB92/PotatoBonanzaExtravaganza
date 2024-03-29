@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPowerUp : Collectible
+public class ThrowPowerUp : Collectible
 {
     PlayerShoot player;
+    float maxThrowForce = 150;
 
     // Start is called before the first frame update
     void Start()
@@ -16,15 +17,19 @@ public class WeaponPowerUp : Collectible
     {
         if (collision.gameObject.tag == "Player")
         {
-            DamageUp();
+            ThrowPwrUp();
             Destroy(this.gameObject);
         }
     }
-    void DamageUp()
+    void ThrowPwrUp()
     {
-        if(player != null)
+        if (player != null)
         {
-            player.damageIncrement++;
+            player.throwForce += 10;
+            if (player.throwForce >= maxThrowForce)
+            {
+                player.throwForce = maxThrowForce;
+            }
         }
     }
 }

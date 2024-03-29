@@ -10,6 +10,7 @@ public class HitFlash : MonoBehaviour
     [SerializeField] private MeshRenderer[] mr;
     [SerializeField] private Material[] originalMaterial;
     [SerializeField] private ShakeCamera shake;
+    Weapon weapon;
 
 
 
@@ -22,14 +23,24 @@ public class HitFlash : MonoBehaviour
     {
         if (collision.gameObject.tag == "Weapon")
         {
-            shake.CamShake();
-            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
-            StartCoroutine(FlashRoutine());
+            weapon = GetComponent<Weapon>();
+            if (weapon != null && weapon.shooted)
+            {
+                if (shake != null && shake.screenShakeToggle.isOn)
+                {
+                    shake.CamShake();
+                }
+                FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
+                StartCoroutine(FlashRoutine());
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        shake.CamShake();
+        if (shake != null && shake.screenShakeToggle.isOn)
+        {
+            shake.CamShake();
+        }
         FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
         StartCoroutine(FlashRoutine());
     }

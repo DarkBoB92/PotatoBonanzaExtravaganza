@@ -114,9 +114,9 @@ public class BomberEnemy : MonoBehaviour
 
         if (weapon != null)
         {
-            if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+            if (other.gameObject.CompareTag("Weapon") && weapon.shooted && !weapon.isGranade)
             {
-                TakeDamage(4);
+                TakeDamage(weapon.knifeDMG);
             }
         }
     }
