@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     public float fireRate, throwForce, delayReduction;
     [SerializeField] TextMeshProUGUI knifeAmmoText, timerAmmoText;  
     GameUIManager gameUIManager;
+    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +29,13 @@ public class PlayerShoot : MonoBehaviour
     {
         if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {
-            if (Input.GetButtonDown("Fire1") && ammo > 0)
+            if (Input.GetButtonDown("Fire1") && ammo > 0 && !isShooting)
             {
+                isShooting = true;
+
                 ShootBullet();
 
-                StartCoroutine(ShootBulletHold());
+                StartCoroutine(ShootBulletHold());                
             }
 
             if (Input.GetButtonDown("Fire2") && grenades > 0)
@@ -55,13 +58,14 @@ public class PlayerShoot : MonoBehaviour
     }
 
     IEnumerator ShootBulletHold()
-    {
+    {        
         while (Input.GetButton("Fire1") && ammo > 0)
-        {
+        {            
             FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Shoot, transform.position, 0.5f);
             yield return new WaitForSeconds(fireRate);
-            ShootBullet();
+            ShootBullet();            
         }
+        isShooting = false;
     }
 
     void SelectKnifeFireMode()
