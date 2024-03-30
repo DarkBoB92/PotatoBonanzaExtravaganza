@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 2231582698587918227}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5074761, y: -0, z: -0, w: 0.86166584}
-  m_LocalPosition: {x: -17.082394, y: -0.13559118, z: -13.654887}
+  m_LocalPosition: {x: -17.082394, y: -0.1355912, z: -13.65489}
   m_LocalScale: {x: 0.62469596, y: 0.62469596, z: 0.62469596}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5831,6 +5831,8 @@ MonoBehaviour:
   grenades: 999
   damageIncrement: 0
   maxIncrement: 5
+  knifeFireMode: 0
+  tomatoFireMode: 0
   bulletPrefab: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   grenadePrefab: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
   knifeAmmo: {fileID: 0}

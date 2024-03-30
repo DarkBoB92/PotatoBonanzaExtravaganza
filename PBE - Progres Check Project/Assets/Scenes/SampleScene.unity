@@ -586,14 +586,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1389467345}
     - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: ammo
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: grenades
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: knifeAmmo
       value: 
       objectReference: {fileID: 828275020}
@@ -602,10 +594,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 702776654}
     - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: throwForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5105922612709979081, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: knifeAmmoText
       value: 
       objectReference: {fileID: 828275022}
@@ -613,14 +601,6 @@ PrefabInstance:
       propertyPath: timerAmmoText
       value: 
       objectReference: {fileID: 702776656}
-    - target: {fileID: 5354878600001596545, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1355912
-      objectReference: {fileID: 0}
-    - target: {fileID: 5354878600001596545, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.65489
-      objectReference: {fileID: 0}
     - target: {fileID: 7045657566338801221, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -677,10 +657,6 @@ PrefabInstance:
       propertyPath: secondaryCamera
       value: 
       objectReference: {fileID: 1305636229}
-    - target: {fileID: 8059689739035543890, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
-      propertyPath: groundMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

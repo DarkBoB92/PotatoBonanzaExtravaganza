@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PowerUpsEffects : MonoBehaviour
 {
-    [SerializeField] float yAngle;
+    [SerializeField] float yAngle, rotationSpeed;
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3 (transform.position.x, yAngle, transform.position.z), Space.Self); 
+        rotationSpeed = yAngle * Time.deltaTime;
+        transform.Rotate(new Vector3 (0f, rotationSpeed, 0f), Space.Self); 
     }
 }
