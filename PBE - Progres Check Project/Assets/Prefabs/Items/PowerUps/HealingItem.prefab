@@ -44,7 +44,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.5990566, g: 0.8455583, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2
   m_Range: 10.4
   m_SpotAngle: 70.5
   m_InnerSpotAngle: 1
@@ -138,7 +138,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.5990566, g: 0.8455583, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2
   m_Range: 10.4
   m_SpotAngle: 70.5
   m_InnerSpotAngle: 1
@@ -5091,7 +5091,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8421958907834395364, guid: c849951552b47624294799322cb3fb16, type: 3}
+  - {fileID: 2100000, guid: 37ceeaba94c630740859f72a6d7789a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5293,7 +5293,7 @@ PrefabInstance:
     - target: {fileID: 7851699522332561780, guid: 42c43bd5fc6429f48a87c7be0cb1084a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -8421958907834395364, guid: c849951552b47624294799322cb3fb16, type: 3}
+      objectReference: {fileID: 2100000, guid: 37ceeaba94c630740859f72a6d7789a1, type: 2}
     - target: {fileID: 7915213008535355333, guid: 42c43bd5fc6429f48a87c7be0cb1084a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
