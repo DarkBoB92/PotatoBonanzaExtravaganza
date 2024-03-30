@@ -1,3 +1,5 @@
+using System;
+using Random=UnityEngine.Random;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -345,8 +347,9 @@ public class PlayerShoot : MonoBehaviour
     }
 
     public void AddAmmo()
-    {        
-        ammo++;
+    {
+        int RandomAmmo = UnityEngine.Random.Range(10, 40);
+        ammo += RandomAmmo;
     }
 
     public void AddGrenade() 
