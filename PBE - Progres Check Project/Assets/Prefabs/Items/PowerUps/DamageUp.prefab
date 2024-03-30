@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7238502640777183903}
   - component: {fileID: 2092959356064103701}
   - component: {fileID: 4984117659521827354}
+  - component: {fileID: 4703389319973120945}
   m_Layer: 0
   m_Name: DamageUp
   m_TagString: Item
@@ -124,7 +125,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &4984117659521827354
 MonoBehaviour:
@@ -139,6 +140,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &4703389319973120945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475731892113904050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2013b419455a35e4eb17b6f1be946455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yAngle: 10
 --- !u!1001 &6044997981431732698
 PrefabInstance:
   m_ObjectHideFlags: 0
