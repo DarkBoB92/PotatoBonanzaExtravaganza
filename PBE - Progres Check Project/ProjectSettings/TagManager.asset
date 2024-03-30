@@ -14,6 +14,7 @@ TagManager:
   - ScreenShakeTog
   - Item
   - CameraPOV
+  - Spawner
   - Canvas
   layers:
   - Default

@@ -17,7 +17,7 @@ public class SpawnPoints : MonoBehaviour
     [Header("Wave Variables")]
     public int currentWave;
     public int difficultyMultiplier;
-    [HideInInspector] public int waveValue;
+    [HideInInspector] public int waveValue, waveCounter;
     private bool stopWaveIncrement = true;
 
     // Spawn Variables -----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ public class SpawnPoints : MonoBehaviour
     // Rest Break Variables
     [Header("Rest Break Variables")]
     public float restDuration;
-    private bool inBreak = false;
+    public bool inBreak = false;
 
     [SerializeField] private GameObject enemiesParent;
 
@@ -101,6 +101,9 @@ public class SpawnPoints : MonoBehaviour
         }
 
         spawnedEnemies.Clear();
+
+        waveCounter++;
+        Debug.Log($"Wave Number: {waveCounter}");
     }
     public void SpawningEnemies()
     {
