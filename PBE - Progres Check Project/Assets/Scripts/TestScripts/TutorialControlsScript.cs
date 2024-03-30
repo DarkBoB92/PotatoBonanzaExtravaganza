@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialControlsScript : MonoBehaviour
 {
     [SerializeField] private GameObject tutorialUI;
-    bool firstPlay;
+    public bool firstPlay;
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class TutorialControlsScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey && !firstPlay)
+        if (Input.anyKey && !Input.GetKey(KeyCode.Escape) && !firstPlay)
         {
             firstPlay = true;
             Time.timeScale = 1f;

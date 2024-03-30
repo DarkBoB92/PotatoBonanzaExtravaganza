@@ -18,6 +18,7 @@ public class GameUIManager : MonoBehaviour
     public AudioMixer audioMixer;
     public Button currentButton;
     public Button[] buttons;
+    TutorialControlsScript tutorialUI;
 
     private void Awake()
     {
@@ -32,6 +33,8 @@ public class GameUIManager : MonoBehaviour
 
         texts = GetComponentsInChildren<TMP_Text>(true);       
         buttons = GetComponentsInChildren<Button>(false);
+
+        tutorialUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<TutorialControlsScript>();
     }
 
     public void CheckGameState(GameState newGameState)
@@ -109,7 +112,10 @@ public class GameUIManager : MonoBehaviour
 
     void Update()
     {
-        CheckInputs();
+        if (tutorialUI != null && tutorialUI.firstPlay)
+        {
+            CheckInputs();
+        }
     }
 
     void CheckInputs()
