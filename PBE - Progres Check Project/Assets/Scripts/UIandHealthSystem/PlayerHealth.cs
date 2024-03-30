@@ -10,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private EnemyHealthBar enemyBarScript;
     [SerializeField] private GameObject weapon;
     [SerializeField] int damage;
-    [SerializeField] int maxHealth = 10;
     [SerializeField] private float damageCooldown = 1.5f;
+    public int maxHealth = 10;
     public int currentHealth;
     private float delayBetweenDamage;
     private SpawnPoints spawnPoints;
@@ -66,7 +66,6 @@ public class PlayerHealth : MonoBehaviour
                 {                    
                     if (gameUIManager != null)
                     {
-                        Debug.Log("UwU");
                         this.gameObject.SetActive(false);
                         gameUIManager.CheckGameState(GameUIManager.GameState.GameOver);                        
                     }
@@ -80,16 +79,6 @@ public class PlayerHealth : MonoBehaviour
                 GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
             }
 
-        }
-    }
-
-    void Heal(int amount)
-    {
-        currentHealth += amount;
-
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
         }
     }
 }

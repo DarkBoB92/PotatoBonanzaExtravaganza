@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -249258649260771765}
   m_Layer: 0
   m_Name: Grenade
-  m_TagString: Weapon
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,12 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  minPower: 0
-  maxPower: 0
   explosionRadius: 3
-  potatoPower: 0
-  acutalPower: 0
-  damageToEnemies: 3
+  explosionTimer: 3
   player: {fileID: 0}
   ammo: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -135,6 +131,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   lifeTime: 3
+  knifeDMG: 0
+  tomatoDMG: 6
   shooted: 0
   isGranade: 0
 --- !u!54 &-249258649260771765

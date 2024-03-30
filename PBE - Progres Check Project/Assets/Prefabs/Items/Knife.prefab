@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -249258649260771765}
   m_Layer: 8
   m_Name: Knife
-  m_TagString: Weapon
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,12 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  minPower: 0
-  maxPower: 0
   explosionRadius: 0
-  potatoPower: 0
-  acutalPower: 0
-  damageToEnemies: 0
   player: {fileID: 0}
   ammo: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -135,6 +130,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lifeTime: 3
+  knifeDMG: 5
+  tomatoDMG: 0
   shooted: 0
   isGranade: 0
 --- !u!54 &-249258649260771765
