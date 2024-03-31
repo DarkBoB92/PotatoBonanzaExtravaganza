@@ -702,7 +702,8 @@ PrefabInstance:
       propertyPath: secondaryCamera
       value: 
       objectReference: {fileID: 1305636229}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8059689739035543890, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -746,7 +747,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -765,7 +766,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   sprintSpeed: 5
-  inputVector: {x: 0, y: 0, z: 0}
+  sensitivity: 4
+  inputVectorRH: {x: 0, y: 0, z: 0}
+  inputVectorLH: {x: 0, y: 0, z: 0}
+  inputVectorGamepad: {x: 0, y: 0, z: 0}
   moveVector: {x: 0, y: 0, z: 0}
   posit: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -775,8 +779,13 @@ MonoBehaviour:
   secondaryCamera: {fileID: 1305636229}
   ps: {fileID: 390854748}
   psObject: {fileID: 390854745}
-  staminaSlider1: {fileID: 0}
-  staminaSlider2: {fileID: 0}
+  staminaSlider1: {fileID: 1389467343}
+  staminaSlider2: {fileID: 1389467344}
+  gamepad: 0
+  rightHand: 1
+  isSprint: 0
+  staminaZero: 0
+  sprintIsPress: 0
 --- !u!65 &1255548316
 BoxCollider:
   m_ObjectHideFlags: 0

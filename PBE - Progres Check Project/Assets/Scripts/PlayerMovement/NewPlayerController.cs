@@ -8,7 +8,8 @@ public class NewPlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float sprintSpeed = 3.0f;
-    [SerializeField] private Vector3 inputVector, moveVector, posit;
+    [SerializeField] private float sensitivity = 0.1f;
+    [SerializeField] private Vector3 inputVectorRH, inputVectorLH, inputVectorGamepad, moveVector, posit;
     [SerializeField] private Quaternion rotation = Quaternion.identity;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Camera secondaryCamera;
@@ -16,46 +17,104 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private GameObject psObject;
     [SerializeField] private Slider staminaSlider1;
     [SerializeField] private Slider staminaSlider2;
-    private Vector3 mousePos;
-    private bool isSprint, staminaZero;
+    public bool gamepad = false;
+    public bool rightHand = true;
+    private Vector2 mouseOnScreenPos, stickOnScreenPos, mousePos, mousecurrentPos;
+    [SerializeField] private bool isSprint, staminaZero, sprintIsPress;
     Rigidbody rb;
     Transform tf;
     GameUIManager gameUIManager;
-
+    PlayerInput playerInput;
+    InputDeviceChange inputDeviceChange;
     private CapsuleCollider2D col;
     private GameObject Player;
 
     private void Start()
     {
+        CheckPlayerInput();
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
+        playerInput = GetComponent<PlayerInput>();
         Player = GameObject.FindWithTag("Player");
         gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
         psObject.SetActive(false);
     }
 
     private void Update()
-    {
+    {        
+        if (Input.GetKeyDown(KeyCode.G)) 
+        {
+            if (!gamepad)
+            {
+                gamepad = true;
+            }
+            else
+            {
+                gamepad = false;
+            }
+            CheckPlayerInput();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (!rightHand)
+            {
+                rightHand = true;
+            }
+            else
+            {
+                rightHand = false;
+            }            
+        }
         if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {
-            Aim();
-            CalculateMovement();
+            if (gamepad)
+            {
+                AimWithGamepad();
+                UpdateMousePosition();
+                CalculateMovementGamepad();
+            }
+            else
+            {
+                AimWithMouse();
+                if (rightHand)
+                {
+                    CalculateMovementRH();
+                }
+                else
+                {                    
+                    CalculateMovementLH();
+                }
+            }            
+        }
+        if (gamepad && gameUIManager.currentState == GameUIManager.GameState.Paused)
+        {
+            UpdateMousePosition();
         }
     }
 
     private void FixedUpdate()
     {
         rb.velocity = moveVector;
-    }    
-
-    private void CalculateMovement()
+    }
+    
+    void CheckPlayerInput()
     {
-        //if (inputVector.x != 0 && inputVector.z != 0)   // Corrects increased movement in diagonal directional movements
-        //{
-        //    inputVector.x = inputVector.x * 0.75f;
-        //    inputVector.z = inputVector.z * 0.75f;
-        //}
-        if (inputVector.x != 0 || inputVector.z != 0)
+        if(playerInput != null)
+        {
+            if(gamepad)
+            {
+                playerInput.SwitchCurrentControlScheme("Gamepad", Gamepad.current);
+            }
+            else
+            {
+                playerInput.SwitchCurrentControlScheme(Keyboard.current, Mouse.current);
+            }
+        }
+    }
+
+    private void CalculateMovementRH()
+    {
+        if (inputVectorRH.x != 0 || inputVectorRH.z != 0)
         {
             psObject.SetActive(true);
         }
@@ -65,8 +124,98 @@ public class NewPlayerController : MonoBehaviour
         }
 
 
-        float skewedX = inputVector.x + inputVector.z;   // Functions same as a rotational linear transformation that is
-        float skewedZ = inputVector.z - inputVector.x;   // Typically done using matrix multiplication. This is more efficient.
+        float skewedX = inputVectorRH.x + inputVectorRH.z;   // Functions same as a rotational linear transformation that is
+        float skewedZ = inputVectorRH.z - inputVectorRH.x;   // Typically done using matrix multiplication. This is more efficient.
+        if (isSprint)
+        {
+            moveVector.x = skewedX * (speed + sprintSpeed);
+            moveVector.z = skewedZ * (speed + sprintSpeed);
+
+            staminaSlider1.value -= 0.5f * Time.deltaTime;
+            staminaSlider2.value -= 0.5f * Time.deltaTime;
+        }
+        else if (!isSprint)
+        {
+            moveVector.x = skewedX * speed;
+            moveVector.z = skewedZ * speed;
+
+            if (!staminaZero)
+            {
+                staminaSlider1.value += 0.25f * Time.deltaTime;
+                staminaSlider2.value += 0.25f * Time.deltaTime;
+            }
+        }
+
+        if (staminaSlider1.value == 0)
+        {
+            StartCoroutine(StaminaRechargeDelay());
+        }
+        else if (staminaSlider1.value == 1)
+        {
+            StopCoroutine(StaminaRechargeDelay());
+        }
+    }
+ 
+
+    private void CalculateMovementLH()
+    {
+        if (inputVectorLH.x != 0 || inputVectorLH.z != 0)
+        {
+            psObject.SetActive(true);
+        }
+        else
+        {
+            psObject.SetActive(false);
+        }
+
+
+        float skewedX = inputVectorLH.x + inputVectorLH.z;   // Functions same as a rotational linear transformation that is
+        float skewedZ = inputVectorLH.z - inputVectorLH.x;   // Typically done using matrix multiplication. This is more efficient.
+
+        if (isSprint)
+        {
+            moveVector.x = skewedX * (speed + sprintSpeed);
+            moveVector.z = skewedZ * (speed + sprintSpeed);
+
+            staminaSlider1.value -= 0.5f * Time.deltaTime;
+            staminaSlider2.value -= 0.5f * Time.deltaTime;
+        }
+        else if (!isSprint)
+        {
+            moveVector.x = skewedX * speed;
+            moveVector.z = skewedZ * speed;
+
+            if (!staminaZero)
+            {
+                staminaSlider1.value += 0.25f * Time.deltaTime;
+                staminaSlider2.value += 0.25f * Time.deltaTime;
+            }
+        }
+
+        if (staminaSlider1.value == 0)
+        {
+            StartCoroutine(StaminaRechargeDelay());
+        }
+        else if (staminaSlider1.value == 1)
+        {
+            StopCoroutine(StaminaRechargeDelay());
+        }
+    }
+
+    private void CalculateMovementGamepad()
+    {
+        if (inputVectorGamepad.x != 0 || inputVectorGamepad.z != 0)
+        {
+            psObject.SetActive(true);
+        }
+        else
+        {
+            psObject.SetActive(false);
+        }
+
+
+        float skewedX = inputVectorGamepad.x + inputVectorGamepad.z;   // Functions same as a rotational linear transformation that is
+        float skewedZ = inputVectorGamepad.z - inputVectorGamepad.x;   // Typically done using matrix multiplication. This is more efficient.
 
         if (isSprint)
         {
@@ -101,51 +250,38 @@ public class NewPlayerController : MonoBehaviour
     void OnMoveRH(InputValue input)
     {
         Vector2 xzValue = input.Get<Vector2>();
-        inputVector = new Vector3(xzValue.x, 0, xzValue.y);
-        if (!isSprint && Input.GetKeyDown(KeyCode.LeftShift))   // Press Shift = Sprint
-        {
-            isSprint = true;
-            ps.emissionRate = 60;
-        }
-        else if (isSprint && Input.GetKeyUp(KeyCode.LeftShift))   // Unpress Shift = Stop Sprint
-        {
-            isSprint = false;
-            ps.emissionRate = 15;
-        }
-        //CalculateMovement();
+        inputVectorRH = new Vector3(xzValue.x, 0, xzValue.y);
     }
 
     void OnMoveLH(InputValue input)
     {
         Vector2 xyValue = input.Get<Vector2>();
-        inputVector = new Vector3(xyValue.x, 0, xyValue.y);
-
-        if (!isSprint && Input.GetKeyDown(KeyCode.LeftShift))   // Press Shift = Sprint
-        {
-            isSprint = true;
-            ps.emissionRate = 60;
-        }
-        else if (isSprint && Input.GetKeyUp(KeyCode.LeftShift))   // Unpress Shift = Stop Sprint
-        {
-            isSprint = false;
-            ps.emissionRate = 15;
-        }
+        inputVectorLH = new Vector3(xyValue.x, 0, xyValue.y);        
     }
 
     void OnMoveGamepad(InputValue input)
     {
         Vector2 xyValue = input.Get<Vector2>();
-        inputVector = new Vector3(xyValue.x, 0, xyValue.y);
+        inputVectorGamepad = new Vector3(xyValue.x, 0, xyValue.y);
+    }
 
-        if (!isSprint && Input.GetKeyDown(KeyCode.LeftShift))   // Press Shift = Sprint
+    void OnSprint(InputValue input)
+    {
+        if (input.isPressed)   // Press Shift = Sprint
         {
-            isSprint = true;
-            ps.emissionRate = 60;
+            if (!isSprint)
+            {
+                isSprint = true;
+                ps.emissionRate = 60;
+            }
         }
-        else if (isSprint && Input.GetKeyUp(KeyCode.LeftShift))   // Unpress Shift = Stop Sprint
+        else   // Unpress Shift = Stop Sprint
         {
-            isSprint = false;
-            ps.emissionRate = 15;
+            if (isSprint)
+            {
+                isSprint = false;
+                ps.emissionRate = 15;
+            }
         }
     }
 
@@ -163,19 +299,39 @@ public class NewPlayerController : MonoBehaviour
             staminaSlider1.value += 0.25f * Time.deltaTime;
             staminaSlider2.value += 0.25f * Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                float skewedX = inputVector.x + inputVector.z;   // Functions same as a rotational linear transformation that is
-                float skewedZ = inputVector.z - inputVector.x;   // Typically done using matrix multiplication. This is more efficient.
+            float skewedX;
+            float skewedZ;
 
-                moveVector.x = skewedX * speed;
-                moveVector.z = skewedZ * speed;
+            if (rightHand)
+            {
+                skewedX = inputVectorRH.x + inputVectorRH.z;   // Functions same as a rotational linear transformation that is
+                skewedZ = inputVectorRH.z - inputVectorRH.x;   // Typically done using matrix multiplication. This is more efficient.
             }
+            else
+            {
+                skewedX = inputVectorLH.x + inputVectorLH.z;   // Functions same as a rotational linear transformation that is
+                skewedZ = inputVectorLH.z - inputVectorLH.x;   // Typically done using matrix multiplication. This is more efficient.
+            }
+
+
+            moveVector.x = skewedX * speed;
+            moveVector.z = skewedZ * speed;
         }
         staminaZero = false;
     }
 
-    private void Aim()
+    private void AimWithMouse()
+    {
+        var (success, position) = GetMousePosition();
+
+        if (success)
+        {
+            Vector3 direction = position - transform.position;
+            direction.y = 0;
+            transform.forward = direction;
+        }
+    }
+    private void AimWithGamepad()
     {
         var (success, position) = GetMousePosition();
 
@@ -187,9 +343,43 @@ public class NewPlayerController : MonoBehaviour
         }
     }
 
+    void OnLookMouse(InputValue input)
+    {
+        if (!gamepad)
+        {
+            mouseOnScreenPos = input.Get<Vector2>();
+        }
+    }
+
+    void OnLookGamepad(InputValue input)
+    {
+        if (gamepad)
+        {
+            stickOnScreenPos = input.Get<Vector2>();
+        }
+    }
+
+    void UpdateMousePosition()
+    {        
+        Vector2 mouseMovement = stickOnScreenPos * sensitivity;
+        mousePos = Mouse.current.position.ReadValue() + mouseMovement;
+        mousePos.x = Mathf.Clamp(mousePos.x, 0, Screen.width);
+        mousePos.y = Mathf.Clamp(mousePos.y, 0, Screen.height);
+        Mouse.current.WarpCursorPosition(mousePos);
+    }
+
     private (bool success, Vector3 position) GetMousePosition()
     {
-        Ray ray = secondaryCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray;
+
+        if (!gamepad)
+        {
+            ray = secondaryCamera.ScreenPointToRay(mouseOnScreenPos);
+        }
+        else
+        {
+            ray = secondaryCamera.ScreenPointToRay(mousePos);
+        }
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, groundMask))
         {
