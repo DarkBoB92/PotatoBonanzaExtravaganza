@@ -22,6 +22,8 @@ public class GameUIManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
+
         if (SceneManager.GetActiveScene().name == "Menu")
         {
             CheckGameState(GameState.MainMenu);

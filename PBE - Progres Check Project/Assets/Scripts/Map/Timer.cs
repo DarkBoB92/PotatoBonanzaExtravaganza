@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;   // Text Element In Canvas
     [SerializeField] GameObject winPanel;
-    private float elapsedTime;   // Float That Holds Time
+    public float elapsedTime;   // Float That Holds Time
 
     private void Start()
     {
