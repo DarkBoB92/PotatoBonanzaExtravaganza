@@ -16,6 +16,9 @@ TagManager:
   - CameraPOV
   - Spawner
   - Canvas
+  - Spillage
+  - Plates
+  - StoveTop
   layers:
   - Default
   - TransparentFX
