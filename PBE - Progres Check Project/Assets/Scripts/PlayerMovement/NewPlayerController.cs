@@ -20,7 +20,7 @@ public class NewPlayerController : MonoBehaviour
     public bool gamepad = false;
     public bool rightHand = true;
     private Vector2 mouseOnScreenPos, stickOnScreenPos, mousePos, mousecurrentPos;
-    [SerializeField] private bool isSprint, staminaZero, sprintIsPress;
+    private bool isSprint, staminaZero;
     Rigidbody rb;
     Transform tf;
     GameUIManager gameUIManager;
@@ -28,9 +28,11 @@ public class NewPlayerController : MonoBehaviour
     InputDeviceChange inputDeviceChange;
     private CapsuleCollider2D col;
     private GameObject Player;
+    ControlOptions controlPanel;
 
     private void Start()
     {
+        //TODO: Current Input Selected Check, make it work with menu
         CheckPlayerInput();
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
@@ -97,7 +99,7 @@ public class NewPlayerController : MonoBehaviour
         rb.velocity = moveVector;
     }
     
-    void CheckPlayerInput()
+    public void CheckPlayerInput()
     {
         if(playerInput != null)
         {
@@ -401,6 +403,5 @@ public class NewPlayerController : MonoBehaviour
         {
             Gizmos.DrawLine(secondaryCamera.transform.position, hitInfo.point);
         }
-
     }
 }

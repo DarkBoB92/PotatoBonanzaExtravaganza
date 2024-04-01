@@ -37,7 +37,7 @@ public class PlayerShoot : MonoBehaviour
 
                 ShootBullet();
 
-                StartCoroutine(ShootBulletHold());                
+                StartCoroutine(ShootBulletHold());
             }
 
             if (Input.GetButtonDown("Fire2") && grenades > 0)
@@ -60,12 +60,12 @@ public class PlayerShoot : MonoBehaviour
     }
 
     IEnumerator ShootBulletHold()
-    {        
+    {
         while (Input.GetButton("Fire1") && ammo > 0)
-        {            
+        {
             FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Shoot, transform.position, 0.5f);
             yield return new WaitForSeconds(fireRate);
-            ShootBullet();            
+            ShootBullet();
         }
         isShooting = false;
     }

@@ -19,6 +19,7 @@ public class GameUIManager : MonoBehaviour
     public Button currentButton;
     public Button[] buttons;
     TutorialControlsScript tutorialUI;
+    ControlOptions controlPanel;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class GameUIManager : MonoBehaviour
             CheckGameState(GameState.Playing);
         }
 
+        controlPanel = GetComponentInChildren<ControlOptions>(true);
         texts = GetComponentsInChildren<TMP_Text>(true);       
         buttons = GetComponentsInChildren<Button>(false);
 

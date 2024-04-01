@@ -2677,6 +2677,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5420373274775018664, guid: 991ebb2323b570c4a829dbe736f2d0eb, type: 3}
+      propertyPath: m_TagString
+      value: ControlPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 5772445186040803844, guid: 991ebb2323b570c4a829dbe736f2d0eb, type: 3}
       propertyPath: m_sharedMaterial
       value: 
