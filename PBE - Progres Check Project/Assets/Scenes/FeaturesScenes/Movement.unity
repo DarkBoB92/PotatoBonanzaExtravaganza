@@ -1657,6 +1657,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5956361916960857090, guid: 2dd7cd70d45e28f4fb821f792d3016fe, type: 3}
+      propertyPath: m_TagString
+      value: PauseMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 6354774838838062974, guid: 2dd7cd70d45e28f4fb821f792d3016fe, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
       value: 0.6313726

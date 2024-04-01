@@ -20,6 +20,7 @@ TagManager:
   - Plates
   - StoveTop
   - ControlPanel
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
