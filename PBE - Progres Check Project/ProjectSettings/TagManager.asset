@@ -19,6 +19,7 @@ TagManager:
   - Spillage
   - Plates
   - StoveTop
+  - Smoke
   layers:
   - Default
   - TransparentFX

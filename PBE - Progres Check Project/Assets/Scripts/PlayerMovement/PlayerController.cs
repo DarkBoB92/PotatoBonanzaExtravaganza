@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
+    [SerializeField] public float speed = 5.0f;
     [SerializeField] private float sprintSpeed = 3.0f;
-    [SerializeField] private Vector3 inputVector, moveVector, posit;
-    [SerializeField] private Quaternion rotation = Quaternion.identity;
+    [SerializeField] private protected Vector3 inputVector, moveVector, posit;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private ParticleSystem ps;
@@ -16,21 +15,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider staminaSlider1;
     [SerializeField] private Slider staminaSlider2;
     private Vector3 mousePos;
-    private bool isSprint, staminaZero;
+    private bool isSprint, staminaZero, isInSpillage, isOnStove;
     Rigidbody rb;
     Transform tf;
     GameUIManager gameUIManager;
 
     private CapsuleCollider2D col;
     private GameObject Player;
+    [SerializeField] PlayerHealth playerHealth;
+    private float nextDamageTime;
+    private float damageInterval = 2f;
+    GameObject[] smoke;
 
+    Renderer renderer;
     private void Start()
     {
+        renderer = GameObject.FindGameObjectWithTag("StoveTop").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         Player = GameObject.FindWithTag("Player");
+        playerHealth = FindObjectOfType<PlayerHealth>();
         gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
         psObject.SetActive(false);
+        StoveColor();
+        smoke = GameObject.FindGameObjectsWithTag("Smoke");
     }
 
     private void Update()
@@ -40,6 +48,7 @@ public class PlayerController : MonoBehaviour
             Aim();
             GetInput();
             CalculateMovement();
+            
         }
     }
 
@@ -66,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void CalculateMovement()
+    public void CalculateMovement()
     {
         if (inputVector.x != 0 && inputVector.z != 0)   // Corrects increased movement in diagonal directional movements
         {
@@ -179,5 +188,102 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawLine(secondaryCamera.transform.position, hitInfo.point);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Plates"))
+        {
+            playerHealth.TakeDamage(2);
+        }
+
+        if (other.gameObject.CompareTag("Spillage"))
+        {
+            isInSpillage = true;
+            speed /= 1.5f;
+            sprintSpeed /= 1.5f;
+        }
+
+        if (other.gameObject.CompareTag("StoveTop"))
+        {
+            isOnStove = true;
+            nextDamageTime = Time.time;
+            StartCoroutine(BurnDamage());
+        }
+    }
+
+    private IEnumerator BurnDamage()
+    {
+        while (isOnStove && renderer.material.color == Color.red)
+        {
+            if(Time.time >= nextDamageTime)
+            {
+                playerHealth.TakeDamage(2);
+                Debug.Log(playerHealth.currentHealth);
+                nextDamageTime = Time.time + damageInterval;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator TimerForStove()
+    {
+        yield return new WaitForSeconds(15f);
+
+        if (renderer.material.color == Color.red)
+        {
+           foreach(GameObject particle in smoke)
+            {
+                particle.SetActive(false);
+            }
+            renderer.material.color = Color.white;
+        }
+
+        yield return new WaitForSeconds(15f);
+
+        if (renderer.material.color == Color.white)
+        {
+            foreach (GameObject particle in smoke)
+            {
+                particle.SetActive(true);
+            }
+            renderer.material.color = Color.red;
+        }
+        StartCoroutine(TimerForStove());
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Plates"))
+        {
+            // Do nothing.
+        }
+
+        if (other.gameObject.CompareTag("Spillage"))
+        {
+            isInSpillage = false;
+            speed = 5.0f;
+            sprintSpeed = 3.0f;
+
+        }
+
+        if (other.gameObject.CompareTag("StoveTop"))
+        {
+            isOnStove = false;
+            StopCoroutine(BurnDamage());
+            
+        }
+    }
+
+    void StoveColor()
+    {
+        if (renderer != null)
+        {
+            
+            renderer.material.color = Color.red;
+
+            StartCoroutine(TimerForStove());
+        }
     }
 }
