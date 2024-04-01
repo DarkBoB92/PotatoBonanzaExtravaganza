@@ -78,6 +78,7 @@ public class ControlOptions : MonoBehaviour
             mouseKeyboardLH.enabled = true;
             joypad.enabled = true;
             EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+            Cursor.visible = true;
             if (gameUIManager.player.gamepad)
             {
                 Cursor.visible = false;
@@ -100,6 +101,7 @@ public class ControlOptions : MonoBehaviour
                     mouseKeyboardLH.enabled = false;
                     joypad.enabled = false;
                     EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                    Cursor.visible = true;
                     if (gameUIManager.player.gamepad)
                     {
                         Cursor.visible = false;
@@ -126,6 +128,7 @@ public class ControlOptions : MonoBehaviour
                     mouseKeyboardRH.enabled = true;
                     mouseKeyboardLH.enabled = true;
                     joypad.enabled = true;
+                    Cursor.visible = true;
                     EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
                     if (gameUIManager.player.gamepad)
                     {

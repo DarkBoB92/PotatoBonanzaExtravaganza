@@ -364,6 +364,11 @@ public class GameUIManager : MonoBehaviour
     public void ResumeGame()
     {
         CheckGameState(GameState.Playing);
+        if (player != null && player.gamepad)
+        {
+            Cursor.visible = true;
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+        }
     }
 
     public void GameSaved()
@@ -375,6 +380,11 @@ public class GameUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         CheckGameState(GameState.MainMenu);
+        Cursor.visible = true;
+        if (player != null && player.gamepad)
+        {            
+            EventSystem.current.SetSelectedGameObject(buttons[1].gameObject); //Setting a new current selected object
+        }
     }
 
     public void QuitGame()
