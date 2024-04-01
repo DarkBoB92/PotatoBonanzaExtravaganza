@@ -31,15 +31,16 @@ public class NewPlayerController : MonoBehaviour
     ControlOptions controlPanel;
 
     private void Start()
-    {
-        //TODO: Current Input Selected Check, make it work with menu
-        CheckPlayerInput();
+    {   
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         playerInput = GetComponent<PlayerInput>();
         Player = GameObject.FindWithTag("Player");
         gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
+        controlPanel = gameUIManager.GetComponentInChildren<ControlOptions>(true);
         psObject.SetActive(false);
+        LoadInputCongig();
+        CheckPlayerInput();
     }
 
     private void Update()
@@ -67,6 +68,7 @@ public class NewPlayerController : MonoBehaviour
                 rightHand = false;
             }            
         }
+        LoadInputCongig();
         if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {
             if (gamepad)
@@ -97,6 +99,28 @@ public class NewPlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = moveVector;
+    }
+
+    void LoadInputCongig()
+    {
+        if(controlPanel != null)
+        {
+            if(controlPanel.mouseKeyboardRH.isOn)
+            {
+                rightHand = true;
+                gamepad = false;
+            }
+            else if(controlPanel.mouseKeyboardLH.isOn)
+            {
+                rightHand = false;
+                gamepad = false;
+            }
+            else if(controlPanel.joypad.isOn)
+            {
+                gamepad = true;
+            }
+            CheckPlayerInput();
+        }
     }
     
     public void CheckPlayerInput()
@@ -390,6 +414,14 @@ public class NewPlayerController : MonoBehaviour
         else
         {
             return (success: false, position: Vector3.zero);
+        }
+    }
+
+    void OnPause(InputValue input)
+    {
+        if(gameUIManager  != null)
+        {
+            gameUIManager.CheckInputs(input.isPressed);
         }
     }
 
