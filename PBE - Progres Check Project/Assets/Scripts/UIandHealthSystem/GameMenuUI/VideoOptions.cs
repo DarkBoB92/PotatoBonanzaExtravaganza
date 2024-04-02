@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 
 public class VideoOptions : MonoBehaviour
 {
-    public Toggle fullScreen;
+    public Toggle fullScreen, screenShake;
     public List<ResolutionValues> resolutions = new List<ResolutionValues>();
     public List<FontSize> fontSizes = new List<FontSize>();
     int selectedResolution, previousResolution, currentFontSize, previousFontSize;
     public TMP_Text resolutionText, fontSizeText;
     [SerializeField] GameUIManager gameUIManager;
     [SerializeField] GameObject popUpPanel;
-    bool smallFontSize, mediumFontSize, bigFontSize;
+    bool smallFontSize, mediumFontSize, bigFontSize, currentFullScreen, previousFullScreen;
 
     private void Start()
-    {
-
+    {        
         popUpPanel.SetActive(false);
         fullScreen.isOn = Screen.fullScreen;
-        
+        currentFullScreen = fullScreen.isOn;
+        previousFullScreen = fullScreen.isOn;
+
         bool foundResolution = false;
         for (int i = 0; i < resolutions.Count; i++)
         {
@@ -53,6 +55,11 @@ public class VideoOptions : MonoBehaviour
         previousFontSize = currentFontSize;
         mediumFontSize = true;
         UpdateFontSizeText();
+    }
+
+    private void Update()
+    {
+        currentFullScreen = fullScreen.isOn;
     }
 
     public void ResolutionLeft()
@@ -110,6 +117,8 @@ public class VideoOptions : MonoBehaviour
         if (gameUIManager.currentPanel != null)
         {
             Screen.SetResolution(resolutions[selectedResolution].width, resolutions[selectedResolution].height, fullScreen.isOn);
+            fullScreen.isOn = currentFullScreen;
+            previousFullScreen = currentFullScreen;
             previousResolution = selectedResolution;
             if(currentFontSize == 0 && !smallFontSize)
             {
@@ -171,7 +180,6 @@ public class VideoOptions : MonoBehaviour
                     }
                 }
             }
-            Debug.Log("Your Settings Have Been Applied And Saved");
             gameUIManager.videoSettingsScreen = false;
             gameUIManager.audioSettingsScreen = false;
             gameUIManager.controlSettingsScreen = false;
@@ -180,6 +188,17 @@ public class VideoOptions : MonoBehaviour
             gameUIManager.audioSettingsPanel.SetActive(false);
             gameUIManager.controlSettingsPanel.SetActive(false);
             popUpPanel.SetActive(false);
+            if (gameUIManager.player != null)
+            {
+                gameUIManager.ActivateCurrentButtons();
+                fullScreen.enabled = true;
+                screenShake.enabled = true;
+                EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                if (gameUIManager.player.gamepad)
+                {
+                    EventSystem.current.SetSelectedGameObject(gameUIManager.firstSettingButton); //Setting a new current selected object
+                }
+            }
         }
     }
 
@@ -187,9 +206,20 @@ public class VideoOptions : MonoBehaviour
     {
         if (gameUIManager.currentPanel != null)
         {
-            if (selectedResolution != previousResolution && !popUpPanel.activeInHierarchy || currentFontSize != previousFontSize && !popUpPanel.activeInHierarchy) //<---And Changes Have Been Made
+            if (selectedResolution != previousResolution && !popUpPanel.activeInHierarchy || currentFontSize != previousFontSize && !popUpPanel.activeInHierarchy || currentFullScreen != previousFullScreen && !popUpPanel.activeInHierarchy) //<---And Changes Have Been Made
             {
                 popUpPanel.SetActive(true);
+                if (gameUIManager.player != null)
+                {
+                    gameUIManager.DeactivateCurrentButtons();
+                    fullScreen.enabled = false;
+                    screenShake.enabled = false;
+                    EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                    if (gameUIManager.player.gamepad)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameUIManager.popUpButtons[0]); //Setting a new current selected object
+                    }
+                }
             }
             else
             {
@@ -202,7 +232,21 @@ public class VideoOptions : MonoBehaviour
                 gameUIManager.controlSettingsPanel.SetActive(false);
                 popUpPanel.SetActive(false);
                 selectedResolution = previousResolution;
+                currentFontSize = previousFontSize;
+                fullScreen.isOn = previousFullScreen;
                 UpdateResolutionText();
+                if (gameUIManager.player != null)
+                {
+                    gameUIManager.ActivateCurrentButtons();
+                    fullScreen.enabled = true;
+                    screenShake.enabled = true;
+                    EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                    if (gameUIManager.player.gamepad)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameUIManager.firstSettingButton); //Setting a new current selected object
+                    }
+                }
+                
             }
         }
     }

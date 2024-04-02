@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -17,8 +18,12 @@ public class GameUIManager : MonoBehaviour
     public TMP_Text[] texts;
     public AudioMixer audioMixer;
     public Button currentButton;
-    public Button[] buttons;
+    public Button[] buttons, menuButtons;
     TutorialControlsScript tutorialUI;
+    ControlOptions controlPanel;
+    public GameObject firstSettingButton, firstSaveButton; 
+    public GameObject[] popUpButtons;
+    public NewPlayerController player;
 
     private void Awake()
     {
@@ -33,10 +38,17 @@ public class GameUIManager : MonoBehaviour
             CheckGameState(GameState.Playing);
         }
 
-        texts = GetComponentsInChildren<TMP_Text>(true);       
-        buttons = GetComponentsInChildren<Button>(false);
+        controlPanel = GetComponentInChildren<ControlOptions>(true);
+        texts = GetComponentsInChildren<TMP_Text>(true);
+        buttons = GetComponentsInChildren<Button>(false);        
 
         tutorialUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<TutorialControlsScript>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<NewPlayerController>();
+    }
+
+    void PopulateMenuButtons()
+    {
+        menuButtons = buttons.ToArray();
     }
 
     public void CheckGameState(GameState newGameState)
@@ -50,7 +62,7 @@ public class GameUIManager : MonoBehaviour
                 break;
             case GameState.Paused:
                 GamePaused();
-                Time.timeScale = 0f;
+                Time.timeScale = 0f;                
                 break;
             case GameState.Playing:
                 GameActive();
@@ -108,30 +120,51 @@ public class GameUIManager : MonoBehaviour
         videoSettingsPanel.SetActive(false);
         audioSettingsPanel.SetActive(false);
         controlSettingsPanel.SetActive(false);
-        gameOverPanel.SetActive(true);
+        gameOverPanel.SetActive(true); GetCurrentButtons();
     }
 
-
-    void Update()
+    public void CheckInputs(bool pressed)
     {
         if (tutorialUI != null && tutorialUI.firstPlay)
         {
-            CheckInputs();
-        }
-    }
-
-    void CheckInputs()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (currentState == GameState.Playing)
+            if (pressed)
             {
-                CheckGameState(GameState.Paused);
-                buttons = GetComponentsInChildren<Button>(false);
-            }
-            else if (currentState == GameState.Paused)
-            {
-                CheckGameState(GameState.Playing);
+                if (currentState == GameState.Playing)
+                {
+                    CheckGameState(GameState.Paused);
+                    buttons = GetComponentsInChildren<Button>(false);
+                    PopulateMenuButtons();
+                    if (player != null && player.gamepad)
+                    {
+                        Cursor.visible = false;
+                        EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                        EventSystem.current.SetSelectedGameObject(buttons[0].gameObject); //Setting a new current selected object
+                    }
+                }
+                else if (currentState == GameState.Paused)
+                {
+                    if (saveScreen)
+                    {
+                        if (player != null && player.gamepad)
+                        {
+                            Cursor.visible = true;
+                            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                            EventSystem.current.SetSelectedGameObject(buttons[1].gameObject); //Setting a new current selected object
+                        }
+                    }
+                    else if (settingsScreen)
+                    {
+                        if (player != null && player.gamepad)
+                        {
+                            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                            EventSystem.current.SetSelectedGameObject(buttons[0].gameObject); //Setting a new current selected object
+                        }
+                    }
+                    else
+                    {
+                        CheckGameState(GameState.Playing);
+                    }
+                }
             }
         }
     }    
@@ -160,7 +193,12 @@ public class GameUIManager : MonoBehaviour
             foreach (Button button in buttons)
             {
                 button.interactable = false;
-                currentButton.interactable = true;
+                currentButton.interactable = true;                
+            }
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+            if (player != null && player.gamepad)
+            {
+                EventSystem.current.SetSelectedGameObject(firstSaveButton); //Setting a new current selected object
             }
         }
         else
@@ -172,6 +210,10 @@ public class GameUIManager : MonoBehaviour
             {
                 button.interactable = true;
                 currentButton = null;
+            }
+            if (!player.gamepad)
+            {
+                EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
             }
         }
     }
@@ -191,6 +233,12 @@ public class GameUIManager : MonoBehaviour
                 button.interactable = false;
                 currentButton.interactable = true;
             }
+            GetCurrentButtons();
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+            if (player != null && player.gamepad)
+            {
+                EventSystem.current.SetSelectedGameObject(firstSettingButton); //Setting a new current selected object
+            }
         }
         else
         {
@@ -203,6 +251,7 @@ public class GameUIManager : MonoBehaviour
             audioSettingsScreen = false;
             controlSettingsScreen = false;
             currentPanel = null;
+            GetCurrentButtons();
             foreach (Button button in buttons)
             {
                 button.interactable = true;
@@ -221,11 +270,13 @@ public class GameUIManager : MonoBehaviour
             videoSettingsScreen = true;
             audioSettingsScreen = false;
             controlSettingsScreen = false;
+            GetCurrentButtons();
         }
         else
         {
             videoSettingsPanel.SetActive(false);
             videoSettingsScreen = false;
+            GetCurrentButtons();
         }
     }
 
@@ -239,11 +290,13 @@ public class GameUIManager : MonoBehaviour
             videoSettingsScreen = false;
             audioSettingsScreen = true;
             controlSettingsScreen = false;
+            GetCurrentButtons();
         }
         else
         {
             audioSettingsPanel.SetActive(false);
             audioSettingsScreen = false;
+            GetCurrentButtons();
         }
     }
 
@@ -257,58 +310,67 @@ public class GameUIManager : MonoBehaviour
             videoSettingsScreen = false;
             audioSettingsScreen = false;
             controlSettingsScreen = true;
+            GetCurrentButtons();
         }
         else
         {
             controlSettingsPanel.SetActive(false);
             controlSettingsScreen = false;
+            GetCurrentButtons();
         }
     }
 
-    public void Apply()
+    public void GetCurrentButtons()
     {
-        if (currentPanel != null)
+        buttons = GetComponentsInChildren<Button>(false);
+        if (menuButtons.Length < 0)
         {
-            if (currentPanel == settingsPanel) //<---And Changes Have Been Made, if No changes have been made, just closes the settings
+            PopulateMenuButtons();
+        }        
+        if (!player.gamepad)
+        {
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+        }
+    }
+    public void ActivateCurrentButtons()
+    {
+        if (settingsScreen)
+        {
+            foreach (Button button in buttons)
             {
-                Debug.Log("Your Settings Have Been Applied And Saved");
+                button.interactable = true;
+                foreach (Button menuButton in menuButtons)
+                {
+                    menuButton.interactable = false;
+                    currentButton.interactable = true;
+                }
+            }            
+        }
+        else
+        {
+            foreach (Button button in buttons)
+            {
+                button.interactable = true;
             }
-            currentPanel.SetActive(false);
-            currentPanel = null;
-            videoSettingsPanel.SetActive(false);
-            audioSettingsPanel.SetActive(false);
-            controlSettingsPanel.SetActive(false);
-            videoSettingsScreen = false;
-            audioSettingsScreen = false;
-            controlSettingsScreen = false;
-            settingsScreen = false;
-            saveScreen = false;
         }
     }
 
-    public void Exit()
+    public void DeactivateCurrentButtons()
     {
-        if (currentPanel != null)
-        {            
+        foreach (Button button in buttons)
             {
-                currentPanel.SetActive(false);
-                currentPanel = null;
-                videoSettingsPanel.SetActive(false);
-                audioSettingsPanel.SetActive(false);
-                controlSettingsPanel.SetActive(false);
-                settingsScreen = false;
-                saveScreen = false;
-                foreach (Button button in buttons)
-                {
-                    button.interactable = true;
-                }
+                button.interactable = false;
             }
-        }
     }
 
     public void ResumeGame()
     {
         CheckGameState(GameState.Playing);
+        if (player != null && player.gamepad)
+        {
+            Cursor.visible = true;
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+        }
     }
 
     public void GameSaved()
@@ -320,6 +382,11 @@ public class GameUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         CheckGameState(GameState.MainMenu);
+        Cursor.visible = true;
+        if (player != null && player.gamepad)
+        {            
+            EventSystem.current.SetSelectedGameObject(buttons[1].gameObject); //Setting a new current selected object
+        }
     }
 
     public void QuitGame()

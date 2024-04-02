@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ControlOptions : MonoBehaviour
@@ -61,7 +62,6 @@ public class ControlOptions : MonoBehaviour
             currentStateMouseKeyboardLH = mouseKeyboardLH.isOn;
             currentStateJoypad = joypad.isOn;
         }
-        Debug.Log("Your Settings Have Been Applied And Saved");
         gameUIManager.videoSettingsScreen = false;
         gameUIManager.audioSettingsScreen = false;
         gameUIManager.controlSettingsScreen = false;
@@ -69,7 +69,22 @@ public class ControlOptions : MonoBehaviour
         gameUIManager.videoSettingsPanel.SetActive(false);
         gameUIManager.audioSettingsPanel.SetActive(false);
         gameUIManager.controlSettingsPanel.SetActive(false);
-        popUpPanel.SetActive(false);        
+        popUpPanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+        if (gameUIManager.player != null)
+        {
+            gameUIManager.ActivateCurrentButtons();
+            mouseKeyboardRH.enabled = true;
+            mouseKeyboardLH.enabled = true;
+            joypad.enabled = true;
+            EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+            Cursor.visible = true;
+            if (gameUIManager.player.gamepad)
+            {
+                Cursor.visible = false;
+                EventSystem.current.SetSelectedGameObject(gameUIManager.firstSettingButton); //Setting a new current selected object
+            }
+        }
     }
 
     public void Exit()
@@ -79,6 +94,20 @@ public class ControlOptions : MonoBehaviour
             if (mouseKeyboardRH.isOn != currentStateMouseKeyboardRH && !popUpPanel.activeInHierarchy || mouseKeyboardLH.isOn != currentStateMouseKeyboardLH && !popUpPanel.activeInHierarchy) //<---And Changes Have Been Made
             {
                 popUpPanel.SetActive(true);
+                if (gameUIManager.player != null)
+                {
+                    gameUIManager.DeactivateCurrentButtons();
+                    mouseKeyboardRH.enabled = false;
+                    mouseKeyboardLH.enabled = false;
+                    joypad.enabled = false;
+                    EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                    Cursor.visible = true;
+                    if (gameUIManager.player.gamepad)
+                    {
+                        Cursor.visible = false;
+                        EventSystem.current.SetSelectedGameObject(gameUIManager.popUpButtons[4]); //Setting a new current selected object
+                    }
+                }
             }
             else
             {
@@ -93,6 +122,19 @@ public class ControlOptions : MonoBehaviour
                 mouseKeyboardRH.isOn = currentStateMouseKeyboardRH;
                 mouseKeyboardLH.isOn = currentStateMouseKeyboardLH;
                 joypad.isOn = currentStateJoypad;
+                if (gameUIManager.player != null)
+                {
+                    gameUIManager.ActivateCurrentButtons();
+                    mouseKeyboardRH.enabled = true;
+                    mouseKeyboardLH.enabled = true;
+                    joypad.enabled = true;
+                    Cursor.visible = true;
+                    EventSystem.current.SetSelectedGameObject(null); //Clearing the current selected object
+                    if (gameUIManager.player.gamepad)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameUIManager.firstSettingButton); //Setting a new current selected object
+                    }
+                }
             }
         }
     }
