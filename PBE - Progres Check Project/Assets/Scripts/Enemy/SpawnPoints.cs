@@ -167,6 +167,7 @@ public class SpawnPoints : MonoBehaviour
         stopWaveIncrement = false;
         inBreak = false;
         CreatingWave();
+        difficultyMultiplier += 1;
     }
 
     public void RemoveEnemyFromList(GameObject enemy)
