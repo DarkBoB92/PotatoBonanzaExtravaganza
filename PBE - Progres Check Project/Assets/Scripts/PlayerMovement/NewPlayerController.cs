@@ -374,8 +374,8 @@ public class NewPlayerController : MonoBehaviour
     {        
         Vector2 mouseMovement = stickOnScreenPos * sensitivity;
         mousePos = Mouse.current.position.ReadValue() + mouseMovement;
-        mousePos.x = Mathf.Clamp(mousePos.x, 0, Screen.width);
-        mousePos.y = Mathf.Clamp(mousePos.y, 0, Screen.height);
+        mousePos.x = Mathf.Clamp(mousePos.x, Screen.width/ 2 -50, Screen.width/ 2 + 200);
+        mousePos.y = Mathf.Clamp(mousePos.y, Screen.height/ 2 - 150, Screen.height/ 2 + 50);
         Mouse.current.WarpCursorPosition(mousePos);
     }
 
