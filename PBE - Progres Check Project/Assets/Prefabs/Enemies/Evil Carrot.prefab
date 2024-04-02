@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
   - {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
   - {fileID: -1580535799172915004, guid: 752c9b2dbc3f2d642a7dfba9650bc3c7, type: 3}
+  shake: {fileID: 0}
 --- !u!136 &6765236036087667505
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -786,8 +787,8 @@ MonoBehaviour:
   enemyBarScript: {fileID: 3173019997355268919}
   weapon: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   damage: 3
-  maxHealth: 10
   damageCooldown: 1.5
+  maxHealth: 10
   currentHealth: 0
 --- !u!136 &6661949368456987112
 CapsuleCollider:
@@ -808,10 +809,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8514194
+  m_Radius: 2.1079204
   m_Height: 4.6716366
   m_Direction: 1
-  m_Center: {x: -0.057235107, y: 1.8358183, z: 0.054990906}
+  m_Center: {x: -0.03, y: 1.8358183, z: 0.054990906}
 --- !u!65 &2243492877404890270
 BoxCollider:
   m_ObjectHideFlags: 0

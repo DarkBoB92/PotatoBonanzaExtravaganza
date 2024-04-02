@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: camAnim
       value: 
       objectReference: {fileID: 1305636230}
+    - target: {fileID: 4578478057187808506, guid: 2271b8a070646b64c93bf1ed091f20cb, type: 3}
+      propertyPath: screenShakeToggle
+      value: 
+      objectReference: {fileID: 1389467347}
     - target: {fileID: 5957158720641132602, guid: 2271b8a070646b64c93bf1ed091f20cb, type: 3}
       propertyPath: m_Name
       value: ScreenShakeManager
@@ -601,6 +605,10 @@ PrefabInstance:
       propertyPath: timerAmmoText
       value: 
       objectReference: {fileID: 702776656}
+    - target: {fileID: 6473543399009398154, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
+      propertyPath: secondaryCamera
+      value: 
+      objectReference: {fileID: 1305636229}
     - target: {fileID: 7045657566338801221, guid: 4b2c8e275a5275644993b862f944bb9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -898,6 +906,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1389467347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8015048646420886860, guid: 2dd7cd70d45e28f4fb821f792d3016fe, type: 3}
+  m_PrefabInstance: {fileID: 1389467342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1755881991

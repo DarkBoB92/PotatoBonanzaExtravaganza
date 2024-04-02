@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ExplosionDelayUp : Collectible
 {
-    PlayerShoot player;
+    NewPlayerShoot player;
     float maxDelayReduction = 2.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShoot>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<NewPlayerShoot>();
     }
 
     private void OnCollisionEnter(Collision collision)

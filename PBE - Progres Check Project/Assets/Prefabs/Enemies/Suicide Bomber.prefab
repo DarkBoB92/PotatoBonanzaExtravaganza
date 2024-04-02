@@ -113,10 +113,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.93467116
-  m_Height: 2.4205406
+  m_Radius: 1.9201487
+  m_Height: 3.8402975
   m_Direction: 1
-  m_Center: {x: 0.0022848845, y: 0.21027029, z: -0.2231884}
+  m_Center: {x: 0.04, y: 0.8, z: -0.22318855}
 --- !u!195 &2062612370245450573
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -189,8 +189,8 @@ MonoBehaviour:
   enemyBarScript: {fileID: 234799977017425096}
   weapon: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
   damage: 0
-  maxHealth: 10
   damageCooldown: 1.5
+  maxHealth: 10
   currentHealth: 0
 --- !u!114 &234799977017425096
 MonoBehaviour:
