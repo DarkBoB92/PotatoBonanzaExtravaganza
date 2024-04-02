@@ -2276,7 +2276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1755881992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2498,22 +2498,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671831431209559216, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 336182a38c2caa043a9b8d3d81f3b256, type: 2}
-    - target: {fileID: 3755802769943957399, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 7325893e5953c004f9c767d57fcaeb03, type: 2}
     - target: {fileID: 57298398219281946, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 671831431209559216, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 336182a38c2caa043a9b8d3d81f3b256, type: 2}
     - target: {fileID: 738209629237432207, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 3755802769943957399, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 7325893e5953c004f9c767d57fcaeb03, type: 2}
     - target: {fileID: 4156708585019430157, guid: 9f9597e84dfe66642a24b66bfbde4b55, type: 3}
       propertyPath: m_TagString
       value: Ground
