@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameplayAudio : MonoBehaviour
 {
-    public enum SoundFXCat { Shoot, Hit, Music, Spawn, Death }
+    public enum SoundFXCat { Shoot, Hit, Music, Spawn, Death, Win }
     public GameObject audioObject;
 
     public AudioClip Shoot;
@@ -12,6 +12,7 @@ public class GameplayAudio : MonoBehaviour
     public AudioClip Music;
     public AudioClip Spawn;
     public AudioClip Death;
+    public AudioClip Win;
 
     public void AudioTrigger(SoundFXCat audioType, Vector3 audioPosition, float volume)
     {
@@ -34,6 +35,9 @@ public class GameplayAudio : MonoBehaviour
                 break;
             case (SoundFXCat.Death):   // https://www.youtube.com/watch?v=9FMquJzgDGQ
                 mam.myClip = Death;
+                break;
+            case (SoundFXCat.Win):   // https://www.youtube.com/watch?v=SZH1eambaFc
+                mam.myClip = Win;
                 break;
         }
 

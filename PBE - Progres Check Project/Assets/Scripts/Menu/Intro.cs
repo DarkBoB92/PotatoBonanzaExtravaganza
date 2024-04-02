@@ -7,15 +7,27 @@ public class Intro : MonoBehaviour
 {
     [SerializeField] Image background;
     [SerializeField] Image logo;
-    float backgroundAlpha;
-
-
+    public bool firstTime = true;
+    float backgroundAlpha;    
 
     void Start()
     {
-        Cursor.visible = false;
-        StartCoroutine(backgroundAnim());
-        StartCoroutine(logoAnim());
+        if (Manager.instance != null)
+        {
+            firstTime = Manager.instance.firstTime;
+        }        
+        if (firstTime)
+        {
+            Cursor.visible = false;
+            StartCoroutine(backgroundAnim());
+            StartCoroutine(logoAnim());
+        }
+        else
+        {
+            background.enabled = false;
+            logo.enabled = false;
+            Cursor.visible = true;
+        }
     }
 
 
@@ -53,5 +65,7 @@ public class Intro : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         Cursor.visible = true;
+        firstTime = false;
+        Manager.instance.firstTime = firstTime;
     }
 }
