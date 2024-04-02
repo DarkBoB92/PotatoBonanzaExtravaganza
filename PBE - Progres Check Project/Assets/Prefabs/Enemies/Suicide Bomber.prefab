@@ -168,7 +168,7 @@ MonoBehaviour:
   initialOverlapRadius: 2
   increasedOverlapRadius: 6
   maxHealth: 1
-  damageToPlayer: 5
+  damageToPlayer: 3
   detonation: 2
   damagingObjects:
     serializedVersion: 2

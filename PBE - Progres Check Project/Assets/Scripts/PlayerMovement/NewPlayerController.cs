@@ -36,45 +36,23 @@ public class NewPlayerController : MonoBehaviour
 
     private void Start()
     {
-        //renderer = GameObject.FindGameObjectWithTag("StoveTop").GetComponent<Renderer>();
+        renderer = GameObject.FindGameObjectWithTag("StoveTop").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         playerInput = GetComponent<PlayerInput>();
         Player = GameObject.FindWithTag("Player");
+        playerHealth = GetComponent<PlayerHealth>();
         gameUIManager = GameObject.FindWithTag("UIManager").GetComponent<GameUIManager>();
         controlPanel = gameUIManager.GetComponentInChildren<ControlOptions>(true);
         psObject.SetActive(false);        
         smoke = GameObject.FindGameObjectsWithTag("Smoke");
         LoadInputCongig();
         CheckPlayerInput();
-        //StoveColor();
+        StoveColor();
     }
 
     private void Update()
-    {        
-        if (Input.GetKeyDown(KeyCode.G)) 
-        {
-            if (!gamepad)
-            {
-                gamepad = true;
-            }
-            else
-            {
-                gamepad = false;
-            }
-            CheckPlayerInput();
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (!rightHand)
-            {
-                rightHand = true;
-            }
-            else
-            {
-                rightHand = false;
-            }            
-        }
+    {
         LoadInputCongig();
         if (gameUIManager.currentState == GameUIManager.GameState.Playing)
         {

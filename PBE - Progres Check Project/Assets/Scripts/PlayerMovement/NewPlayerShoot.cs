@@ -59,7 +59,7 @@ public class NewPlayerShoot : MonoBehaviour
             isShooting = true;
 
             ShootBullet();
-
+            
             StartCoroutine(ShootBulletHold());
         }
         else
@@ -111,6 +111,7 @@ public class NewPlayerShoot : MonoBehaviour
     void ShootBullet()
     {
         SelectKnifeFireMode();
+        ammo--;
     }
 
     void ThrowGrenade()
@@ -140,8 +141,7 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().isGranade = false;
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
-                bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
+                bulletSpawned.GetComponent<Weapon>().SetType();                
                 break;
             case 1:
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[1].position, bulletSpawnPoint[1].rotation);
@@ -151,7 +151,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[2].position, bulletSpawnPoint[2].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -159,7 +158,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 break;
             case 2:
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[0].position, bulletSpawnPoint[0].rotation);
@@ -169,7 +167,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[3].position, bulletSpawnPoint[3].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -177,7 +174,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[4].position, bulletSpawnPoint[4].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -185,7 +181,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 break;
             case 3:
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[1].position, bulletSpawnPoint[1].rotation);
@@ -195,7 +190,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[2].position, bulletSpawnPoint[2].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -203,7 +197,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[3].position, bulletSpawnPoint[3].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -211,7 +204,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[4].position, bulletSpawnPoint[4].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -219,7 +211,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 break;
             case 4:
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[0].position, bulletSpawnPoint[0].rotation);
@@ -229,7 +220,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[1].position, bulletSpawnPoint[1].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -237,7 +227,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[2].position, bulletSpawnPoint[2].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -245,7 +234,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[3].position, bulletSpawnPoint[3].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -253,7 +241,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 bulletSpawned = Instantiate(bulletPrefab, bulletSpawnPoint[4].position, bulletSpawnPoint[4].rotation);
                 bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
                 bulletSpawned.GetComponent<Weapon>().shooted = true;
@@ -261,7 +248,6 @@ public class NewPlayerShoot : MonoBehaviour
                 bulletSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 bulletSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 bulletSpawned.GetComponent<Weapon>().SetType();
-                ammo--;
                 break;
         }
     }
