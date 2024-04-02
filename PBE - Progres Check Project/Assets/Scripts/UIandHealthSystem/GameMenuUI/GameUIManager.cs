@@ -118,7 +118,7 @@ public class GameUIManager : MonoBehaviour
         videoSettingsPanel.SetActive(false);
         audioSettingsPanel.SetActive(false);
         controlSettingsPanel.SetActive(false);
-        gameOverPanel.SetActive(true);
+        gameOverPanel.SetActive(true); GetCurrentButtons();
     }
 
     public void CheckInputs(bool pressed)
