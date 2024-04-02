@@ -5927,10 +5927,12 @@ GameObject:
   - component: {fileID: 7045657566338801221}
   - component: {fileID: 2868475766259345143}
   - component: {fileID: 3910142606668322330}
-  - component: {fileID: 8059689739035543890}
   - component: {fileID: 4810719984967002718}
   - component: {fileID: 410647240707990875}
-  - component: {fileID: 5105922612709979081}
+  - component: {fileID: 1222139709221947257}
+  - component: {fileID: 6473543399009398154}
+  - component: {fileID: 7998761602559800538}
+  - component: {fileID: 4002933712794404742}
   m_Layer: 6
   m_Name: Potato
   m_TagString: Player
@@ -6012,32 +6014,6 @@ CapsuleCollider:
   m_Height: 3.021958
   m_Direction: 1
   m_Center: {x: 0.030000022, y: 2.419896, z: -0.047461137}
---- !u!114 &8059689739035543890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7677762800744826111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677b446e85804114ebcb0774e785fa06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  sprintSpeed: 5
-  inputVector: {x: 0, y: 0, z: 0}
-  moveVector: {x: 0, y: 0, z: 0}
-  posit: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 512
-  secondaryCamera: {fileID: 0}
-  ps: {fileID: 6022873124190787704}
-  psObject: {fileID: 3659905474499992306}
-  staminaSlider1: {fileID: 0}
-  staminaSlider2: {fileID: 0}
 --- !u!114 &4810719984967002718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6071,7 +6047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider1: {fileID: 0}
   slider2: {fileID: 0}
---- !u!114 &5105922612709979081
+--- !u!114 &1222139709221947257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6080,7 +6056,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 7677762800744826111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c397f294e3869e246abdce2e7e9cf59a, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c4ea0db9039ac614093b05810433a7d2, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &6473543399009398154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677762800744826111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cfcd6e917185641b2618e6c3833a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  sprintSpeed: 5
+  sensitivity: 4
+  inputVectorRH: {x: 0, y: 0, z: 0}
+  inputVectorLH: {x: 0, y: 0, z: 0}
+  inputVectorGamepad: {x: 0, y: 0, z: 0}
+  moveVector: {x: 0, y: 0, z: 0}
+  posit: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
+  secondaryCamera: {fileID: 0}
+  ps: {fileID: 6022873124190787704}
+  psObject: {fileID: 3659905474499992306}
+  staminaSlider1: {fileID: 0}
+  staminaSlider2: {fileID: 0}
+  gamepad: 0
+  rightHand: 0
+  playerHealth: {fileID: 0}
+--- !u!114 &7998761602559800538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677762800744826111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13224aeb05e92094ebfda5cfda9d11dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 999
@@ -6111,6 +6149,27 @@ MonoBehaviour:
   delayReduction: 0
   knifeAmmoText: {fileID: 0}
   timerAmmoText: {fileID: 0}
+--- !u!65 &4002933712794404742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677762800744826111}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.05, z: 0.1}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!1 &7970358131775299014
 GameObject:
   m_ObjectHideFlags: 0

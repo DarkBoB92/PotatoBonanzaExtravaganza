@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FireModeKnifeUp : MonoBehaviour
 {
-    PlayerShoot player;
+    NewPlayerShoot player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShoot>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<NewPlayerShoot>();
     }
 
     private void OnCollisionEnter(Collision collision)

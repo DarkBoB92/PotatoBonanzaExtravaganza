@@ -7,7 +7,7 @@ public class Weapon : Collectible
     //Variables and references are declerade as SerializedField for testing purpose
     public float explosionRadius, explosionTimer;    
     [SerializeField] GameObject player;
-    [SerializeField] PlayerShoot ammo;
+    [SerializeField] NewPlayerShoot ammo;
     [SerializeField] PlayerHealth playerHealth, enemyHealth;
     [SerializeField] LayerMask damagingObjects;   // Use this for referencing any enemies that NEED to be damaged by this enemy AS LONG as they have different tags.
     [SerializeField] float lifeTime = 3;
@@ -20,7 +20,7 @@ public class Weapon : Collectible
         playerHealth = FindObjectOfType<PlayerHealth>();
         if (player != null)
         {
-            ammo = player.GetComponent<PlayerShoot>();
+            ammo = player.GetComponent<NewPlayerShoot>();
         }
     }
 
