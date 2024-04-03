@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour 
 {
     //Variables and references are declerade as SerializedField for testing purpose
-    [SerializeField] int damage; //Range values to apply a random damage value for the weapon
+    [SerializeField] public int damage; //Range values to apply a random damage value for the weapon
     [SerializeField] GameObject player;
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] float lifeTime = 3;

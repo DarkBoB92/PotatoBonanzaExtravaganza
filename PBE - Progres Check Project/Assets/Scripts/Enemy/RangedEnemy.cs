@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Collectible;
 
 public class RangedEnemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private int damage;
+    public int damage;
     [SerializeField] int bulletSpeed;
     [SerializeField] float range, fireRate, resetFireRate;
     [SerializeField] GameObject bulletPrefab;
@@ -43,12 +44,14 @@ public class RangedEnemy : MonoBehaviour
     {
         if(engage.distance <= range)
         {
-            GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject bulletSpawned = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);            
             bulletSpawned.GetComponent<Rigidbody>().velocity = bulletSpawned.transform.up * bulletSpeed;
-            if(bulletSpawned != null)
+            bulletSpawned.GetComponent<EnemyWeapon>().damage = damage;
+            if (bulletSpawned != null)
             {
                 fireRate = resetFireRate;
             }
+            
         }
     }
     

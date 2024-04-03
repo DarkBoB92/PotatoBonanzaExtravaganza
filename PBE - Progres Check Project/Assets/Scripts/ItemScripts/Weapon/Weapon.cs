@@ -37,30 +37,29 @@ public class Weapon : Collectible
         //Used player for logic connection
         player = other.gameObject;
         if (player.tag == "Player")
-        {
-            ammo.AddAmmo();
+        {                        
+            if (isGranade)
+            {
+                ammo.AddGrenade();
+            }
+            else
+            {
+                ammo.AddAmmo();
+            }
             Destroy(this.gameObject);
         }
 
-        if (other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground" && !isGranade)
         {
             Destroy(this.gameObject);
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player" && !shooted)
-        {
-            ammo.AddGrenade();
-            Destroy(this.gameObject);
-        }
-
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Ground" && isGranade || other.gameObject.tag == "Enemy" && isGranade)
         {
             Explode();
         }
     }
+    
 
     void LifeTime()
     {

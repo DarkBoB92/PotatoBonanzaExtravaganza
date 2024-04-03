@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Collectible;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private PlayerHealthBar healthBarScript;
     [SerializeField] private EnemyHealthBar enemyBarScript;
-    [SerializeField] private GameObject weapon;
+    [SerializeField] private GameObject knife, egg;
     [SerializeField] int damage;
     [SerializeField] private float damageCooldown = 1.5f;
     public int maxHealth = 10;
@@ -73,10 +74,24 @@ public class PlayerHealth : MonoBehaviour
             }
             else if (gameObject.tag == "Enemy" || gameObject.tag == "Bomber")
             {
+                int rng = Random.Range(0, 2);
                 FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
                 spawnPoints.RemoveEnemyFromList(gameObject);
                 Destroy(this.gameObject);
-                GameObject spawnAmmo = Instantiate(weapon, transform.position + transform.up * 1, Quaternion.identity);
+                
+                if (rng == 0)
+                {
+                    GameObject spawnAmmo = Instantiate(knife, transform.position + transform.up * 0.5f, Quaternion.identity);
+                    spawnAmmo.GetComponent<Weapon>().type = CollectibleType.Item;
+                }
+                else
+                {
+                    GameObject spawnAmmo = Instantiate(egg, transform.position + transform.up * 0.5f, Quaternion.identity);
+                    spawnAmmo.GetComponent<Weapon>().isGranade = true;
+                    spawnAmmo.GetComponent<SphereCollider>().isTrigger = true;
+                    spawnAmmo.GetComponent<Weapon>().type = CollectibleType.Item;
+                }
+
             }
 
         }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 6251675041376974907}
   m_Layer: 0
   m_Name: Suicide Bomber
-  m_TagString: Enemy
+  m_TagString: Bomber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,7 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarScript: {fileID: 0}
   enemyBarScript: {fileID: 234799977017425096}
-  weapon: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
+  knife: {fileID: 2369225003101911904, guid: 9fc62340263a10f4a8f1ca0f88536d03, type: 3}
+  egg: {fileID: 2369225003101911904, guid: c4612c4ae3a0d4e4883192b56088990e, type: 3}
   damage: 0
   damageCooldown: 1.5
   maxHealth: 10

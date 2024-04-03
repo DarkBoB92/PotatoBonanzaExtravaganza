@@ -19,12 +19,12 @@ public class HitFlash : MonoBehaviour
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<ShakeCamera>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Weapon")
+        if (other.gameObject.tag == "Weapon")
         {
-            weapon = GetComponent<Weapon>();
-            if (weapon != null && weapon.shooted)
+            weapon = other.GetComponent<Weapon>();
+            if (weapon != null && weapon.shooted && !weapon.isGranade)
             {
                 if (shake != null && shake.screenShakeToggle.isOn)
                 {
@@ -34,15 +34,6 @@ public class HitFlash : MonoBehaviour
                 StartCoroutine(FlashRoutine());
             }
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (shake != null && shake.screenShakeToggle.isOn)
-        {
-            shake.CamShake();
-        }
-        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Hit, transform.position, 0.5f);
-        StartCoroutine(FlashRoutine());
     }
 
     IEnumerator FlashRoutine()
