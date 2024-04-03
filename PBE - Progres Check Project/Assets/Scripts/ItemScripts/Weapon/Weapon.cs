@@ -52,14 +52,16 @@ public class Weapon : Collectible
         if (other.gameObject.tag == "Ground" && !isGranade)
         {
             Destroy(this.gameObject);
-        }
+        }        
+    }
 
-        if (other.gameObject.tag == "Ground" && isGranade || other.gameObject.tag == "Enemy" && isGranade)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground" && isGranade || collision.gameObject.tag == "Enemy" && isGranade)
         {
             Explode();
         }
     }
-    
 
     void LifeTime()
     {

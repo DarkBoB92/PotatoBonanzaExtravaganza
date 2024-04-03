@@ -266,6 +266,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);                
                 break;
             case 1:
@@ -276,6 +277,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[2].position, grenadeSpawnPoint[2].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -284,6 +286,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 break;
             case 2:
@@ -292,16 +295,20 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
                 grenadeSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[3].position, grenadeSpawnPoint[3].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
                 grenadeSpawned.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
                 grenadeSpawned.GetComponent<Weapon>().type = CollectibleType.Weapon;
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[4].position, grenadeSpawnPoint[4].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -310,6 +317,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 break;
             case 3:
@@ -320,6 +328,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[2].position, grenadeSpawnPoint[2].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -328,6 +337,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[3].position, grenadeSpawnPoint[3].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -336,6 +346,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[4].position, grenadeSpawnPoint[4].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -343,6 +354,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 break;
             case 4:
@@ -353,6 +365,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[1].position, grenadeSpawnPoint[1].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -361,6 +374,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[2].position, grenadeSpawnPoint[2].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -369,6 +383,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[3].position, grenadeSpawnPoint[3].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -377,6 +392,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 grenadeSpawned = Instantiate(grenadePrefab, grenadeSpawnPoint[4].position, grenadeSpawnPoint[4].rotation);
                 grenadeSpawned.GetComponent<Rigidbody>().constraints &= ~RigidbodyConstraints.FreezePositionY;
@@ -385,6 +401,7 @@ public class NewPlayerShoot : MonoBehaviour
                 grenadeSpawned.GetComponent<Weapon>().isGranade = true;
                 grenadeSpawned.GetComponent<Weapon>().explosionTimer -= delayReduction;
                 grenadeSpawned.GetComponent<Weapon>().shooted = true;
+                grenadeSpawned.GetComponent<SphereCollider>().isTrigger = false;
                 grenadeSpawned.GetComponent<Weapon>().DamageUp(damageIncrement);
                 break;
         }
