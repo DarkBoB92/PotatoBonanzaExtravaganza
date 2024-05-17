@@ -5,28 +5,27 @@ using UnityEngine;
 public class Weapon : Collectible 
 {
     //Variables and references are declerade as SerializedField for testing purpose
-    [SerializeField] float minPower, maxPower, explosionRadius; //Range values to apply a random damage value for the weapon
-    [SerializeField] int potatoPower, acutalPower, damageToEnemies; //Temporary variable to check functionality of the script
+    public float explosionRadius, explosionTimer;    
     [SerializeField] GameObject player;
-    [SerializeField] PlayerShoot ammo;
+    [SerializeField] NewPlayerShoot ammo;
     [SerializeField] PlayerHealth playerHealth, enemyHealth;
     [SerializeField] LayerMask damagingObjects;   // Use this for referencing any enemies that NEED to be damaged by this enemy AS LONG as they have different tags.
     [SerializeField] float lifeTime = 3;
+    public int knifeDMG, tomatoDMG;
     public bool shooted, isGranade;
 
     private void Start()
-    {        
-        acutalPower = (int)Random.RandomRange(minPower, maxPower);
+    {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = FindObjectOfType<PlayerHealth>();
         if (player != null)
         {
-            ammo = player.GetComponent<PlayerShoot>();
+            ammo = player.GetComponent<NewPlayerShoot>();
         }
     }
 
     private void Update()
-    {
+    {        
         if (shooted && !isGranade)
         {
             LifeTime();
@@ -38,42 +37,35 @@ public class Weapon : Collectible
         //Used player for logic connection
         player = other.gameObject;
         if (player.tag == "Player")
-        {
-            Collected();
-            ammo.AddAmmo();
+        {                        
+            if (isGranade)
+            {
+                ammo.AddGrenade();
+            }
+            else
+            {
+                ammo.AddAmmo();
+            }
             Destroy(this.gameObject);
         }
 
-        if (other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Ground" && !isGranade)
         {
             Destroy(this.gameObject);
-        }
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player" && !shooted)
-        {
-            ammo.AddGrenade();
-            Destroy(this.gameObject);
-        }
-
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Ground" && isGranade || collision.gameObject.tag == "Enemy" && isGranade)
         {
             Explode();
         }
     }
 
-    void Collected()
-    {
-        //potatoPower += acutalPower;
-        //Debug.Log($"potatoPower is {potatoPower}");
-    }
-
     void LifeTime()
     {
         lifeTime -= Time.deltaTime;
-        print(lifeTime);
         if(lifeTime <= 0)
         {
             Destroy(this.gameObject);
@@ -82,10 +74,31 @@ public class Weapon : Collectible
 
     void Explode()
     {
+        StartCoroutine(Detonation());
+    }
+
+    IEnumerator Detonation()
+    {
+        yield return new WaitForSeconds(explosionTimer);
         OverlappingPlayer();
         Destroy(this.gameObject);
-        Debug.Log("BOOOOOOOOOOOM!");
     }
+
+    public void DamageUp(int amount)
+    {
+        if (ammo != null && ammo.damageIncrement >= ammo.maxIncrement)
+        {
+            ammo.damageIncrement = ammo.maxIncrement;
+        }
+        if (!isGranade)
+        {
+            knifeDMG += amount;
+        }
+        else
+        {
+            tomatoDMG += amount;
+        }
+    }    
 
     public void OverlappingPlayer()
     {
@@ -104,7 +117,7 @@ public class Weapon : Collectible
                 if (obj.CompareTag("Enemy") && playerHealth != null)
                 {
                     enemyHealth = obj.GetComponent<PlayerHealth>();
-                    enemyHealth.TakeDamage(damageToEnemies); // Modify this value for damaging the enemies. Can do more if needed.
+                    enemyHealth.TakeDamage(tomatoDMG); // Modify this value for damaging the enemies. Can do more if needed.
                 }
             }
         }

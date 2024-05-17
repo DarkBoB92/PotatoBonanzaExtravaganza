@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 257713039885854850}
   m_Layer: 8
   m_Name: EnemyPick
-  m_TagString: Weapon
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ec7ee8ea8cafb4c975626142c60750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   damage: 2
   player: {fileID: 0}
   playerHealth: {fileID: 0}

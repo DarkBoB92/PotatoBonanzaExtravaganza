@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class BomberEnemy : MonoBehaviour
 {
@@ -20,12 +21,15 @@ public class BomberEnemy : MonoBehaviour
     SpawnPoints spawnPoints;
     GameObject potato;
     Transform potatoPos;
+    NavMeshAgent bomber;
 
     // Main Loops ---------------------------------------------------------------------------------
     void Start()
     {
+        FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Spawn, transform.position, 1f);
         currentHealth = maxHealth;
 
+        bomber = GetComponent<NavMeshAgent>();
         healthBarScript = GetComponent<EnemyHealthBar>();
         spawnPoints = FindObjectOfType<SpawnPoints>();
         playerHealth = FindObjectOfType<PlayerHealth>();
@@ -55,12 +59,14 @@ public class BomberEnemy : MonoBehaviour
 
     IEnumerator DelayBeforeDamage()
     {
+        bomber.speed = 0;
         yield return new WaitForSeconds(detonation); // Modify that value for an increased or decreased delay.
 
         OverlappingPlayer();
 
         if(gameObject != null)
         {
+            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
             initialOverlapRadius = increasedOverlapRadius;
             spawnPoints.RemoveEnemyFromList(gameObject);
             Destroy(this.gameObject);
@@ -99,8 +105,10 @@ public class BomberEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            spawnPoints.RemoveEnemyFromList(gameObject);
-            Destroy(this.gameObject);
+            FindObjectOfType<GameplayAudio>().AudioTrigger(GameplayAudio.SoundFXCat.Death, transform.position, 0.5f);
+            OverlappingPlayer();
+            spawnPoints.RemoveEnemyFromList(gameObject);            
+            Destroy(gameObject);
         }
     }
 
@@ -110,9 +118,9 @@ public class BomberEnemy : MonoBehaviour
 
         if (weapon != null)
         {
-            if (other.gameObject.CompareTag("Weapon") && weapon.shooted)
+            if (other.gameObject.CompareTag("Weapon") && weapon.shooted && !weapon.isGranade)
             {
-                TakeDamage(4);
+                TakeDamage(weapon.knifeDMG);
             }
         }
     }

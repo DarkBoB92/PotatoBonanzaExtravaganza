@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3484571354589713529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4361736693734604492}
+  - component: {fileID: 3790218953329109880}
+  - component: {fileID: 204253652622219541}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4361736693734604492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484571354589713529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.009521127, y: 2.9590106, z: 7.3010077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3790218953329109880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484571354589713529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30457a81539229e44abad938b9dc567f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioObject: {fileID: 4476623152352901599, guid: b381c960484637f4d909ea60f3ed9187, type: 3}
+  Shoot: {fileID: 8300000, guid: c0694aeede4ffca41b61358272d0aedb, type: 3}
+  Hit: {fileID: 8300000, guid: b08f1fa23b7eab347a77b1e375b0ab95, type: 3}
+  Music: {fileID: 8300000, guid: b73dd8a59f647484b8513df206549a52, type: 3}
+  Spawn: {fileID: 8300000, guid: 61b98ffdeb0038747ac531baa666e51f, type: 3}
+  Death: {fileID: 8300000, guid: 0d5344f123234954cb2e94494a00d1de, type: 3}
+  Win: {fileID: 8300000, guid: e44e0c78a93fe3547a793fe70efbcd3f, type: 3}
+--- !u!114 &204253652622219541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484571354589713529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb7a6520d1844a96dd51c24953ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioObject: {fileID: 4476623152352901599, guid: b381c960484637f4d909ea60f3ed9187, type: 3}
+  LogoWoosh: {fileID: 8300000, guid: 7096421afc5a732419719663ec9fe95a, type: 3}
+  CameraWoosh: {fileID: 8300000, guid: f731395fdc1b1604c8832836dee73268, type: 3}
+  FridgeHum: {fileID: 8300000, guid: d41d31a5330e39d4e8a8284bf136ac0f, type: 3}
+  MouseHover: {fileID: 8300000, guid: 53bdeb8d2b289ba498acdd935cd3fb31, type: 3}
+  ButtonSelect: {fileID: 8300000, guid: 192145d061d07c64ea641aaf3f7f8fc3, type: 3}
+  ButtonBack: {fileID: 8300000, guid: e7e5b9ad952cd6a41ae4313202e8b06e, type: 3}
+  KitchenSFX: {fileID: 8300000, guid: cf5289d343291864780881deb7ebc7f2, type: 3}
+  Jazz: {fileID: 8300000, guid: 98b7c5556dfdee44ab569783818d8d25, type: 3}

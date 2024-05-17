@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public enum CollectibleType { Nothing, Coin, Weapon }; //Enum list with possible collectible Items
+    public enum CollectibleType { Nothing, Item, Weapon }; //Enum list with possible collectible Items
     public CollectibleType type; // It is declared as a SerializeField just for testing purposes 
 
     private void Awake()
@@ -17,8 +17,8 @@ public class Collectible : MonoBehaviour
     {
         switch (gameObject.tag)
         {
-            case "Coin":
-                type = CollectibleType.Coin;
+            case "Item":
+                type = CollectibleType.Item;
                 break;
             case "Weapon":
                 type = CollectibleType.Weapon;
@@ -30,12 +30,13 @@ public class Collectible : MonoBehaviour
     {
         switch (type)
         {
-            case CollectibleType.Coin:
-                transform.gameObject.tag = "Coin";
+            case CollectibleType.Item:
+                transform.gameObject.tag = "Item";
                 break;
             case CollectibleType.Weapon:
                 transform.gameObject.tag = "Weapon";
                 break;
         }
     }
+    
 }

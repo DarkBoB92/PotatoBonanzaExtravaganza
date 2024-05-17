@@ -10,6 +10,19 @@ TagManager:
   - Enemy
   - Ground
   - UIManager
+  - ScreenShake
+  - ScreenShakeTog
+  - Item
+  - CameraPOV
+  - Spawner
+  - Canvas
+  - Spillage
+  - Plates
+  - StoveTop
+  - Smoke
+  - ControlPanel
+  - PauseMenu
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
