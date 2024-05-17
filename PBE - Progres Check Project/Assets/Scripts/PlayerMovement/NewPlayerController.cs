@@ -8,7 +8,7 @@ public class NewPlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float sprintSpeed = 3.0f;
-    [SerializeField] private float sensitivity = 0.1f;
+    [SerializeField] private float sensitivity = 4f;
     [SerializeField] private Vector3 inputVectorRH, inputVectorLH, inputVectorGamepad, moveVector, posit;
     [SerializeField] private Quaternion rotation = Quaternion.identity;
     [SerializeField] private LayerMask groundMask;
