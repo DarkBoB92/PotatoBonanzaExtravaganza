@@ -23,6 +23,7 @@ TagManager:
   - ControlPanel
   - PauseMenu
   - EnemyWeapon
+  - Sink
   layers:
   - Default
   - TransparentFX

@@ -6028,10 +6028,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarScript: {fileID: 410647240707990875}
   enemyBarScript: {fileID: 0}
-  weapon: {fileID: 0}
+  knife: {fileID: 0}
+  egg: {fileID: 0}
   damage: 2
   damageCooldown: 1.5
-  maxHealth: 10
+  maxHealth: 40
   currentHealth: 0
 --- !u!114 &410647240707990875
 MonoBehaviour:

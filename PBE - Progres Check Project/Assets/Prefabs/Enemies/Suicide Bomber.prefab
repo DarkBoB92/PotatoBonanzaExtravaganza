@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 234799977017425096}
   - component: {fileID: 4079765899402379465}
   - component: {fileID: 6251675041376974907}
+  - component: {fileID: 8183272671278339508}
   m_Layer: 0
   m_Name: Suicide Bomber
   m_TagString: Bomber
@@ -260,6 +261,27 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 97bbd5f8dd8b16346a9fbe8cf656da5b, type: 2}
   - {fileID: 2100000, guid: b633de1d39320dd408e8214f23619c0e, type: 2}
   shake: {fileID: 0}
+--- !u!65 &8183272671278339508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529195569458886249}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8405102, y: 1.8345156, z: 1.828897}
+  m_Center: {x: -0.072827116, y: 0.099674165, z: 0.06564021}
 --- !u!1 &2790896655533119029
 GameObject:
   m_ObjectHideFlags: 0

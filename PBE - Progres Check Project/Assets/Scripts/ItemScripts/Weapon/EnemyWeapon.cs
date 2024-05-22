@@ -36,6 +36,10 @@ public class EnemyWeapon : MonoBehaviour
             playerHealth.TakeDamage(damage);
             Destroy(this.gameObject);
         }
+        //else if (other.gameObject.tag == ("Ground"))
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     void LifeTime()

@@ -31,10 +31,10 @@ public class Collectible : MonoBehaviour
         switch (type)
         {
             case CollectibleType.Item:
-                transform.gameObject.tag = "Item";
+                gameObject.tag = "Item";
                 break;
             case CollectibleType.Weapon:
-                transform.gameObject.tag = "Weapon";
+                gameObject.tag = "Weapon";
                 break;
         }
     }

@@ -25,7 +25,7 @@ public class ExplosionDelayUp : Collectible
     {
         if (player != null)
         {
-            player.delayReduction += 0.5f;
+            player.delayReduction += 0.2f;
             if (player.delayReduction > maxDelayReduction)
             {
                 player.delayReduction = maxDelayReduction;
